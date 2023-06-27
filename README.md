@@ -1,5 +1,11 @@
-# Introduction
-ReVisPort is a reporting tool.
+# ReVisPort
+ReVisPort is a Python command line reporting tool which enable users to create simple reports. The reports provide the user with descriptive summary in order to compare countries in terms of various indices. The indices are mainly related to [climate data](https://ourworldindata.org/co2-and-greenhouse-gas-emissions). Nevertheless, the users can also select more general indices, such as GDP or population.
+
+In addition, ReVisPort offers the users to add the created reports to their personalized favourites list. Notes or findings can be added to simplify the taks of finding interesting data insights. 
+
+ 
+
+TODO: screenshot or record
 
 ---
 
@@ -17,7 +23,7 @@ ReVisPort is a reporting tool.
 
 ### User Stories
 
-### Flow chart
+### 
 
 - Main Menu ![Main Menu](./docs/ux/logical_flow_main_menu.png)
 - Report Menu ![Report Menu](./docs/ux/logical_flow_report_menu.png)
