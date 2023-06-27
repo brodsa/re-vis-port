@@ -19,6 +19,11 @@ ReVisPort is a reporting tool.
 
 ### Flow chart
 
+- Main Menu ![Main Menu](./docs/ux/logical_flow_main_menu.png)
+- Report Menu ![Report Menu](./docs/ux/logical_flow_report_menu.png)
+- Favourite Menu ![Favourite Menu](./docs/ux/logical_flow_favourite_menu.png)
+
+
 
 ---
 ## Features
