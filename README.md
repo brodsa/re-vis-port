@@ -1,7 +1,58 @@
-# Credits
-- [Data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv)
-- [EU Countries](https://european-union.europa.eu/principles-countries-history/country-profiles_en)
-- [Flow Chart](https://lucid.app/documents#/documents?folder_id=recent)
+# Introduction
+ReVisPort is a reporting tool.
+
+---
+
+## Table of Contents
+- [UX](#ux)
+- [Features](#features)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Technologies](#technologies)
+- [Credits & Inspirations](#credits&inspirations)
+- [Acknowledgements](#acknowledgemetns)
+
+---
+## UX
+
+### User Stories
+
+### Flow chart
+
+
+---
+## Features
+
+### Differences to Design
+### Future Enhancements
+
+## Testing
+
+## Deployment
+
+
+### Clone the Repository
+
+
+## Technologies
+### Languages
+- Python
+- Markdown
+
+### Technologies & Tools
+- [Lucid](https://lucid.app/documents#/documents?folder_id=recent) to create a flow chart.
+
+
+## Credits & Inspiration
+- Data Sources
+    - [Our Word in Data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv)
+    - [List of the EU countries](https://european-union.europa.eu/principles-countries-history/country-profiles_en)
+- 
+
+
+
+## Acknowledgements
+I would like to thank my mentors, [Gareth McGirr](https://github.com/Gareth-McGirr) and [TODO](todo), for their guidance through my project and their valuable inputs. And my special thanks go to my husband for being supportive during the development of the program.
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
