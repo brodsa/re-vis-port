@@ -1,3 +1,8 @@
+# Credits
+- [Data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv)
+- [EU Countries](https://european-union.europa.eu/principles-countries-history/country-profiles_en)
+- [Flow Chart](https://lucid.app/documents#/documents?folder_id=recent)
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome,
