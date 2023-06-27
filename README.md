@@ -41,8 +41,39 @@ TODO: screenshot or record
 
 ## Deployment
 
+<details>
+<summary>Clone the Repository</summary>
+The repository can also be cloned locally, the steps as follows:
 
-### Clone the Repository
+1. On Git
+    - Go to the repository, i.e. https://github.com/brodsa/re-vis-port
+    - You see the content of the repository, i.e. all the files are listed. On the right side at the top of the list, find the Code drop down button and click on it.
+    - Copy the repository HTTPS link to the clipboard.
+2. In the terminal (Note: git must be preinstalled) 
+    - Open the terminal and navigate, where you want to clone the repository.
+    - Type `git clone` and insert the content from the clipboard, leading to the command `git clone https://github.com/brodsa/re-vis-port.git`. 
+    - Once the project is cloned, you can start using the repository locally.
+
+</details>
+
+
+<details>
+<summary>Deploy on Heroku</summary>
+In order to deploy the app on Heroku, an account is required. The steps for the deyploments are as follows:
+1. Click "New" and "Create new App" from the menu at right top.
+2. Insert a app name and select a region. Click "Create App".
+3. Select the "GitHub" deployment method.
+4. Search for a repository to connect and a branch to deploy.
+5. In the "Setting" tab, go in the section "Buildpacks" and add two buildpacks in the following order: 
+    - `heroku/python`
+    - `heroku/nodejs`
+6. In the "Config Var" section, add two variables:
+    - PORT: 8000
+    - CREDS: credentials to connect to a google worksheet
+7. In the "Domain" section, copy the URL to view the app.
+
+</details>
+
 
 
 ## Technologies
