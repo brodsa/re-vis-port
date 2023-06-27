@@ -7,6 +7,7 @@ In addition, ReVisPort offers the users to add the created reports to their pers
 
 TODO: screenshot or record
 
+[View](https://re-vis-port-06a4efd9c1c6.herokuapp.com/) the app on-line.
 ---
 
 ## Table of Contents
@@ -41,9 +42,8 @@ TODO: screenshot or record
 
 ## Deployment
 
-<details>
-<summary>Clone the Repository</summary>
-The repository can also be cloned locally, the steps as follows:
+### Clone Repository
+In order to clone the repository locally, follow the steps:
 
 1. On Git
     - Go to the repository, i.e. https://github.com/brodsa/re-vis-port
@@ -54,11 +54,9 @@ The repository can also be cloned locally, the steps as follows:
     - Type `git clone` and insert the content from the clipboard, leading to the command `git clone https://github.com/brodsa/re-vis-port.git`. 
     - Once the project is cloned, you can start using the repository locally.
 
-</details>
 
+### Deploy on Heroku
 
-<details>
-<summary>Deploy on Heroku</summary>
 In order to deploy the app on Heroku, an account is required. The steps for the deyploments are as follows:
 1. Click "New" and "Create new App" from the menu at right top.
 2. Insert a app name and select a region. Click "Create App".
@@ -68,11 +66,9 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
     - `heroku/python`
     - `heroku/nodejs`
 6. In the "Config Var" section, add two variables:
-    - PORT: 8000
-    - CREDS: credentials to connect to a google worksheet
+    - `PORT`: 8000
+    - `CREDS`: credentials to connect with a google worksheet
 7. In the "Domain" section, copy the URL to view the app.
-
-</details>
 
 
 
