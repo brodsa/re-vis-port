@@ -85,7 +85,7 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 - Data Sources
     - [Our Word in Data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv)
     - [List of the EU countries](https://european-union.europa.eu/principles-countries-history/country-profiles_en)
-- 
+- Documentation of [gspred](https://docs.gspread.org/en/latest/user-guide.html)
 
 
 
