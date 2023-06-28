@@ -1,3 +1,4 @@
+import pandas as pd
 
 def get_data_from_worksheet(SHEET,sheetname):
     """
@@ -14,8 +15,8 @@ def prepare_data(SHEET,*sheetnames):
     """
     # get data from worksheets
     sheets = [argv for argv in sheetnames]
-    owid_df = get_data_from_worksheet(SHEET,sheets)  # 'owid-co2-data'
-    filter_df = get_data_from_worksheet(SHEET,sheets)  # 'filter'
+    owid_df = get_data_from_worksheet(SHEET,sheets[0])  # 'owid-co2-data'
+    filter_df = get_data_from_worksheet(SHEET,sheets[1])  # 'filter'
 
     # filter out all data
     data_tmp = owid_df[owid_df.country.isin(filter_df.country) & owid_df.year.between(filter_df.year[0],filter_df.year[1])]

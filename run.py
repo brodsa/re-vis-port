@@ -3,8 +3,9 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 
-
 from revisport import helpers
+from revisport import SHEET
+
 
 data = helpers.prepare_data(SHEET,'owid-co2-data','filter')
 print(data)
