@@ -19,18 +19,32 @@ def main_menu():
     print("\n")
 
     # welcome qustion
-    print("Select the item from the menu:")
+    print("MAIN MENU \n") 
+    print("Please select an option from the menu below")
     print("1: Reporting")
     print("2: Favourite")
     print("3: References")
 
-    
-    answer = input()
+    # select from the menu
+    while True:
+        try:
+            answer = int(input("\nEnter a number of the menu item: "))
+        except ValueError:
+            print("You did not enter a number")
+            continue
+        if answer == 1:
+            print('You select Reporting') # Reporting Menu
+            break
+        elif answer == 2:
+            print('You select Favourite') # Favourite Menu
+            break
+        elif answer == 3:
+            print('You select Refrences') # Feedback Menu
+            break
+        else:
+            print("Invalid choice, please enter a number from 1, 2, 3!  ")
 
-    print(f"You have selected {answer}")
 
-
-
-
+def report
 
 main_menu()
