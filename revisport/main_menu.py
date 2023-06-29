@@ -1,13 +1,14 @@
+from revisport.reporting import reporting_menu
+
 def welcome_message():
 
     """
     Prints welcomming message when the programm starts.
     """
 
-    print("Welcome to ReVisPort!\n")
+    print("\nWelcome to ReVisPort!\n")
     print("Your command line reporting tool is ready for you to use.\n")
     print("Please reade carefully and follow the instructions.\n")
-    print("\n")
 
 
 def welcome_menu():
@@ -16,8 +17,9 @@ def welcome_menu():
     Prints main/welcome menu, a user should select from.
     """
     
-    print("MAIN MENU \n") 
-    print("Please select an option from the menu below")
+    print("MAIN MENU")
+    print("---------") 
+    print("Please select an option from the menu below:")
     print("1: Reporting")
     print("2: Favourite")
     print("3: References")
@@ -37,7 +39,7 @@ def get_answer():
             print("You did not enter a number")
             continue
         if answer == 1:
-            print('You select Reporting') # Reporting Menu
+            reporting_menu() # Reporting Menu
             break
         elif answer == 2:
             print('You select Favourite') # Favourite Menu
