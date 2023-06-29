@@ -21,6 +21,9 @@ def prepare_data(SHEET,*sheetnames):
     # filter out all data
     data_tmp = owid_df[owid_df.country.isin(filter_df.country) & owid_df.year.between(filter_df.year[0],filter_df.year[1])]
     indices = [ind for ind in filter_df.ind if ind !='']  # get rid off o missing valaus, represented as empty string
+    
     data = data_tmp[indices]
+    countries = data[['iso_code','country']].drop_duplicates()
+    countries = countries.set_index(range(0,len(filter_df.country)))
 
-    return data
+    return False, countries

@@ -3,7 +3,8 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 
-from revisport.main_menu import welcome_message 
+from revisport.main_menu import welcome_message
+from revisport.main_menu import welcome_load_data 
 from revisport.main_menu import welcome_menu 
 from revisport.main_menu import get_answer
 
@@ -11,12 +12,19 @@ def main_menu():
     # print the welcome message
     welcome_message()
 
+    # load data
+    data, countries = welcome_load_data()
+
     # print the menu choices
     welcome_menu()
 
+
     # select from the menu
     get_answer()
+
+    return data, countries
  
 
 
-main_menu()
+test = main_menu()
+print(test)

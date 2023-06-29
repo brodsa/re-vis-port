@@ -10,12 +10,11 @@ def welcome_message():
 
     print("\nWelcome to ReVisPort!\n")
     print("Your command line reporting tool is getting ready for you to use.\n")
+    return 
+
+def welcome_load_data():
     print('Loading data ...\n')
-    data = prepare_data(SHEET,'owid-co2-data','filter')
-
-    return data
-
-
+    return prepare_data(SHEET,'owid-co2-data','filter')
 
 
 def welcome_menu():
