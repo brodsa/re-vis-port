@@ -5,6 +5,9 @@
 
 from revisport import helpers
 from revisport import SHEET
+from revisport.main_menu import welcome_message 
+from revisport.main_menu import welcome_menu 
+from revisport.main_menu import get_answer
 
 # data preparation
 # data = helpers.prepare_data(SHEET,'owid-co2-data','filter')
@@ -12,39 +15,15 @@ from revisport import SHEET
 
 
 def main_menu():
-    # welcome message
-    print("Welcome to ReVisPort!\n")
-    print("Your command line reporting tool is ready for you to use.\n")
-    print("Please reade carefully and follow the instructions.\n")
-    print("\n")
+    # print the welcome message
+    welcome_message()
 
-    # welcome qustion
-    print("MAIN MENU \n") 
-    print("Please select an option from the menu below")
-    print("1: Reporting")
-    print("2: Favourite")
-    print("3: References")
+    # print the menu choices
+    welcome_menu()
 
     # select from the menu
-    while True:
-        try:
-            answer = int(input("\nEnter a number of the menu item: "))
-        except ValueError:
-            print("You did not enter a number")
-            continue
-        if answer == 1:
-            print('You select Reporting') # Reporting Menu
-            break
-        elif answer == 2:
-            print('You select Favourite') # Favourite Menu
-            break
-        elif answer == 3:
-            print('You select Refrences') # Feedback Menu
-            break
-        else:
-            print("Invalid choice, please enter a number from 1, 2, 3!  ")
+    get_answer()
+ 
 
-
-def report
 
 main_menu()
