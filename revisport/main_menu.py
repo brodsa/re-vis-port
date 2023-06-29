@@ -1,4 +1,6 @@
 from revisport.reporting import reporting_menu
+from revisport.helpers import prepare_data
+from revisport import SHEET
 
 def welcome_message():
 
@@ -7,8 +9,13 @@ def welcome_message():
     """
 
     print("\nWelcome to ReVisPort!\n")
-    print("Your command line reporting tool is ready for you to use.\n")
-    print("Please reade carefully and follow the instructions.\n")
+    print("Your command line reporting tool is getting ready for you to use.\n")
+    print('Loading data ...\n')
+    data = prepare_data(SHEET,'owid-co2-data','filter')
+
+    return data
+
+
 
 
 def welcome_menu():
@@ -34,7 +41,7 @@ def get_answer():
 
     while True:
         try:
-            answer = int(input("\nEnter a number of the menu item: "))
+            answer = int(input("\nEnter a number of the menu item: ").strip())
         except ValueError:
             print("You did not enter a number")
             continue
