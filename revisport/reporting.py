@@ -1,7 +1,9 @@
+from tabulate import tabulate
+
 import revisport as rvp 
 from revisport import SHEET
 
-def reporting_menu():
+def reporting_menu(data,countries):
     print("\nYou are going to create a simple report.")
     print("The report contains a table with the information about EU countries and climate indices.")
     print("The programm navigates you to generate the report table.\n")
@@ -11,14 +13,13 @@ def reporting_menu():
             answer = input(
                 "Are you ready (y - yes, continue / n - no, go back)?"
                 )[0].lower().strip()
-            print(answer)
 
             if answer in ['y','n']:
                 if answer=='n':
                     rvp.main_menu.welcome_menu()
                     rvp.main_menu.get_answer()
                 else:
-                    reporting_questions()
+                    reporting_questions(data,countries)
                 break
 
             else:
@@ -30,7 +31,8 @@ def reporting_menu():
         
 
     
-def reporting_questions():
+def reporting_questions(data,countries):
     print("Select ISO code of an EU country for which you wish to create a report!")
+    print(tabulate(countries, headers=['iso','country'],tablefmt="outline"))
     
         

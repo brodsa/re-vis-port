@@ -24,6 +24,6 @@ def prepare_data(SHEET,*sheetnames):
     
     data = data_tmp[indices]
     countries = data[['iso_code','country']].drop_duplicates()
-    countries = countries.set_index(range(0,len(filter_df.country)))
+    countries = countries.set_index('iso_code')
 
     return False, countries

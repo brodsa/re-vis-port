@@ -20,11 +20,9 @@ def main_menu():
 
 
     # select from the menu
-    get_answer()
+    get_answer(data,countries)
 
-    return data, countries
  
 
 
-test = main_menu()
-print(test)
+main_menu()
