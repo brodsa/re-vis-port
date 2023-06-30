@@ -1,5 +1,4 @@
-from revisport.reporting import reporting_menu
-from revisport.helpers import prepare_data
+import revisport as rvp
 from revisport import SHEET
 
 def welcome_message():
@@ -14,7 +13,7 @@ def welcome_message():
 
 def welcome_load_data():
     print('Loading data ...\n')
-    return prepare_data(SHEET,'owid-co2-data','filter')
+    return rvp.helpers.prepare_data(SHEET,'owid-co2-data','filter')
 
 
 def welcome_menu():
@@ -45,7 +44,7 @@ def get_answer(data,countries):
             print("You did not enter a number")
             continue
         if answer == 1:
-            reporting_menu(data,countries) # Reporting Menu
+            rvp.reporting.reporting_menu(data,countries) # Reporting Menu
             break
         elif answer == 2:
             print('You select Favourite') # Favourite Menu
