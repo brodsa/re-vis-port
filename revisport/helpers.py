@@ -27,3 +27,5 @@ def prepare_data(SHEET,*sheetnames):
     countries = countries.set_index('iso_code')
 
     return False, countries
+
+    

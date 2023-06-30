@@ -11,7 +11,7 @@ def reporting_menu(data,countries):
     while True:
         try:
             answer = input(
-                "Are you ready (y - yes, continue / n - no, go back)?"
+                "Are you ready (y - yes, continue / n - no, go back)? "
                 )[0].lower().strip()
 
             if answer in ['y','n']:
@@ -32,7 +32,26 @@ def reporting_menu(data,countries):
 
     
 def reporting_questions(data,countries):
-    print("Select ISO code of an EU country for which you wish to create a report!")
+
+    # select_country()
+    print("\nSelect ISO code of an EU country for which you want to the report: \n")
     print(tabulate(countries, headers=['iso','country'],tablefmt="outline"))
+
+    selected_countries = []
+    while True:
+        selected_country = input().upper.strip()
+        try:
+            if selected_country in countries.country:
+                selected_countries.append(selected_country)
+                break
+            else:
+                raise ValueError(f"Only a valid ISO code is allowed, you wrote {selected_country}")
+        except (ValueError,IndexError) as e:
+            print(f"Invalid input: {e}; please try again. \n")
+
+
+
+
+    
     
         
