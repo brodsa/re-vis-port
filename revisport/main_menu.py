@@ -31,7 +31,7 @@ def welcome_menu():
     print("3: References")
 
 
-def get_answer(data,countries,years):
+def get_answer(data,countries,years,indices):
 
     """
     Gets and validates the user answer/choice from the menu. 
@@ -45,7 +45,7 @@ def get_answer(data,countries,years):
             print("You did not enter a number")
             continue
         if answer == 1:
-            reporting_menu(data,countries,years) # Reporting Menu
+            reporting_menu(data,countries,years,indices) # Reporting Menu
             break
         elif answer == 2:
             print('You select Favourite') # Favourite Menu
@@ -55,3 +55,5 @@ def get_answer(data,countries,years):
             break
         else:
             print("Invalid choice, please enter a number from 1, 2, 3!  ")
+
+

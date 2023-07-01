@@ -3,7 +3,7 @@ from tabulate import tabulate
 import revisport as rvp 
 from revisport import SHEET
 
-def reporting_menu(data,countries,years):
+def reporting_menu(data,countries,years,indices):
     """
     Wraps all functions within the reporting menue
     """
@@ -22,7 +22,7 @@ def reporting_menu(data,countries,years):
                     rvp.main_menu.welcome_menu()
                     rvp.main_menu.get_answer()
                 else:
-                    reporting_questions(data,countries,years)
+                    reporting_questions(data,countries,years,indices)
                 break
 
             else:
@@ -33,16 +33,20 @@ def reporting_menu(data,countries,years):
         
 
     
-def reporting_questions(data,countries,years):
+def reporting_questions(data,countries,years,indices):
     """
     Displays all question user has to answer in order to generate a report
     """
 
-    # 
+    #ask for countries 
     report_countries = select_country(countries)
 
+    # ask for time period
     report_years = select_time_period(years)
-    print(report_years)
+    
+    # ask for index
+    report_index = select_index(indices)
+    print(report_index)
       
     
 def select_country(countries):
@@ -105,3 +109,22 @@ def select_time_period(years):
                 print(f"You did not enter number or a valid range format; please try again. \n")  
 
 
+def select_index(indices):
+    print("\nPlease select an index from the list bellow:")
+    print("1: GDP")
+    print("2: Population")
+    print("2: CO2 emmission (million tonnes)")
+    print("3: Methane emmission (million tonnes of carbon dioxide-equivalents)")
+    print("4: Energy consumption (terawatt-hours per year)")
+    print("5: Greenhouse gas emissions (million tonnes of carbon dioxide-equivalents)")
+
+    while True:
+        try:
+            answer = int(input("\nEnter your choice: ").strip())
+        except ValueError:
+            print("You did not enter a number")
+            continue
+        if answer in [1,2,3,4,5]:
+            return answer
+        else:
+            print("Invalid choice, please enter a number from 1 to 5!  ")
