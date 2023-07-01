@@ -3,7 +3,7 @@ from tabulate import tabulate
 import revisport as rvp 
 from revisport import SHEET
 
-def reporting_menu(data,countries,years,indices):
+def reporting_menu(input_data):
     """
     Wraps all functions within the reporting menue
     """
@@ -22,7 +22,7 @@ def reporting_menu(data,countries,years,indices):
                     rvp.main_menu.welcome_menu()
                     rvp.main_menu.get_answer()
                 else:
-                    reporting_questions(data,countries,years,indices)
+                    reporting_questions(input_data)
                 break
 
             else:
@@ -33,25 +33,25 @@ def reporting_menu(data,countries,years,indices):
         
 
     
-def reporting_questions(data,countries,years,indices):
+def reporting_questions(input_data):
     """
     Displays all question user has to answer in order to generate a report
     """
 
     #ask for countries 
-    report_countries = select_country(countries)
+    report_countries = select_country(input_data['countries'])
 
     # ask for time period
-    report_years = select_time_period(years)
+    report_years = select_time_period(input_data['years'])
     
     # ask for index
-    report_index = select_index(indices)
+    report_index = select_index(input_data['indices'])
     print(report_index)
       
     
 def select_country(countries):
     """
-    Aks user to eneter countries in the form of iso codes.
+    Aks user to enter countries in the form of iso codes.
     The answer is validated and corresponding error message displayed in case of invalid input.
     """
     print("\nSelect countries for which you want to the report.")
@@ -127,4 +127,7 @@ def select_index(indices):
         if answer in [1,2,3,4,5]:
             return answer
         else:
-            print("Invalid choice, please enter a number from 1 to 5!  ")
+            print("Invalid choice, please enter a number from 1 to 5!")
+
+
+

@@ -22,12 +22,21 @@ def prepare_data(SHEET,*sheetnames):
     data_tmp = owid_df[owid_df.country.isin(filter_df.country) & owid_df.year.between(filter_df.year[0],filter_df.year[1])]
     filter_columns = [ind for ind in filter_df.ind if ind !='']  # get rid off o missing valaus, represented as empty string
     
+    # prepare output data
     data = data_tmp[filter_columns]
     countries = data[['iso_code','country']].drop_duplicates()
     countries = countries.set_index('iso_code')
     years = list(range(filter_df.year[0],filter_df.year[1]+1))
     indices = pd.DataFrame(filter_columns[3:],columns=['ind'])
 
-    return False, countries, years, indices
+    input_data = dict()
+    input_data["df"] = data
+    input_data["countries"] = countries
+    input_data["years"] = years
+    input_data["indices"] = indices
+
+    print(input_data["countries"])
+
+    return input_data
 
     

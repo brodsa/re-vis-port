@@ -13,14 +13,14 @@ def main_menu():
     welcome_message()
 
     # load data
-    data, countries, years, indices = welcome_load_data()
+    input_data = welcome_load_data()
 
     # print the menu choices
     welcome_menu()
 
 
     # select from the menu
-    get_answer(data,countries,years,indices)
+    get_answer(input_data)
 
  
 
