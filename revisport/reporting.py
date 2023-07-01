@@ -33,25 +33,37 @@ def reporting_menu(data,countries):
     
 def reporting_questions(data,countries):
 
-    # select_country()
-    print("\nSelect ISO code of an EU country for which you want to the report: \n")
+    report_countries = select_country(countries)
+
+    print(report_countries)
+   
+
+
+
+
+    
+    
+def select_country(countries):
+    print("\nSelect countries for which you want to the report.")
+    print("\nType iso code of selected countries and use comma as a separator, i.e. LVA,AUT")
     print(tabulate(countries, headers=['iso','country'],tablefmt="outline"))
 
-    selected_countries = []
     while True:
-        selected_country = input().upper.strip()
+        selected_countries = input()
+        countries_ls = [country.upper().strip() for country in selected_countries.split(',')]
+
         try:
-            if selected_country in countries.country:
-                selected_countries.append(selected_country)
-                break
+            correct_countries = all([item in countries.country for item in countries_ls])
+
+            if correct_countries:
+                return countries_ls
+
+            if countries_ls[-1] == '':
+                raise ValueError(f"Missing country after ,")
+
             else:
-                raise ValueError(f"Only a valid ISO code is allowed, you wrote {selected_country}")
+                raise ValueError(
+                    f"Only valid ISO codes or comma seperator are allowed, you wrote {selected_countries}"
+                    )
         except (ValueError,IndexError) as e:
-            print(f"Invalid input: {e}; please try again. \n")
-
-
-
-
-    
-    
-        
+            print(f"Invalid input: {e}; please try again. \n") 
