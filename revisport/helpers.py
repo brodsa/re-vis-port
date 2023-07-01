@@ -23,9 +23,12 @@ def prepare_data(SHEET,*sheetnames):
     indices = [ind for ind in filter_df.ind if ind !='']  # get rid off o missing valaus, represented as empty string
     
     data = data_tmp[indices]
+
     countries = data[['iso_code','country']].drop_duplicates()
     countries = countries.set_index('iso_code')
 
-    return False, countries
+    years = list(range(filter_df.year[0],filter_df.year[1]+1))
+
+    return False, countries, years
 
     

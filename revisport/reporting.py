@@ -3,7 +3,10 @@ from tabulate import tabulate
 import revisport as rvp 
 from revisport import SHEET
 
-def reporting_menu(data,countries):
+def reporting_menu(data,countries,years):
+    """
+    Wraps all functions within the reporting menue
+    """
     print("\nYou are going to create a simple report.")
     print("The report contains a table with the information about EU countries and climate indices.")
     print("The programm navigates you to generate the report table.\n")
@@ -19,33 +22,36 @@ def reporting_menu(data,countries):
                     rvp.main_menu.welcome_menu()
                     rvp.main_menu.get_answer()
                 else:
-                    reporting_questions(data,countries)
+                    reporting_questions(data,countries,years)
                 break
 
             else:
                 raise ValueError(f"Only y/n is allowed, you wrote {answer}")
-
 
         except (ValueError,IndexError) as e:
                 print(f"Invalid input: {e}; please try again. \n")
         
 
     
-def reporting_questions(data,countries):
+def reporting_questions(data,countries,years):
+    """
+    Displays all question user has to answer in order to generate a report
+    """
 
+    # 
     report_countries = select_country(countries)
 
-    print(report_countries)
-   
-
-
-
-
-    
+    report_years = select_time_period(years)
+    print(report_years)
+      
     
 def select_country(countries):
+    """
+    Aks user to eneter countries in the form of iso codes.
+    The answer is validated and corresponding error message displayed in case of invalid input.
+    """
     print("\nSelect countries for which you want to the report.")
-    print("\nType iso code of selected countries and use comma as a separator, i.e. LVA,AUT")
+    print("\nEnter iso code of selected countries, use comma as a separator (iso1,iso2):")
     print(tabulate(countries, headers=['iso','country'],tablefmt="outline"))
 
     while True:
@@ -59,11 +65,43 @@ def select_country(countries):
                 return countries_ls
 
             if countries_ls[-1] == '':
-                raise ValueError(f"Missing country after ,")
+                raise ValueError(f"Missing country after , or no country specified at all")
 
             else:
                 raise ValueError(
                     f"Only valid ISO codes or comma seperator are allowed, you wrote {selected_countries}"
                     )
         except (ValueError,IndexError) as e:
-            print(f"Invalid input: {e}; please try again. \n") 
+            print(f"Invalid input: {e}; please try again.\n") 
+
+
+def select_time_period(years):
+    """
+    Asks user to enter time period. 
+    The answer is validated and corresponding error message displayed in case of invalid input.
+    """
+    while True:
+        try: 
+            selected_period_tx = input("Select a time period from years 2000 and 2020 (yyyy-yyyy):")
+            selected_period_ls = [year.strip() for year in selected_period_tx.split('-')]
+            correct_period = all([int(year) in years for year in selected_period_ls])
+
+            if not correct_period:
+                print('Year selection not in range (2000-2020); please try again.\n')
+
+            elif len(selected_period_ls)==1 or selected_period_ls[0]== selected_period_ls[1]:
+                print('Missing year for a valid range; please try again.\n')
+            
+            elif correct_period and len(selected_period_ls)== 2 and selected_period_ls[0]< selected_period_ls[1]:
+                return selected_period_ls
+
+            elif correct_period and len(selected_period_ls)== 2 and selected_period_ls[0]> selected_period_ls[1]:
+                print('Invalid format, a lower bound is larger than an upper bound; please try again.\n')
+
+            else:
+                print('Invalid input.')
+
+        except ValueError:
+                print(f"You did not enter number or a valid range format; please try again. \n")  
+
+
