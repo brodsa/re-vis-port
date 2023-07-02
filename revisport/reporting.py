@@ -2,20 +2,24 @@ from tabulate import tabulate
 import pandas as pd
 import yaml
 
-import revisport as rvp 
+import revisport as rvp
 from revisport import SHEET
+
 
 def reporting_menu(input_data):
     """
     Wraps all functions within the reporting menue
     """
+
     print("\nYou are going to create a simple report.")
-    print("The report contains a table with the information about EU countries and climate indices.")
+    print(
+        "The report contains a table with the ",
+        "information about EU countries and climate indices.")
     print("The programm navigates you to generate the report.\n")
+
     print("Are you ready?")
     print("1: yes, continue creating the report")
     print("0: no; go back to MAIN MENU")
-   
     while True:
         try:
             answer = int(input("Enter your choice: ").strip())
@@ -26,30 +30,31 @@ def reporting_menu(input_data):
         if answer == 1:
             while True:
                 report_input = reporting_questions(input_data)
-                save_input = save_choices(report_input,input_data)
+                save_input = save_choices(report_input, input_data)
                 print(save_input)
                 if save_input:
-                    return  # not sure about this? 
+                    # TODO: still note sure about this
+                    return
         elif answer == 0:
             # back to main menu
             rvp.main_menu.main_menu(input_data)
             break
         else:
             print("Invalid choice, please enter a number 1 or 2!")
-        
 
-    
+
 def reporting_questions(input_data):
     """
-    Displays all question user has to answer in order to generate a report
+    Displays all question user has to answer
+    in order to generate a report
     """
 
-    #ask for countries 
+    # ask for countries
     report_countries = select_country(input_data['countries'])
 
     # ask for time period
     report_years = select_time_period(input_data['years'])
-    
+
     # ask for index
     report_index = select_index(input_data['indices'])
 
@@ -58,69 +63,98 @@ def reporting_questions(input_data):
     report_input['countries'] = report_countries
     report_input['years'] = report_years
     report_input['index'] = report_index
-    
+
     return report_input
-      
-    
+
+
 def select_country(countries):
     """
     Asks user to enter countries in the form of iso codes.
-    The answer is validated and corresponding error message displayed in case of invalid input.
+    The answer is validated and corresponding error message
+    displayed in case of invalid input.
     """
+
     print("\nSelect countries for which you want to the report.")
-    print("Enter iso code of selected countries, use comma as a separator (iso1,iso2,...):")
-    print(tabulate(countries, headers=['iso','country'],tablefmt="outline"))
+    print(
+        "Enter iso code of selected countries, ",
+        "use comma as a separator (iso1,iso2,...):")
+    print(tabulate(countries, headers=['iso', 'country'], tablefmt="outline"))
 
     while True:
         selected_countries = input('Enter your choice:')
-        countries_ls = [country.upper().strip() for country in selected_countries.split(',')]
+        countries_ls = [
+            country.upper().strip()
+            for country in selected_countries.split(',')
+            ]
 
         try:
-            correct_countries = all([item in countries.country for item in countries_ls])
+            correct_countries = all(
+                [item in countries.country for item in countries_ls])
 
             if correct_countries:
                 return countries_ls
 
             elif countries_ls[-1] == '':
-                raise ValueError(f"Missing country after , or no country specified at all")
-
-            else:
                 raise ValueError(
-                    f"Only valid ISO codes or comma seperator are allowed, you wrote {selected_countries}"
-                    )
-        except (ValueError,IndexError) as e:
-            print(f"Invalid input: {e}; please try again.\n") 
+                    "Missing country after comma ",
+                    "or no country specified at all")
+            else:
+                raise ValueError(f"Only valid ISO codes or comma seperator are allowed,you wrote {selected_countries}")
+        except (ValueError, IndexError) as e:
+            print(f"Invalid input: {e}; please try again.\n")
 
 
 def select_time_period(years):
     """
-    Asks user to enter time period. 
-    The answer is validated and corresponding error message displayed in case of invalid input.
+    Asks user to enter time period.
+    The answer is validated and corresponding
+    error message displayed in case of invalid input.
     """
     while True:
-        try: 
-            print("\nSelect a time period from years 2000 and 2020 (yyyy-yyyy).")
-            selected_period_txt = input("Enter your choice:")
-            selected_period_ls = [int(year.strip()) for year in selected_period_txt.split('-')]
-            correct_period = all([year in years for year in selected_period_ls])
+        try:
+            print(
+                "\nSelect a time period from ",
+                "years 2000 and 2020 (yyyy-yyyy).")
+            selected_year_txt = input("Enter your choice:")
+            selected_year_ls = [
+                int(year.strip())
+                for year in selected_year_txt.split('-')
+                ]
+            correct_period = all([
+                year in years for year in selected_year_ls
+                ])
+
+            # conditions for error messages
+            condition_missing_year = len(selected_year_ls) == 1
+            condition_same_years = selected_year_ls[0] == selected_year_ls[1]
+            condition_years = len(selected_year_ls) == 2
+            condition_order_ok = selected_year_ls[0] < selected_year_ls[1]
+            condition_order_nok = selected_year_ls[0] > selected_year_ls[1]
 
             if not correct_period:
-                print('Year selection is not in range (2000-2020); please try again.')
+                print(
+                    "Year selection is not in range (2000-2020); ",
+                    "please try again.")
 
-            elif len(selected_period_ls)==1 or selected_period_ls[0]== selected_period_ls[1]:
+            elif condition_missing_year or condition_same_years:
                 print('Missing year for a valid range; please try again.')
-            
-            elif correct_period and len(selected_period_ls)== 2 and selected_period_ls[0]< selected_period_ls[1]:
-                return selected_period_ls
 
-            elif correct_period and len(selected_period_ls)== 2 and selected_period_ls[0]> selected_period_ls[1]:
-                print('Invalid format, a lower bound is larger than an upper bound; please try again.')
+            elif correct_period and condition_years and condition_order_ok:
+                return selected_year_ls
+
+            elif correct_period and condition_years and condition_order_nok:
+                print(
+                    "Invalid format, ",
+                    "a lower bound is larger than an upper bound; ",
+                    "please try again.")
 
             else:
                 print('Invalid input.')
 
         except ValueError:
-                print(f"You did not enter number nor a valid range format; please try again.")  
+            print(
+                "You did not enter number nor a valid range format; ",
+                "please try again.")
 
 
 def select_index(indices):
@@ -138,20 +172,19 @@ def select_index(indices):
         except ValueError:
             print("You did not enter a number")
             continue
-        if answer in list(range(1,7)):
+        if answer in list(range(1, 7)):
             # covert back to the index name
             return indices.iloc[answer-1][0]
         else:
             print("Invalid choice, please enter a number from 1 to 6!")
 
 
-def save_choices(report_input,input_data):
+def save_choices(report_input, input_data):
     print('\nYour choices:')
-    print(yaml.dump(report_input,default_flow_style=False))
+    print(yaml.dump(report_input, default_flow_style=False))
     print('Save your choices?')
     print("1: Yes, continue to display the report table.")
-    print("2: No, make new changes.")
-    print("0: Go back to the MAIN MENU")
+    print("2: No, make changes.")
 
     while True:
         try:
@@ -162,7 +195,8 @@ def save_choices(report_input,input_data):
             continue
 
         if answer == 1:
-            generate_report_tables(report_input,input_data)
+            generate_report_tables(report_input, input_data)
+            save_report_tables()
             return True
         elif answer == 2:
             return False
@@ -170,42 +204,47 @@ def save_choices(report_input,input_data):
             print("Invalid choice, please enter a number from 0 to 1!")
 
 
-
-
-
-def generate_report_tables(report_input,input_data):
+def generate_report_tables(report_input, input_data):
     """
     report_input = user inputs from the questionary
     input_data = basis data to generate the report table
     """
 
-    selected_columns = ['iso_code','country','year'] + [report_input['index']]
+    selected_columns = ['iso_code', 'country', 'year']
+    selected_columns.append(report_input['index'])
     selected_rows_years = input_data['data'].year.between(
-        report_input["years"][0],report_input["years"][1]
+        report_input["years"][0], report_input["years"][1]
         )
-    selected_rows_iso = input_data['data'].iso_code.isin(report_input["countries"])
+    selected_rows_iso = input_data['data'].iso_code.isin(
+        report_input["countries"]
+        )
 
     report_data = input_data['data'][selected_rows_years & selected_rows_iso]
     raw_df = report_data[selected_columns]
     raw_df = raw_df.reset_index(drop=True)
 
-    summary_df = raw_df[['iso_code','country',report_input['index']]].groupby(
-        ['iso_code','country']).agg(['min','max','mean','median'])
+    summary_df = raw_df[['iso_code', 'country', report_input['index']]].groupby(
+        ['iso_code', 'country']).agg(['min', 'max', 'mean', 'median'])
     summary_df = summary_df.reset_index()
 
     report_tables = {
-        'raw':raw_df,
-        'summary':summary_df
+        'raw': raw_df,
+        'summary': summary_df
     }
 
-    display_tables(raw_df,summary_df,index_name = report_input['index'])
+    display_tables(
+        raw_df=raw_df,
+        summary_df=summary_df,
+        index_name=report_input['index'])
 
     return report_tables
 
 
+def display_tables(raw_df, summary_df, index_name):
+    """
+    Displays tables from the data frames.
 
-def display_tables(raw_df,summary_df,index_name):
-    
+    """
     # TODO: color blue
     print('\nRaw data:')
     print(tabulate(
@@ -213,10 +252,31 @@ def display_tables(raw_df,summary_df,index_name):
         headers=raw_df.columns,
         tablefmt="outline"
         ))
-    
-    print(f"\nData sumary:{index_name}")
+
+    print(f"\nData sumary: {index_name}")
     print(tabulate(
         summary_df,
-        headers=['iso','country','min','max','mean','median'],
+        headers=['iso', 'country', 'min', 'max', 'mean', 'median'],
         tablefmt="outline"
         ))
+
+
+def save_report_tables():
+    print("Would you like to save the report tables?")
+    print("1: yes")
+    print("0: no; go back to MAIN MENU")
+    while True:
+        try:
+            answer = int(input("Enter your choice: ").strip())
+        except ValueError:
+            print("You did not enter a number")
+            continue
+
+        if answer == 1:
+            print('Save report ...')
+            return
+        elif answer == 0:
+            # back to main menu
+            return
+        else:
+            print("Invalid choice, please enter a number 1 or 2!")

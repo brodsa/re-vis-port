@@ -22,7 +22,7 @@ def main_menu(input_data):
     """
     Prints main/welcome menu, a user should select from.
     """
-    
+    print("\n---------") 
     print("MAIN MENU")
     print("---------") 
     print("Please select an option from the menu below:")

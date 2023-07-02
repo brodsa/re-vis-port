@@ -16,9 +16,10 @@ def main():
     # load data
     input_data = welcome_load_data()
 
+    while True:
     # display in case of maine 
     # print the menu choices
-    main_menu(input_data)
+        main_menu(input_data)
 
  
 
