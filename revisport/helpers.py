@@ -35,8 +35,6 @@ def prepare_data(SHEET,*sheetnames):
     input_data["years"] = years
     input_data["indices"] = indices
 
-    print(input_data["countries"])
-
     return input_data
 
     

@@ -17,7 +17,7 @@ def welcome_load_data():
     return prepare_data(SHEET,'owid-co2-data','filter')
 
 
-def welcome_menu():
+def main_menu(input_data):
 
     """
     Prints main/welcome menu, a user should select from.
@@ -30,20 +30,13 @@ def welcome_menu():
     print("2: Favourite")
     print("3: References")
 
-
-def get_answer(input_data):
-
-    """
-    Gets and validates the user answer/choice from the menu. 
-    The user is navigated to the submenu of his/her choice.
-    """
-
     while True:
         try:
-            answer = int(input("\nEnter a number of the menu item: ").strip())
+            answer = int(input("Enter your choice: ").strip())
         except ValueError:
             print("You did not enter a number")
             continue
+        
         if answer == 1:
             reporting_menu(input_data) # Reporting Menu
             break
@@ -55,5 +48,8 @@ def get_answer(input_data):
             break
         else:
             print("Invalid choice, please enter a number from 1, 2, 3!  ")
+
+
+
 
 

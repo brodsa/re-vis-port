@@ -5,24 +5,22 @@
 
 from revisport.main_menu import welcome_message
 from revisport.main_menu import welcome_load_data 
-from revisport.main_menu import welcome_menu 
-from revisport.main_menu import get_answer
+from revisport.main_menu import main_menu 
+# from revisport.main_menu import select_from_main_menu
 
-def main_menu():
+def main():
+    # display only at the begining
     # print the welcome message
     welcome_message()
 
     # load data
     input_data = welcome_load_data()
 
+    # display in case of maine 
     # print the menu choices
-    welcome_menu()
-
-
-    # select from the menu
-    get_answer(input_data)
+    main_menu(input_data)
 
  
 
 
-main_menu()
+main()
