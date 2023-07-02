@@ -146,7 +146,7 @@ def select_index(indices):
 
 
 def save_choices(report_input,input_data):
-    print('Your choices:')
+    print('\nYour choices:')
     print(yaml.dump(report_input,default_flow_style=False))
     print('Save your choices?')
     print("1: Yes, continue to display the report table.")
@@ -162,7 +162,7 @@ def save_choices(report_input,input_data):
             continue
 
         if answer == 1:
-            display_report(report_input,input_data)
+            generate_report(report_input,input_data)
             return True
         elif answer == 2:
             return False
@@ -173,7 +173,7 @@ def save_choices(report_input,input_data):
 
 
 
-def display_report(report_input,input_data):
+def generate_report(report_input,input_data):
     """
     report_input = user inputs from the questionary
     input_data = basis data to generate the report table
@@ -185,18 +185,25 @@ def display_report(report_input,input_data):
         )
     selected_rows_iso = input_data['data'].iso_code.isin(report_input["countries"])
 
-    report_data_tmp = input_data['data'][selected_rows_years & selected_rows_iso]
-    report_data = report_data_tmp[selected_columns]
+    report_data = input_data['data'][selected_rows_years & selected_rows_iso]
+    raw_df = report_data[selected_columns]
+    raw_df = raw_df.reset_index(drop=True)
+
+    summary_df = raw_df[['iso_code','country',report_input['index']]].groupby(
+        ['iso_code','country']).agg(['min','max','mean','median'])
+    summary_df = summary_df.reset_index()
 
     # TODO: color blue
-    print('\nRaw data:')
+    print(f"\nData sumary:{report_input['index']}")
     print(tabulate(
-        report_data.reset_index(drop=True),
-        headers=selected_columns,
+        summary_df,
+        headers=['iso','country','min','max','mean','median'],
         tablefmt="outline"
         ))
 
-    print('Data sumary:')
-    
-
-    return 
+    print('\nRaw data:')
+    print(tabulate(
+        raw_df,
+        headers=selected_columns,
+        tablefmt="outline"
+        ))
