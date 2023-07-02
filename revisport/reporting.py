@@ -1,4 +1,6 @@
 from tabulate import tabulate
+import pandas as pd
+import yaml
 
 import revisport as rvp 
 from revisport import SHEET
@@ -9,7 +11,7 @@ def reporting_menu(input_data):
     """
     print("\nYou are going to create a simple report.")
     print("The report contains a table with the information about EU countries and climate indices.")
-    print("The programm navigates you to generate the report.")
+    print("The programm navigates you to generate the report.\n")
     print("Are you ready?")
     print("1: yes, continue creating the report")
     print("0: no; go back to MAIN MENU")
@@ -27,7 +29,7 @@ def reporting_menu(input_data):
                 save_input = save_choices(report_input,input_data)
                 print(save_input)
                 if save_input:
-                    return
+                    return  # not sure about this? 
         elif answer == 0:
             # back to main menu
             rvp.main_menu.main_menu(input_data)
@@ -35,7 +37,6 @@ def reporting_menu(input_data):
         else:
             print("Invalid choice, please enter a number 1 or 2!")
         
-        # reporting_menu(input_data)
 
     
 def reporting_questions(input_data):
@@ -100,8 +101,8 @@ def select_time_period(years):
         try: 
             print("\nSelect a time period from years 2000 and 2020 (yyyy-yyyy).")
             selected_period_txt = input("Enter your choice:")
-            selected_period_ls = [year.strip() for year in selected_period_txt.split('-')]
-            correct_period = all([int(year) in years for year in selected_period_ls])
+            selected_period_ls = [int(year.strip()) for year in selected_period_txt.split('-')]
+            correct_period = all([year in years for year in selected_period_ls])
 
             if not correct_period:
                 print('Year selection is not in range (2000-2020); please try again.')
@@ -138,13 +139,16 @@ def select_index(indices):
             print("You did not enter a number")
             continue
         if answer in list(range(1,7)):
-            return answer
+            # covert back to the index name
+            return indices.iloc[answer-1][0]
         else:
             print("Invalid choice, please enter a number from 1 to 6!")
 
 
 def save_choices(report_input,input_data):
-    print(f'\nSave the choices: {report_input} ?')
+    print('Your choices:')
+    print(yaml.dump(report_input,default_flow_style=False))
+    print('Save your choices?')
     print("1: Yes, continue to display the report table.")
     print("2: No, make new changes.")
     print("0: Go back to the MAIN MENU")
@@ -158,7 +162,7 @@ def save_choices(report_input,input_data):
             continue
 
         if answer == 1:
-            display_report(report_input)
+            display_report(report_input,input_data)
             return True
         elif answer == 2:
             return False
@@ -171,9 +175,28 @@ def save_choices(report_input,input_data):
 
 def display_report(report_input,input_data):
     """
-    report_input = user_imput
+    report_input = user inputs from the questionary
+    input_data = basis data to generate the report table
     """
-    print(report_input)
-    indices = report_input.indices.iloc[report_input.index] + ['iso_code','country','year']
-    report_data = input_data.data[[report_input.indices.iloc[report_input.index]]]
+
+    selected_columns = ['iso_code','country','year'] + [report_input['index']]
+    selected_rows_years = input_data['data'].year.between(
+        report_input["years"][0],report_input["years"][1]
+        )
+    selected_rows_iso = input_data['data'].iso_code.isin(report_input["countries"])
+
+    report_data_tmp = input_data['data'][selected_rows_years & selected_rows_iso]
+    report_data = report_data_tmp[selected_columns]
+
+    # TODO: color blue
+    print('\nRaw data:')
+    print(tabulate(
+        report_data.reset_index(drop=True),
+        headers=selected_columns,
+        tablefmt="outline"
+        ))
+
+    print('Data sumary:')
+    
+
     return 

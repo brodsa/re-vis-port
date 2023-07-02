@@ -30,7 +30,7 @@ def prepare_data(SHEET,*sheetnames):
     indices = pd.DataFrame(filter_columns[3:],columns=['ind'])
 
     input_data = dict()
-    input_data["df"] = data
+    input_data["data"] = data
     input_data["countries"] = countries
     input_data["years"] = years
     input_data["indices"] = indices
