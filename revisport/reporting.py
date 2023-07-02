@@ -29,7 +29,7 @@ def reporting_menu(input_data):
 
         if answer == 1:
             while True:
-                report_input = reporting_questions(input_data)
+                report_input = ask_report_table_questions(input_data)
                 save_input = save_choices(report_input, input_data)
                 print(save_input)
                 if save_input:
@@ -43,7 +43,7 @@ def reporting_menu(input_data):
             print("Invalid choice, please enter a number 1 or 2!")
 
 
-def reporting_questions(input_data):
+def ask_report_table_questions(input_data):
     """
     Displays all question user has to answer
     in order to generate a report
@@ -232,6 +232,7 @@ def generate_report_tables(report_input, input_data):
         'summary': summary_df
     }
 
+
     display_tables(
         raw_df=raw_df,
         summary_df=summary_df,
@@ -273,6 +274,7 @@ def save_report_tables():
             continue
 
         if answer == 1:
+            ask_report_questions()
             print('Save report ...')
             return
         elif answer == 0:
@@ -280,3 +282,19 @@ def save_report_tables():
             return
         else:
             print("Invalid choice, please enter a number 1 or 2!")
+
+
+def ask_report_questions():
+    print("\nPlease fill in following to save the report.")
+    title = input("Enter title: ")
+    author = input("Enter author: ")
+    notes = input("Enter findings or notes: ")
+
+    user_report_data = {
+        'title': title,
+        'author': author,
+        'notes': notes,
+    }
+
+    return user_report_data
+
