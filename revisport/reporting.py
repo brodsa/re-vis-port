@@ -68,7 +68,7 @@ def select_country(countries):
     The answer is validated and corresponding error message displayed in case of invalid input.
     """
     print("\nSelect countries for which you want to the report.")
-    print("Enter iso code of selected countries, use comma as a separator (iso1,iso2):")
+    print("Enter iso code of selected countries, use comma as a separator (iso1,iso2,...):")
     print(tabulate(countries, headers=['iso','country'],tablefmt="outline"))
 
     while True:
@@ -162,7 +162,7 @@ def save_choices(report_input,input_data):
             continue
 
         if answer == 1:
-            generate_report(report_input,input_data)
+            generate_report_tables(report_input,input_data)
             return True
         elif answer == 2:
             return False
@@ -173,7 +173,7 @@ def save_choices(report_input,input_data):
 
 
 
-def generate_report(report_input,input_data):
+def generate_report_tables(report_input,input_data):
     """
     report_input = user inputs from the questionary
     input_data = basis data to generate the report table
@@ -193,17 +193,30 @@ def generate_report(report_input,input_data):
         ['iso_code','country']).agg(['min','max','mean','median'])
     summary_df = summary_df.reset_index()
 
-    # TODO: color blue
-    print(f"\nData sumary:{report_input['index']}")
-    print(tabulate(
-        summary_df,
-        headers=['iso','country','min','max','mean','median'],
-        tablefmt="outline"
-        ))
+    report_tables = {
+        'raw':raw_df,
+        'summary':summary_df
+    }
 
+    display_tables(raw_df,summary_df,index_name = report_input['index'])
+
+    return report_tables
+
+
+
+def display_tables(raw_df,summary_df,index_name):
+    
+    # TODO: color blue
     print('\nRaw data:')
     print(tabulate(
         raw_df,
-        headers=selected_columns,
+        headers=raw_df.columns,
+        tablefmt="outline"
+        ))
+    
+    print(f"\nData sumary:{index_name}")
+    print(tabulate(
+        summary_df,
+        headers=['iso','country','min','max','mean','median'],
         tablefmt="outline"
         ))
