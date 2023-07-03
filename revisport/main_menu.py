@@ -38,7 +38,7 @@ def main_menu(input_data):
             continue
         
         if answer == 1:
-            reporting_menu(input_data) # Reporting Menu
+            reporting_menu(SHEET,input_data) # Reporting Menu
             break
         elif answer == 2:
             print('You select Favourite') # Favourite Menu

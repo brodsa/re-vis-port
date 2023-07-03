@@ -38,9 +38,9 @@ def prepare_data(SHEET,*sheetnames):
 
     return input_data
 
-def question_to_save(text = 'your choices'):
-    print(f'Would you like to save {text}?')
-    print("1: Yes, continue.")
+def question_to_save(txt_question = 'your choices',txt_1=''):
+    print(f'Would you like to save {txt_question}?')
+    print(f"1: Yes, continue{txt_1}.")
     print("2: No, make changes.")
     
 def update_worksheet(SHEET,sheetname,row_data):
@@ -70,5 +70,9 @@ def empty_report_sheet(SHEET,sheetname):
     row_n = worksheet.row_count
     if row_n > 1:
         worksheet.delete_rows(2,row_n)
+
+
+
+
 
 

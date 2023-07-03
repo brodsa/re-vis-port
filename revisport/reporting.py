@@ -3,10 +3,10 @@ import pandas as pd
 import yaml
 
 import revisport as rvp
-from revisport import SHEET
+# from revisport import SHEET
 
 
-def reporting_menu(input_data):
+def reporting_menu(SHEET,input_data):
     """
     Wraps all functions within the reporting menue
     """
@@ -30,7 +30,7 @@ def reporting_menu(input_data):
         if answer == 1:
             while True:
                 report_input = ask_table_questions(input_data)
-                save_input = save_table_answers(report_input, input_data)
+                save_input = save_table_answers(SHEET,report_input, input_data)
                 if save_input:
                     # TODO: still note sure about this
                     return
@@ -73,14 +73,11 @@ def select_country(countries):
     displayed in case of invalid input.
     """
 
-    print("\nSelect countries for which you want to the report.")
-    print(
-        "Enter iso code of selected countries, ",
-        "use comma as a separator (iso1,iso2,...):")
+    print("\nSelect ico codes of countries for which you want to the report.")
     print(tabulate(countries, headers=['iso', 'country'], tablefmt="outline"))
 
     while True:
-        selected_countries = input('Enter your choice:')
+        selected_countries = input('Enter your choice (iso1,iso2,etc.):')
         countries_ls = [
             country.upper().strip()
             for country in selected_countries.split(',')
@@ -113,8 +110,8 @@ def select_time_period(years):
         try:
             print(
                 "\nSelect a time period from ",
-                "years 2000 and 2020 (yyyy-yyyy).")
-            selected_year_txt = input("Enter your choice:")
+                "years 2000 and 2020.")
+            selected_year_txt = input("Enter your choice (yyyy-yyyy):")
             selected_year_ls = [
                 int(year.strip())
                 for year in selected_year_txt.split('-')
@@ -178,7 +175,7 @@ def select_index(indices):
             print("Invalid choice, please enter a number from 1 to 6!")
 
 
-def save_table_answers(report_input, input_data):
+def save_table_answers(SHEET,report_input, input_data):
     print('\nYour choices:')
     print(yaml.dump(report_input, default_flow_style=False))
     # ask to save 1: yes; 2: no
@@ -191,8 +188,8 @@ def save_table_answers(report_input, input_data):
             print("You did not enter a number")
             continue
         if answer == 1:
-            generate_tables(report_input, input_data)
-            save_report_menu()
+            report_tables = generate_tables(report_input, input_data)
+            save_report_menu(SHEET,report_tables,report_input)
             return True
         elif answer == 2:
             return False
@@ -272,7 +269,7 @@ def display_tables(raw_df, summary_df, index_name):
         ))
 
 
-def save_report_menu():
+def save_report_menu(SHEET,report_tables,report_input):
     print("\nWould you like to save the tables?")
     print("1: Yes; save and continue to create the report")
     print("0: No; go back to MAIN MENU")
@@ -284,11 +281,15 @@ def save_report_menu():
             continue
 
         if answer == 1:
-            while True:
-                user_report_data = ask_report_questions()
-                save_report = save_report_answers(user_report_data)
+            print('\nSaving tables ...')
+            while True: 
+                user_report_data = ask_report_questions(SHEET)
+                save_report = save_report_answers(
+                    SHEET,
+                    user_report_data,
+                    report_tables,
+                    report_input)
                 if save_report:
-                    print('\nSaving tables ...')
                     return
         elif answer == 0:
             # back to main menu
@@ -298,7 +299,7 @@ def save_report_menu():
     
 
 
-def ask_report_questions():
+def ask_report_questions(SHEET):
 
     saved_reports = rvp.helpers.get_data_from_worksheet(SHEET,'report')
     print("\nPlease fill in following to save the report.")
@@ -310,10 +311,10 @@ def ask_report_questions():
         
     while True:
         title = input("Enter title*: ")
-        condition_empty = all([item != ' ' for item in title])
+        condition_empty = all([item == ' ' for item in title])
         if title in used_titles:
             print('Title not available, please try again.')
-        elif title and condition_empty:
+        elif title and not condition_empty:
             break
         else:
             print('Title must be specified.')
@@ -330,9 +331,9 @@ def ask_report_questions():
     return user_report_data
 
 
-def save_report_answers(user_report_data):
+def save_report_answers(SHEET,user_report_data,report_tables,report_input):
     print()
-    rvp.helpers.question_to_save()
+    rvp.helpers.question_to_save('provided information',' to save report')
 
     while True:
         try:
@@ -342,7 +343,7 @@ def save_report_answers(user_report_data):
             continue
 
         if answer == 1:
-            save_report(user_report_data)
+            save_report(SHEET,user_report_data,report_tables,report_input)
             return True
         elif answer == 2:
             print('\nDiscarding entries ...')
@@ -355,11 +356,5 @@ def save_report(SHEET,user_report_data,report_tables,report_input):
     """
     Saves the report.
     """
-    print('\nSaving report ...')
-    print(user_report_data)
-    #tables report_tables
-
-    #path_to_tables
-    #tables_answers user_report_data
-    #update_worksheet(SHEET,sheetname='report',row_data)
+        
     print(f"Report saved successfully.\n")
