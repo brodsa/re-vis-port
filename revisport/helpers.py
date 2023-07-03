@@ -68,4 +68,7 @@ def empty_directory(folder):
 def empty_report_sheet(SHEET,sheetname):
     worksheet = SHEET.worksheet(sheetname)
     row_n = worksheet.row_count
-    worksheet.delete_rows(2,row_n)
+    if row_n > 1:
+        worksheet.delete_rows(2,row_n)
+
+

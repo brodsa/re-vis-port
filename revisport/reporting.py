@@ -187,7 +187,6 @@ def save_table_answers(report_input, input_data):
     while True:
         try:
             answer = int(input("Enter your choice: ").strip())
-            print(answer, answer == 1)
         except ValueError:
             print("You did not enter a number")
             continue
@@ -219,9 +218,19 @@ def generate_tables(report_input, input_data):
     report_data = input_data['data'][selected_rows_years & selected_rows_iso]
     raw_df = report_data[selected_columns]
     raw_df = raw_df.reset_index(drop=True)
+    raw_df_index = raw_df[['iso_code', 'country', report_input['index']]]
+    
+    # check if the data frame contains missing values and remove them
+    condition_missing = '' in raw_df_index.values
+    if condition_missing:
+        ind_s = raw_df_index.iloc[:,-1]
+        missing = ind_s.where(ind_s !='').isna()
+        warning_1 = 'Warning: Missing data are removed for summary table!'
+        warning_2 = f'Missing data at rows: {missing[missing].index.values}'
+        raw_df_index = raw_df_index[[not item for item in missing]]
 
-    summary_df = raw_df[['iso_code', 'country', report_input['index']]].groupby(
-        ['iso_code', 'country']).agg(['min', 'max', 'mean', 'median'])
+    agg_functions = ['min', 'max', 'mean', 'median']
+    summary_df = raw_df_index.groupby(['iso_code', 'country']).agg(agg_functions)
     summary_df = summary_df.reset_index()
 
     report_tables = {
@@ -234,6 +243,10 @@ def generate_tables(report_input, input_data):
         raw_df=raw_df,
         summary_df=summary_df,
         index_name=report_input['index'])
+
+    if condition_missing:
+        print(warning_1)
+        print(warning_2)
 
     return report_tables
 
@@ -260,7 +273,7 @@ def display_tables(raw_df, summary_df, index_name):
 
 
 def save_report_menu():
-    print("Would you like to save the tables?")
+    print("\nWould you like to save the tables?")
     print("1: Yes; save and continue to create the report")
     print("0: No; go back to MAIN MENU")
     while True:
@@ -275,20 +288,26 @@ def save_report_menu():
                 user_report_data = ask_report_questions()
                 save_report = save_report_answers(user_report_data)
                 if save_report:
-
+                    print('\nSaving tables ...')
                     return
         elif answer == 0:
             # back to main menu
             return
         else:
             print("Invalid choice, please enter a number 1 or 2!")
+    
 
 
 def ask_report_questions():
 
     saved_reports = rvp.helpers.get_data_from_worksheet(SHEET,'report')
-    used_titles = [title for title in saved_reports.title]
     print("\nPlease fill in following to save the report.")
+    
+    if not saved_reports.empty:
+        used_titles = [title for title in saved_reports.title]
+    else:
+        used_titles = [None]
+        
     while True:
         title = input("Enter title*: ")
         condition_empty = all([item != ' ' for item in title])
@@ -318,7 +337,6 @@ def save_report_answers(user_report_data):
     while True:
         try:
             answer = int(input("Enter your choice: ").strip())
-            print(answer, answer == 1)
         except ValueError:
             print("You did not enter a number")
             continue
@@ -327,19 +345,21 @@ def save_report_answers(user_report_data):
             save_report(user_report_data)
             return True
         elif answer == 2:
+            print('\nDiscarding entries ...')
             return False
         else:
             print("Invalid choice, please enter a number from 0 to 1!")
 
 
-def save_report(user_report_data):
+def save_report(SHEET,user_report_data,report_tables,report_input):
     """
     Saves the report.
     """
-    print('Saving report ...')
+    print('\nSaving report ...')
     print(user_report_data)
-    #tables
+    #tables report_tables
+
     #path_to_tables
-    #tables_answers
+    #tables_answers user_report_data
     #update_worksheet(SHEET,sheetname='report',row_data)
     print(f"Report saved successfully.\n")
