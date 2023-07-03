@@ -6,25 +6,22 @@
 from revisport.main_menu import welcome_message
 from revisport.main_menu import welcome_load_data 
 from revisport.main_menu import main_menu 
-from revisport.helpers import empty_directory
-from revisport.helpers import empty_report_sheet
-from revisport import SHEET
+from revisport.favourite import empty_favourite
+
 # from revisport.main_menu import select_from_main_menu
 
 def main():
-    empty_directory('./report/raw_tables')
-    empty_directory('./report/summary_tables')
-    empty_report_sheet(SHEET,sheetname='report')
-    # display only at the begining
-    # print the welcome message
+    # empty saved reports
+    empty_favourite()
+
+    # display the introduction text only at the begining
     welcome_message()
 
-    # load data
+    # load data only once when starting the program
     input_data = welcome_load_data()
 
+    # starts the actuall programm
     while True:
-    # display in case of maine 
-    # print the menu choices
         main_menu(input_data)
 
  
