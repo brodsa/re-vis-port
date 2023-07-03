@@ -37,4 +37,11 @@ def prepare_data(SHEET,*sheetnames):
 
     return input_data
 
+def question_to_save(text = 'your choices'):
+    print(f'Would you like to save {text}?')
+    print("1: Yes, continue.")
+    print("2: No, make changes.")
     
+def update_worksheet(SHEET,name,row_data):
+    worksheet_report = SHEET.worksheet('report')
+    worksheet_report.append_row(row_data)

@@ -29,9 +29,8 @@ def reporting_menu(input_data):
 
         if answer == 1:
             while True:
-                report_input = ask_report_table_questions(input_data)
-                save_input = save_choices(report_input, input_data)
-                print(save_input)
+                report_input = ask_table_questions(input_data)
+                save_input = save_table_answers(report_input, input_data)
                 if save_input:
                     # TODO: still note sure about this
                     return
@@ -43,7 +42,7 @@ def reporting_menu(input_data):
             print("Invalid choice, please enter a number 1 or 2!")
 
 
-def ask_report_table_questions(input_data):
+def ask_table_questions(input_data):
     """
     Displays all question user has to answer
     in order to generate a report
@@ -179,12 +178,11 @@ def select_index(indices):
             print("Invalid choice, please enter a number from 1 to 6!")
 
 
-def save_choices(report_input, input_data):
+def save_table_answers(report_input, input_data):
     print('\nYour choices:')
     print(yaml.dump(report_input, default_flow_style=False))
-    print('Save your choices?')
-    print("1: Yes, continue to display the report table.")
-    print("2: No, make changes.")
+    # ask to save 1: yes; 2: no
+    rvp.helpers.question_to_save()
 
     while True:
         try:
@@ -193,18 +191,17 @@ def save_choices(report_input, input_data):
         except ValueError:
             print("You did not enter a number")
             continue
-
         if answer == 1:
-            generate_report_tables(report_input, input_data)
-            save_report_tables()
+            generate_tables(report_input, input_data)
+            save_report_menu()
             return True
         elif answer == 2:
             return False
         else:
-            print("Invalid choice, please enter a number from 0 to 1!")
+            print("Invalid choice, please enter 1 or 2!")
 
 
-def generate_report_tables(report_input, input_data):
+def generate_tables(report_input, input_data):
     """
     report_input = user inputs from the questionary
     input_data = basis data to generate the report table
@@ -262,10 +259,10 @@ def display_tables(raw_df, summary_df, index_name):
         ))
 
 
-def save_report_tables():
-    print("Would you like to save the report tables?")
-    print("1: yes")
-    print("0: no; go back to MAIN MENU")
+def save_report_menu():
+    print("Would you like to save the tables?")
+    print("1: Yes; save and continue to create the report")
+    print("0: No; go back to MAIN MENU")
     while True:
         try:
             answer = int(input("Enter your choice: ").strip())
@@ -274,9 +271,12 @@ def save_report_tables():
             continue
 
         if answer == 1:
-            ask_report_questions()
-            print('Save report ...')
-            return
+            while True:
+                user_report_data = ask_report_questions()
+                save_report = save_report_answers(user_report_data)
+                if save_report:
+
+                    return
         elif answer == 0:
             # back to main menu
             return
@@ -285,8 +285,20 @@ def save_report_tables():
 
 
 def ask_report_questions():
+
+    saved_reports = rvp.helpers.get_data_from_worksheet(SHEET,'report')
+    used_titles = [title for title in saved_reports.title]
     print("\nPlease fill in following to save the report.")
-    title = input("Enter title: ")
+    while True:
+        title = input("Enter title*: ")
+        condition_empty = all([item != ' ' for item in title])
+        if title in used_titles:
+            print('Title not available, please try again.')
+        elif title and condition_empty:
+            break
+        else:
+            print('Title must be specified.')
+
     author = input("Enter author: ")
     notes = input("Enter findings or notes: ")
 
@@ -298,3 +310,36 @@ def ask_report_questions():
 
     return user_report_data
 
+
+def save_report_answers(user_report_data):
+    print()
+    rvp.helpers.question_to_save()
+
+    while True:
+        try:
+            answer = int(input("Enter your choice: ").strip())
+            print(answer, answer == 1)
+        except ValueError:
+            print("You did not enter a number")
+            continue
+
+        if answer == 1:
+            save_report(user_report_data)
+            return True
+        elif answer == 2:
+            return False
+        else:
+            print("Invalid choice, please enter a number from 0 to 1!")
+
+
+def save_report(user_report_data):
+    """
+    Saves the report.
+    """
+    print('Saving report ...')
+    print(user_report_data)
+    #tables
+    #path_to_tables
+    #tables_answers
+    #update_worksheet(SHEET,name='report',row_data)
+    print(f"Report saved successfully.\n")
