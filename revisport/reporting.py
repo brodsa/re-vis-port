@@ -3,7 +3,7 @@ import pandas as pd
 import yaml
 
 import revisport as rvp
-# from revisport import SHEET
+from revisport.Reports import Reports
 
 
 def reporting_menu(SHEET,input_data):
@@ -29,8 +29,8 @@ def reporting_menu(SHEET,input_data):
 
         if answer == 1:
             while True:
-                report_input = ask_table_questions(input_data)
-                save_input = save_table_answers(SHEET,report_input, input_data)
+                user_table_data = ask_table_questions(input_data)
+                save_input = save_table_answers(SHEET,user_table_data, input_data)
                 if save_input:
                     # TODO: still note sure about this
                     return
@@ -49,21 +49,21 @@ def ask_table_questions(input_data):
     """
 
     # ask for countries
-    report_countries = select_country(input_data['countries'])
+    table_countries = select_country(input_data['countries'])
 
     # ask for time period
-    report_years = select_time_period(input_data['years'])
+    table_years = select_time_period(input_data['years'])
 
     # ask for index
-    report_index = select_index(input_data['indices'])
+    table_index = select_index(input_data['indices'])
 
     # wrap and save the answer into dictionary
-    report_input = dict()
-    report_input['countries'] = report_countries
-    report_input['years'] = report_years
-    report_input['index'] = report_index
+    user_table_data = dict()
+    user_table_data['countries'] = table_countries
+    user_table_data['years'] = table_years
+    user_table_data['index'] = table_index
 
-    return report_input
+    return user_table_data
 
 
 def select_country(countries):
@@ -175,9 +175,9 @@ def select_index(indices):
             print("Invalid choice, please enter a number from 1 to 6!")
 
 
-def save_table_answers(SHEET,report_input, input_data):
+def save_table_answers(SHEET,user_table_data, input_data):
     print('\nYour choices:')
-    print(yaml.dump(report_input, default_flow_style=False))
+    print(yaml.dump(user_table_data, default_flow_style=False))
     # ask to save 1: yes; 2: no
     rvp.helpers.question_to_save()
 
@@ -188,8 +188,8 @@ def save_table_answers(SHEET,report_input, input_data):
             print("You did not enter a number")
             continue
         if answer == 1:
-            report_tables = generate_tables(report_input, input_data)
-            save_report_menu(SHEET,report_tables,report_input)
+            report_tables = generate_tables(user_table_data, input_data)
+            save_report_menu(SHEET,report_tables,user_table_data)
             return True
         elif answer == 2:
             return False
@@ -197,25 +197,25 @@ def save_table_answers(SHEET,report_input, input_data):
             print("Invalid choice, please enter 1 or 2!")
 
 
-def generate_tables(report_input, input_data):
+def generate_tables(user_table_data, input_data):
     """
-    report_input = user inputs from the questionary
+    user_table_data = user inputs from the questionary
     input_data = basis data to generate the report table
     """
 
     selected_columns = ['iso_code', 'country', 'year']
-    selected_columns.append(report_input['index'])
+    selected_columns.append(user_table_data['index'])
     selected_rows_years = input_data['data'].year.between(
-        report_input["years"][0], report_input["years"][1]
+        user_table_data["years"][0], user_table_data["years"][1]
         )
     selected_rows_iso = input_data['data'].iso_code.isin(
-        report_input["countries"]
+        user_table_data["countries"]
         )
 
     report_data = input_data['data'][selected_rows_years & selected_rows_iso]
     raw_df = report_data[selected_columns]
     raw_df = raw_df.reset_index(drop=True)
-    raw_df_index = raw_df[['iso_code', 'country', report_input['index']]]
+    raw_df_index = raw_df[['iso_code', 'country', user_table_data['index']]]
     
     # check if the data frame contains missing values and remove them
     condition_missing = '' in raw_df_index.values
@@ -239,7 +239,7 @@ def generate_tables(report_input, input_data):
     display_tables(
         raw_df=raw_df,
         summary_df=summary_df,
-        index_name=report_input['index'])
+        index_name=user_table_data['index'])
 
     if condition_missing:
         print(warning_1)
@@ -269,7 +269,7 @@ def display_tables(raw_df, summary_df, index_name):
         ))
 
 
-def save_report_menu(SHEET,report_tables,report_input):
+def save_report_menu(SHEET,report_tables,user_table_data):
     print("\nWould you like to save the tables?")
     print("1: Yes; save and continue to create the report")
     print("0: No; go back to MAIN MENU")
@@ -288,7 +288,7 @@ def save_report_menu(SHEET,report_tables,report_input):
                     SHEET,
                     user_report_data,
                     report_tables,
-                    report_input)
+                    user_table_data)
                 if save_report:
                     return
         elif answer == 0:
@@ -331,7 +331,7 @@ def ask_report_questions(SHEET):
     return user_report_data
 
 
-def save_report_answers(SHEET,user_report_data,report_tables,report_input):
+def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
     print()
     rvp.helpers.question_to_save('provided information',' to save report')
 
@@ -343,46 +343,16 @@ def save_report_answers(SHEET,user_report_data,report_tables,report_input):
             continue
 
         if answer == 1:
-            save_report(SHEET,user_report_data,report_tables,report_input)
+            #save_report(SHEET,user_report_data,report_tables,user_table_data)
+            report_worksheet = Reports(SHEET)
+            report_worksheet.save_new_report(
+                user_table_data,
+                report_tables,
+                user_report_data
+            )
             return True
         elif answer == 2:
             print('\nDiscarding entries ...')
             return False
         else:
             print("Invalid choice, please enter a number from 0 to 1!")
-
-
-def save_report(SHEET,user_report_data,report_tables,report_input):
-    """
-    Saves the report.
-    """
-    print('\nSaving report ...')
-    
-    # save tables into csv
-    filename = user_report_data['title'].replace(' ','_') + '.csv'
-    filepath_raw = f'./report/raw_tables/raw_{filename}'
-    filepath_summary = f'./report/summary_tables/summary_{filename}'
-    report_tables['raw'].to_csv(filepath_raw)
-    report_tables['summary'].to_csv(filepath_summary)
-
-    # save information in worksheet
-    country_txt = ' '.join(report_input['countries'])
-    period_txt = '-'.join(str(item) for item in report_input['years'])
-    index_txt = report_input['index']
-    row_data = [
-        user_report_data['title'],
-        user_report_data['author'],
-        user_report_data['notes'],
-        filepath_raw,
-        filepath_summary,
-        country_txt,
-        period_txt,
-        index_txt
-    ]
-
-    rvp.helpers.update_worksheet(
-        SHEET,
-        sheetname='report',
-        row_data=row_data)
-        
-    print(f"\nReport saved successfully.\n")
