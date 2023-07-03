@@ -356,5 +356,33 @@ def save_report(SHEET,user_report_data,report_tables,report_input):
     """
     Saves the report.
     """
+    print('\nSaving report ...')
+    
+    # save tables into csv
+    filename = user_report_data['title'].replace(' ','_') + '.csv'
+    filepath_raw = f'./report/raw_tables/raw_{filename}'
+    filepath_summary = f'./report/summary_tables/summary_{filename}'
+    report_tables['raw'].to_csv(filepath_raw)
+    report_tables['summary'].to_csv(filepath_summary)
+
+    # save information in worksheet
+    country_txt = ' '.join(report_input['countries'])
+    period_txt = '-'.join(str(item) for item in report_input['years'])
+    index_txt = report_input['index']
+    row_data = [
+        user_report_data['title'],
+        user_report_data['author'],
+        user_report_data['notes'],
+        filepath_raw,
+        filepath_summary,
+        country_txt,
+        period_txt,
+        index_txt
+    ]
+
+    rvp.helpers.update_worksheet(
+        SHEET,
+        sheetname='report',
+        row_data=row_data)
         
-    print(f"Report saved successfully.\n")
+    print(f"\nReport saved successfully.\n")
