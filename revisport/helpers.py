@@ -1,4 +1,5 @@
 import pandas as pd
+import os, shutil
 
 def get_data_from_worksheet(SHEET,sheetname):
     """
@@ -42,6 +43,29 @@ def question_to_save(text = 'your choices'):
     print("1: Yes, continue.")
     print("2: No, make changes.")
     
-def update_worksheet(SHEET,name,row_data):
+def update_worksheet(SHEET,sheetname,row_data):
     worksheet_report = SHEET.worksheet('report')
     worksheet_report.append_row(row_data)
+
+def empty_directory(folder):
+    """
+    Empties directory based on the directory path.
+    Taken from https://stackoverflow.com/
+    questions/185936/how-to-delete-the-contents
+    -of-a-folder
+    """
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
+
+
+def empty_report_sheet(SHEET,sheetname):
+    worksheet = SHEET.worksheet(sheetname)
+    row_n = worksheet.row_count
+    worksheet.delete_rows(2,row_n)
