@@ -350,6 +350,7 @@ def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
                 report_tables,
                 user_report_data
             )
+            report_worksheet.display_all()
             return True
         elif answer == 2:
             print('\nDiscarding entries ...')

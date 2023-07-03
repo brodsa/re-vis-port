@@ -26,8 +26,8 @@ def main_menu(input_data):
     print("MAIN MENU")
     print("---------") 
     print("Please select an option from the menu below:")
-    print("1: Reporting")
-    print("2: Favourite")
+    print("1: Reporting - create and save a report")
+    print("2: Favourite - maintain saved reports")
     print("3: References")
 
     while True:

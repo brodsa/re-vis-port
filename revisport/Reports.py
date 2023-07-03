@@ -1,4 +1,5 @@
 import pandas as pd
+from tabulate import tabulate
 
 import revisport.helpers as rvp_helpers
 
@@ -6,6 +7,7 @@ class Reports():
     def __init__(self,SHEET):
         self.SHEET = SHEET
         self.worksheet_name = 'report'
+        self.worksheet = SHEET.worksheet('report')
 
     def save_new_report(self,user_table_data,report_tables,user_report_data):
         
@@ -36,17 +38,19 @@ class Reports():
             period_txt,
             index_txt
         ]
-
-        rvp_helpers.update_worksheet(
-            self.SHEET,
-            sheetname=self.worksheet_name,
-            row_data=row_data)
+        self.worksheet.append_row(row_data)
             
         print(f"\n{self.worksheet_name.capitalize()} saved successfully.\n")
 
     def display_all(self):
-        print('Display reports')
+        print(f'Loading {self.worksheet_name} ...')
+        df = pd.DataFrame(self.worksheet.get_all_records())
+        reports_df = df[['title','author','country','period','index']]
+        print(tabulate(df, headers=df.columns, tablefmt="outline"))
 
+    def display_one_report(self):
+        print('\n Display a report')
+        
     def modify_report_information(self):
         print('Update report')
 
