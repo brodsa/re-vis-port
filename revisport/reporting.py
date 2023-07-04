@@ -10,16 +10,16 @@ def reporting_menu(SHEET,input_data):
     """
     Wraps all functions within the reporting menue
     """
-
-    print("\nYou are going to create a simple report.")
+    print('\n---------')
+    print('REPORTING')
+    print('---------')
     print(
-        "The report contains a table with the ",
-        "information about EU countries and climate indices.")
-    print("The programm navigates you to generate the report.\n")
+        "You are about to create summary information of climate data,",
+        "make notes and generate report with all standard aspects.\n")
 
     print("Are you ready?")
-    print("1: yes, continue creating the report")
-    print("0: no; go back to MAIN MENU")
+    print("1: Yes, continue creating the report")
+    print("0: No; go back to HOME MENU")
     while True:
         try:
             answer = int(input("Enter your choice: ").strip())

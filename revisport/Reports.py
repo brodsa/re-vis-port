@@ -15,7 +15,7 @@ class Reports():
         self.report_tables = report_tables
         self.user_report_data = user_report_data
 
-        print(f'Saving {self.worksheet_name} ...')
+        print(f'\nSaving {self.worksheet_name} ...')
 
         # save tables into csv
         filename = user_report_data['title'].replace(' ','_') + '.csv'
@@ -46,7 +46,7 @@ class Reports():
         print(f'Loading {self.worksheet_name} ...')
         df = pd.DataFrame(self.worksheet.get_all_records())
         reports_df = df[['title','author','country','period','index']]
-        print(tabulate(reports_df, headers=df.columns, tablefmt="outline"))
+        print(tabulate(reports_df, headers=reports_df.columns, tablefmt="outline"))
 
     def display_one_report(self):
         print('\n Display a report')

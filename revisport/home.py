@@ -9,15 +9,18 @@ def welcome_message():
     """
 
     print("\nWelcome to ReVisPort!\n")
-    print("Your command line reporting tool is getting ready for you to use.\n")
+    print("It has never been easy to create simple reports.")
+    print("ReVisPort navigates you step by step to explore climate data and more.")
+    print("You can save interesting data instights to come back to them later on.")
+    print("\nRevisPort is getting ready for you to use ...")
+
     return 
 
 def load_data():
-    print('Loading data ...\n')
     return prepare_data(SHEET,'owid-co2-data','filter')
 
 def goodbye_message():
-    print('Thank you for using ReVisPort.')
+    print('\nThank you for using ReVisPort.')
     print('Hope we see you come back soon!')
 
 
@@ -30,8 +33,8 @@ def main_menu(input_data):
     print("HOME MENU")
     print("---------") 
     print("Please select an option from the menu below:")
-    print("1: Reporting - create and save a report")
-    print("2: Favourite - maintain saved reports")
+    print("1: Reporting")
+    print("2: Favourites")
     print("3: References & Feedback")
     print('0: Quit')
 
