@@ -1,7 +1,5 @@
 # ReVisPort
-ReVisPort is a Python command line reporting tool which enable users to create simple reports. The reports provide the user with descriptive summary in order to compare countries in terms of various indices. The indices are mainly related to [climate data](https://ourworldindata.org/co2-and-greenhouse-gas-emissions). Nevertheless, the users can also select more general indices, such as GDP or population.
-
-In addition, ReVisPort offers the users to add the created reports to their personalized favourites list. Notes or findings can be added to simplify the taks of finding interesting data insights. 
+ReVisPort is a Python command line reporting tool which enable users to create simple reports. The reports provide the user with descriptive summary of climate data [climate data](https://ourworldindata.org/co2-and-greenhouse-gas-emissions) of EU countries. Besides that, ReVisPort offers the users to add the created reports to their personalized favourites list. Notes or findings can be added to simplify the taks of finding interesting data insights. 
 
  
 
@@ -21,8 +19,18 @@ TODO: screenshot or record
 
 ---
 ## UX
+The goal of ReVisPort is to explore interesting insights of climate data. ReVisPort targets particully users interesting in climate data and data generally. Users does not have to any knowledge about statistic or reporting, ReVisPort navigates users step by step. 
 
 ### User Stories
+- As a User, I would like create a report without any programming nor statistic knowledge.
+- As a User, I would like to be able to change choices I made.
+- As a User, I would like to display a created report with all standard aspects.
+- As a User, I would like to make notes to about the data instights
+- As a User, I would like to have a possibility to save a report.
+- As a User, I would like to see all my saved reports and come back to each of them.
+- As a User, I would like to delete a saved report, which I do not need anymore.
+- ? As a User, I would like to modify some aspekt of a created report later on.
+- As a User, I would like to write reference or contact the application developer.
 
 ### 
 
