@@ -1,30 +1,35 @@
 from tabulate import tabulate
 import pandas as pd
 import yaml
+import os
 
 import revisport as rvp
 from revisport.Reports import Reports
+from revisport.colors import *
 
 
 def reporting_menu(SHEET,input_data):
     """
     Wraps all functions within the reporting menue
     """
-    print('\n---------')
+    os.system('clear')
+    print(WHITE)
+    print('---------')
     print('REPORTING')
     print('---------')
     print(
         "You are about to create summary information of climate data,",
-        "make notes and generate report with all standard aspects.\n")
-
+        "make notes and generate report with all standard aspects.")
+    print(CYAN)
     print("Are you ready?")
-    print("1: Yes, continue creating the report")
-    print("0: No; go back to HOME MENU")
+    print(" 1: Yes, continue creating the report")
+    print(" 0: No; go back to HOME MENU")
     while True:
         try:
-            answer = int(input("Enter your choice: ").strip())
+            print(PURPLE +"Enter your choice: " + WHITE, end='')
+            answer = int(input().strip())
         except ValueError:
-            print("You did not enter a number")
+            print(YELLOW + "You did not enter a number")
             continue
 
         if answer == 1:
@@ -36,10 +41,10 @@ def reporting_menu(SHEET,input_data):
                     return
         elif answer == 0:
             # back to main menu
-            rvp.main_menu.main_menu(input_data)
+            rvp.home.main_menu(input_data)
             break
         else:
-            print("Invalid choice, please enter a number 1 or 2!")
+            print(YELLOW + "Invalid choice, please enter a number 1 or 2!")
 
 
 def ask_table_questions(input_data):
@@ -73,11 +78,16 @@ def select_country(countries):
     displayed in case of invalid input.
     """
 
-    print("\nSelect ico codes of countries for which you want to the report.")
+    print(CYAN)
+    print(
+        "Select ISO codes of EU countries from the list bellow." + 
+        WHITE
+        )
     print(tabulate(countries, headers=['iso', 'country'], tablefmt="outline"))
 
     while True:
-        selected_countries = input('Enter your choice (iso1,iso2,etc.):')
+        print(PURPLE + "Enter your choice (iso1,iso2,etc.):" + WHITE, end='')
+        selected_countries = input()
         countries_ls = [
             country.upper().strip()
             for country in selected_countries.split(',')
@@ -92,12 +102,13 @@ def select_country(countries):
 
             elif countries_ls[-1] == '':
                 raise ValueError(
-                    "Missing country after comma ",
-                    "or no country specified at all")
+                    f"Missing country after comma or no country specified at all")
             else:
-                raise ValueError(f"Only valid ISO codes or comma seperator are allowed,you wrote {selected_countries}")
+                message = "Only valid ISO codes or comma seperator are allowed,you wrote"
+                raise ValueError(
+                    f"{message} {selected_countries}")
         except (ValueError, IndexError) as e:
-            print(f"Invalid input: {e}; please try again.\n")
+            print(YELLOW + f"Invalid input: {e}; please try again.\n")
 
 
 def select_time_period(years):
@@ -108,10 +119,12 @@ def select_time_period(years):
     """
     while True:
         try:
+            print(CYAN)
             print(
-                "\nSelect a time period from ",
+                "Select a time period from ",
                 "years 2000 and 2020.")
-            selected_year_txt = input("Enter your choice (yyyy-yyyy):")
+            print(PURPLE + "Enter your choice (yyyy-yyyy):" + WHITE, end='')
+            selected_year_txt = input()
             selected_year_ls = [
                 int(year.strip())
                 for year in selected_year_txt.split('-')
@@ -128,64 +141,68 @@ def select_time_period(years):
             condition_order_nok = selected_year_ls[0] > selected_year_ls[1]
 
             if not correct_period:
-                print(
+                print(YELLOW + 
                     "Year selection is not in range (2000-2020); ",
-                    "please try again.")
+                    "please try again.\n")
 
             elif condition_missing_year or condition_same_years:
-                print('Missing year for a valid range; please try again.')
+                print(YELLOW + 'Missing year for a valid range; please try again.\n')
 
             elif correct_period and condition_years and condition_order_ok:
                 return selected_year_ls
 
             elif correct_period and condition_years and condition_order_nok:
-                print(
+                print(YELLOW + 
                     "Invalid format, ",
                     "a lower bound is larger than an upper bound; ",
-                    "please try again.")
+                    "please try again.\n")
 
             else:
-                print('Invalid input.')
+                print(YELLOW + 'Invalid input.\n')
 
         except ValueError:
-            print(
+            print(YELLOW + 
                 "You did not enter number nor a valid range format; ",
-                "please try again.")
+                "please try again.\n")
 
 
 def select_index(indices):
-    print("\nPlease select an index from the list bellow:")
-    print("1: GDP")
-    print("2: Population")
-    print("3: CO2 emmission (million tonnes)")
-    print("4: Methane emmission (million tonnes of carbon dioxide-equivalents)")
-    print("5: Energy consumption (terawatt-hours per year)")
-    print("6: Greenhouse gas emissions (million tonnes of carbon dioxide-equivalents)")
+    print(CYAN)
+    print("Please select an index from the list bellow:")
+    print(" 1: GDP")
+    print(" 2: Population")
+    print(" 3: CO2 emmission (million tonnes)")
+    print(" 4: Methane emmission (million tonnes of carbon dioxide-equivalents)")
+    print(" 5: Energy consumption (terawatt-hours per year)")
+    print(" 6: Greenhouse gas emissions (million tonnes of carbon dioxide-equivalents)")
 
     while True:
         try:
-            answer = int(input("Enter your choice: ").strip())
+            print(PURPLE + "Enter your choice:" + WHITE, end='')
         except ValueError:
-            print("You did not enter a number")
+            print(YELLOW + "You did not enter a number\n")
             continue
         if answer in list(range(1, 7)):
-            # covert back to the index name
+            # convert back to the index name
             return indices.iloc[answer-1][0]
         else:
-            print("Invalid choice, please enter a number from 1 to 6!")
+            print(YELLOW + "Invalid choice, please enter a number from 1 to 6!\n")
 
 
 def save_table_answers(SHEET,user_table_data, input_data):
-    print('\nYour choices:')
+    print(WHITE)
+    print('YOUR SELECTION:')
+    print('---------------')
     print(yaml.dump(user_table_data, default_flow_style=False))
     # ask to save 1: yes; 2: no
     rvp.helpers.question_to_save()
 
     while True:
         try:
-            answer = int(input("Enter your choice: ").strip())
+            print(PURPLE + "Enter your choice:" + WHITE, end='')
+            answer = int(input().strip())
         except ValueError:
-            print("You did not enter a number")
+            print(YELLOW + "You did not enter a number.\n")
             continue
         if answer == 1:
             report_tables = generate_tables(user_table_data, input_data)
@@ -194,7 +211,7 @@ def save_table_answers(SHEET,user_table_data, input_data):
         elif answer == 2:
             return False
         else:
-            print("Invalid choice, please enter 1 or 2!")
+            print(YELOOW + "Invalid choice, please enter 1 or 2!\n")
 
 
 def generate_tables(user_table_data, input_data):
@@ -242,8 +259,8 @@ def generate_tables(user_table_data, input_data):
         index_name=user_table_data['index'])
 
     if condition_missing:
-        print(warning_1)
-        print(warning_2)
+        print(YELLOW + warning_1)
+        print(YELLOW + warning_2)
 
     return report_tables
 
@@ -253,15 +270,15 @@ def display_tables(raw_df, summary_df, index_name):
     Displays tables from the data frames.
 
     """
-    # TODO: color blue
-    print('\nRaw data:')
+    os.system('clear')
+    print(WHITE + 'RAW DATA:')
     print(tabulate(
         raw_df,
         headers=raw_df.columns,
         tablefmt="outline"
         ))
 
-    print(f"\nData sumary: {index_name}")
+    print(f"\nDATA SUMMARY: {index_name}")
     print(tabulate(
         summary_df,
         headers=['iso', 'country', 'min', 'max', 'mean', 'median'],
@@ -270,18 +287,21 @@ def display_tables(raw_df, summary_df, index_name):
 
 
 def save_report_menu(SHEET,report_tables,user_table_data):
-    print("\nWould you like to save the tables?")
-    print("1: Yes; save and continue to create the report")
-    print("0: No; go back to MAIN MENU")
+    print(CYAN)
+    print("Would you like to save the tables?")
+    print(" 1: Yes; save and continue to create the report")
+    print(" 0: No; go back to MAIN MENU")
     while True:
         try:
-            answer = int(input("Enter your choice: ").strip())
+            print(PURPLE + "Enter your choice:" + WHITE, end='')
+            answer = int(input().strip())
         except ValueError:
-            print("You did not enter a number")
+            print(YELLOW + "You did not enter a number.\n")
             continue
 
         if answer == 1:
-            print('\nSaving tables ...')
+            print(GREEN)
+            print('Saving tables ...')
             while True: 
                 user_report_data = ask_report_questions(SHEET)
                 save_report = save_report_answers(
@@ -302,7 +322,8 @@ def save_report_menu(SHEET,report_tables,user_table_data):
 def ask_report_questions(SHEET):
 
     saved_reports = rvp.helpers.get_data_from_worksheet(SHEET,'report')
-    print("\nPlease fill in following to save the report.")
+    print(CYAN)
+    print("\Please fill in following to save the report.")
     
     if not saved_reports.empty:
         used_titles = [title for title in saved_reports.title]
@@ -310,14 +331,15 @@ def ask_report_questions(SHEET):
         used_titles = [None]
         
     while True:
-        title = input("Enter title*: ")
+        print(PURPLE + "Enter title*: " + WHITE, end='')
+        title = input()
         condition_empty = all([item == ' ' for item in title])
         if title in used_titles:
-            print('Title not available, please try again.')
+            print(YELLOW + 'Title not available, please try again.\n')
         elif title and not condition_empty:
             break
         else:
-            print('Title must be specified.')
+            print(YELLOW + 'Title must be specified.\n')
 
     author = input("Enter author: ")
     notes = input("Enter findings or notes: ")
