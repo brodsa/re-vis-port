@@ -3,12 +3,11 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 
-from revisport.main_menu import welcome_message
-from revisport.main_menu import welcome_load_data 
-from revisport.main_menu import main_menu 
+from revisport.home import welcome_message
+from revisport.home import load_data 
+from revisport.home import main_menu 
 from revisport.favourite import empty_favourite
 
-# from revisport.main_menu import select_from_main_menu
 
 def main():
     # empty saved reports
@@ -18,11 +17,12 @@ def main():
     welcome_message()
 
     # load data only once when starting the program
-    input_data = welcome_load_data()
+    input_data = load_data()
 
     # starts the actuall programm
     while True:
-        main_menu(input_data)
+        if main_menu(input_data):
+            break
 
  
 
