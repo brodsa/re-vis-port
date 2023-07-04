@@ -1,6 +1,9 @@
-# code from https://www.geeksforgeeks.org/print-colors-python-terminal/
+# colors taken from 
+# https://www.geeksforgeeks.org/print-colors-python-terminal/
+# https://codehs.com/tutorial/andy/ansi-colors
 ECS = "\033"
 
+# errors
 RED =  ECS + '[91m'
 
 # successes or action
