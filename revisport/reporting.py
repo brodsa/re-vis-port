@@ -343,7 +343,6 @@ def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
             continue
 
         if answer == 1:
-            #save_report(SHEET,user_report_data,report_tables,user_table_data)
             report_worksheet = Reports(SHEET)
             report_worksheet.save_new_report(
                 user_table_data,

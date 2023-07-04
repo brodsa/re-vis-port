@@ -46,7 +46,7 @@ class Reports():
         print(f'Loading {self.worksheet_name} ...')
         df = pd.DataFrame(self.worksheet.get_all_records())
         reports_df = df[['title','author','country','period','index']]
-        print(tabulate(df, headers=df.columns, tablefmt="outline"))
+        print(tabulate(reports_df, headers=df.columns, tablefmt="outline"))
 
     def display_one_report(self):
         print('\n Display a report')
