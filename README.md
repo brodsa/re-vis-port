@@ -32,6 +32,17 @@ The goal of ReVisPort is to explore interesting insights of climate data. ReVisP
 - ? As a User, I would like to modify some aspekt of a created report later on.
 - As a User, I would like to write reference or contact the application developer.
 
+### Colors
+Color text using ANSI Code was considered to make the command line application more user-friendly. In total 5 colors were selected. Each color was used only for one purpose, see Table below.
+
+| Color  | ANSI Code | Purpose                                         | Examples                                |
+|--------|-----------|-------------------------------------------------|-----------------------------------------|
+| White  | [95m      | displayed information, no question, user inputs |                                         |
+| Green  | [92m      | actions, successes or asking for user inputs    | Saving...; Enter your choice:           |
+| Purple | [95m      | generated tables and report                     |                                         |
+| Yellow | [33m      | warnings                                        | Invalid data                            |
+| Cyan   | [96m      | questions or menus                              | Select a time period from 2000 and 2020 |
+
 ### 
 
 - Main Menu ![Main Menu](./docs/ux/logical_flow_main_menu.png)
