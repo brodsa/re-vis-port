@@ -40,8 +40,8 @@ def prepare_data(SHEET,*sheetnames):
 
 def question_to_save(txt_question = 'your choices',txt_1=''):
     print(f'Would you like to save {txt_question}?')
-    print(f"1: Yes, continue{txt_1}.")
-    print("2: No, make changes.")
+    print(f" 1: Yes, continue{txt_1}.")
+    print(" 2: No, make changes.")
     
 def update_worksheet(SHEET,sheetname,row_data):
     worksheet_report = SHEET.worksheet('report')

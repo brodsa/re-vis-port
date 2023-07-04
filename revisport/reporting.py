@@ -86,7 +86,7 @@ def select_country(countries):
     print(tabulate(countries, headers=['iso', 'country'], tablefmt="outline"))
 
     while True:
-        print(PURPLE + "Enter your choice (iso1,iso2,etc.):" + WHITE, end='')
+        print(PURPLE + "Enter your choice (iso1,iso2,etc.): " + WHITE, end='')
         selected_countries = input()
         countries_ls = [
             country.upper().strip()
@@ -123,7 +123,7 @@ def select_time_period(years):
             print(
                 "Select a time period from ",
                 "years 2000 and 2020.")
-            print(PURPLE + "Enter your choice (yyyy-yyyy):" + WHITE, end='')
+            print(PURPLE + "Enter your choice (yyyy-yyyy): " + WHITE, end='')
             selected_year_txt = input()
             selected_year_ls = [
                 int(year.strip())
@@ -143,27 +143,27 @@ def select_time_period(years):
             if not correct_period:
                 print(YELLOW + 
                     "Year selection is not in range (2000-2020); ",
-                    "please try again.\n")
+                    "please try again.")
 
             elif condition_missing_year or condition_same_years:
-                print(YELLOW + 'Missing year for a valid range; please try again.\n')
+                print(YELLOW + 'Missing year for a valid range; please try again.')
 
             elif correct_period and condition_years and condition_order_ok:
                 return selected_year_ls
 
             elif correct_period and condition_years and condition_order_nok:
                 print(YELLOW + 
-                    "Invalid format, ",
+                    "Invalid format:",
                     "a lower bound is larger than an upper bound; ",
-                    "please try again.\n")
+                    "please try again.")
 
             else:
-                print(YELLOW + 'Invalid input.\n')
+                print(YELLOW + 'Invalid input.')
 
-        except ValueError:
+        except (ValueError,IndexError):
             print(YELLOW + 
-                "You did not enter number nor a valid range format; ",
-                "please try again.\n")
+                "You did not enter number or a valid range format; ",
+                "please try again.")
 
 
 def select_index(indices):
@@ -178,7 +178,8 @@ def select_index(indices):
 
     while True:
         try:
-            print(PURPLE + "Enter your choice:" + WHITE, end='')
+            print(PURPLE + "Enter your choice: " + WHITE, end='')
+            answer = int(input())
         except ValueError:
             print(YELLOW + "You did not enter a number\n")
             continue
@@ -194,12 +195,12 @@ def save_table_answers(SHEET,user_table_data, input_data):
     print('YOUR SELECTION:')
     print('---------------')
     print(yaml.dump(user_table_data, default_flow_style=False))
-    # ask to save 1: yes; 2: no
+    print(CYAN)
     rvp.helpers.question_to_save()
 
     while True:
         try:
-            print(PURPLE + "Enter your choice:" + WHITE, end='')
+            print(PURPLE + "Enter your choice: " + WHITE, end='')
             answer = int(input().strip())
         except ValueError:
             print(YELLOW + "You did not enter a number.\n")
@@ -293,7 +294,7 @@ def save_report_menu(SHEET,report_tables,user_table_data):
     print(" 0: No; go back to MAIN MENU")
     while True:
         try:
-            print(PURPLE + "Enter your choice:" + WHITE, end='')
+            print(PURPLE + "Enter your choice: " + WHITE, end='')
             answer = int(input().strip())
         except ValueError:
             print(YELLOW + "You did not enter a number.\n")
@@ -323,7 +324,7 @@ def ask_report_questions(SHEET):
 
     saved_reports = rvp.helpers.get_data_from_worksheet(SHEET,'report')
     print(CYAN)
-    print("\Please fill in following to save the report.")
+    print("Please fill in following to save the report.")
     
     if not saved_reports.empty:
         used_titles = [title for title in saved_reports.title]
@@ -341,8 +342,10 @@ def ask_report_questions(SHEET):
         else:
             print(YELLOW + 'Title must be specified.\n')
 
-    author = input("Enter author: ")
-    notes = input("Enter findings or notes: ")
+    print(PURPLE + "Enter author: " + WHITE, end='')
+    author = input()
+    print(PURPLE + "Enter findings or notes: " + WHITE, end='')
+    notes = input()
 
     user_report_data = {
         'title': title,
@@ -354,14 +357,15 @@ def ask_report_questions(SHEET):
 
 
 def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
-    print()
+    print(CYAN)
     rvp.helpers.question_to_save('provided information',' to save report')
 
     while True:
         try:
-            answer = int(input("Enter your choice: ").strip())
+            print(PURPLE + "Enter your choice: " + WHITE, end='')
+            answer = int(input().strip())
         except ValueError:
-            print("You did not enter a number")
+            print(YELLOW + "You did not enter a number.\n")
             continue
 
         if answer == 1:
@@ -374,7 +378,8 @@ def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
             report_worksheet.display_all()
             return True
         elif answer == 2:
-            print('\nDiscarding entries ...')
+            print(GREEN)
+            print('Discarding entries ...')
             return False
         else:
-            print("Invalid choice, please enter a number from 0 to 1!")
+            print(YELLOW + "Invalid choice, please enter a number from 0 to 1!\n")

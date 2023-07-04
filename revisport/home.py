@@ -39,10 +39,10 @@ def main_menu(input_data):
     print("---------") 
     print(CYAN)
     print("Please select an option from the menu below:")
-    print("1: Reporting")
-    print("2: Favourites")
-    print("3: References & Feedback")
-    print('0: Quit')
+    print(" 1: Reporting")
+    print(" 2: Favourites")
+    print(" 3: References & Feedback")
+    print(' 0: Quit')
 
     while True:
         try:

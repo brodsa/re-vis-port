@@ -2,6 +2,7 @@ import pandas as pd
 from tabulate import tabulate
 
 import revisport.helpers as rvp_helpers
+from revisport.colors import *
 
 class Reports():
     def __init__(self,SHEET):
@@ -15,7 +16,8 @@ class Reports():
         self.report_tables = report_tables
         self.user_report_data = user_report_data
 
-        print(f'\nSaving {self.worksheet_name} ...')
+        print(GREEN)
+        print(f'Saving {self.worksheet_name} ...')
 
         # save tables into csv
         filename = user_report_data['title'].replace(' ','_') + '.csv'
@@ -40,7 +42,8 @@ class Reports():
         ]
         self.worksheet.append_row(row_data)
             
-        print(f"\n{self.worksheet_name.capitalize()} saved successfully.\n")
+        print(GREEN)
+        print(f"{self.worksheet_name.capitalize()} saved successfully.\n")
 
     def display_all(self):
         print(f'Loading {self.worksheet_name} ...')
