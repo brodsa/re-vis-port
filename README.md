@@ -107,7 +107,8 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 - Documentation of [gspred](https://docs.gspread.org/en/latest/user-guide.html)
 - [Empty directory](https://stackoverflow.com/questions/185936/how-to-delete-the-contents-of-a-folder)
 - [Color definition](https://www.geeksforgeeks.org/print-colors-python-terminal/)
-- Documentation
+- [ANSI color coding][https://codehs.com/tutorial/andy/ansi-colors]
+- Python Package Documentation
     - [gspread](https://docs.gspread.org/en/v5.1.0/index.html)
     - [pandas](https://pandas.pydata.org/docs/)
 
