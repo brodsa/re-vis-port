@@ -38,12 +38,15 @@ def prepare_data(SHEET,*sheetnames):
 
     return input_data
 
-def question_to_save(txt_question = None,txt_1=''):
+def question_to_save(
+    txt_question = None,
+    txt_1='',
+    txt_2='make changes'):
     if txt_question is None:
         txt_question = 'save your choices'
     print(f'Would you like to {txt_question}?')
-    print(f" 1: Yes, continue{txt_1}.")
-    print(" 2: No, make changes.")
+    print(f" 1: Yes, continue{ ' ' + txt_1}.")
+    print(f" 2: No, {txt_2}.")
     
 def update_worksheet(SHEET,sheetname,row_data):
     worksheet_report = SHEET.worksheet('report')

@@ -18,12 +18,12 @@ def reporting_menu(SHEET,input_data):
     print('REPORTING')
     print('---------')
     print(
-        "You are about to create summary information of climate data,",
+        "You are about to create summary of climate data,",
         "make notes and generate report with all standard aspects.")
     print(CYAN)
     print("Are you ready?")
-    print(" 1: Yes, continue creating the report")
-    print(" 0: No; go back to HOME MENU")
+    print(" 1: Yes, continue creating the report.")
+    print(" 0: No; go back to HOME MENU.")
     while True:
         try:
             print(PURPLE +"Enter your choice: " + WHITE, end='')
@@ -290,8 +290,8 @@ def display_tables(raw_df, summary_df, index_name):
 def save_report_menu(SHEET,report_tables,user_table_data):
     print(CYAN)
     print("Would you like to save the tables?")
-    print(" 1: Yes; save and continue to create the report")
-    print(" 0: No; go back to MAIN MENU")
+    print(" 1: Yes, save and continue to create the report.")
+    print(" 0: No, go back to MAIN MENU.")
     while True:
         try:
             print(PURPLE + "Enter your choice: " + WHITE, end='')
@@ -358,7 +358,9 @@ def ask_report_questions(SHEET):
 
 def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
     print(CYAN)
-    rvp.helpers.question_to_save('provided information',' to save report')
+    rvp.helpers.question_to_save(
+        'save provided information',
+        'save and go back HOME')
 
     while True:
         try:

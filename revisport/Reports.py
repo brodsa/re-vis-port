@@ -46,13 +46,16 @@ class Reports():
         print(f"{self.worksheet_name.capitalize()} saved successfully.\n")
 
     def display_all(self):
-        print(f'Loading {self.worksheet_name} ...')
         df = pd.DataFrame(self.worksheet.get_all_records())
         if df.empty:
-            print(YELLOW + 'There are no saved reports.')
+            print(YELLOW)
+            print('There are no saved reports.')
             return False
         else:
-            reports_df = df[['title','author','country','period','index']]
+            print(GREEN)
+            print(f'Loading {self.worksheet_name}s ...')
+            reports_df = df[['ID','title','author','country','period','index']]
+            print(WHITE)
             print(tabulate(reports_df, headers=reports_df.columns, tablefmt="outline"))
             return True
 
