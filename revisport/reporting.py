@@ -41,6 +41,7 @@ def reporting_menu(SHEET,input_data):
                     return
         elif answer == 0:
             # back to main menu
+            os.system('clear')
             rvp.home.main_menu(input_data)
             break
         else:
@@ -253,7 +254,6 @@ def generate_tables(user_table_data, input_data):
         'summary': summary_df
     }
 
-
     display_tables(
         raw_df=raw_df,
         summary_df=summary_df,
@@ -375,7 +375,6 @@ def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
                 report_tables,
                 user_report_data
             )
-            report_worksheet.display_all()
             return True
         elif answer == 2:
             print(GREEN)

@@ -6,7 +6,7 @@
 from revisport.home import welcome_message
 from revisport.home import load_data 
 from revisport.home import main_menu 
-from revisport.favourite import empty_favourite
+from revisport.favourites import empty_favourite
 
 
 def main():

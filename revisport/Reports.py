@@ -48,8 +48,13 @@ class Reports():
     def display_all(self):
         print(f'Loading {self.worksheet_name} ...')
         df = pd.DataFrame(self.worksheet.get_all_records())
-        reports_df = df[['title','author','country','period','index']]
-        print(tabulate(reports_df, headers=reports_df.columns, tablefmt="outline"))
+        if df.empty:
+            print(YELLOW + 'There are no saved reports.')
+            return False
+        else:
+            reports_df = df[['title','author','country','period','index']]
+            print(tabulate(reports_df, headers=reports_df.columns, tablefmt="outline"))
+            return True
 
     def display_one_report(self):
         print('\n Display a report')

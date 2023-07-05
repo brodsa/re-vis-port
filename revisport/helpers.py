@@ -38,8 +38,10 @@ def prepare_data(SHEET,*sheetnames):
 
     return input_data
 
-def question_to_save(txt_question = 'your choices',txt_1=''):
-    print(f'Would you like to save {txt_question}?')
+def question_to_save(txt_question = None,txt_1=''):
+    if txt_question is None:
+        txt_question = 'save your choices'
+    print(f'Would you like to {txt_question}?')
     print(f" 1: Yes, continue{txt_1}.")
     print(" 2: No, make changes.")
     
