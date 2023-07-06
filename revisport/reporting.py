@@ -199,7 +199,7 @@ def save_table_answers(SHEET,user_table_data, input_data):
     print(CYAN)
     rvp.helpers.question_to_save(
         'save your selection',
-        ' generation summary table',
+        ' generating summary descriptive statistic',
         'make new selection'
     )
 
@@ -294,7 +294,7 @@ def display_tables(raw_df, summary_df, index_name):
 def save_report_menu(SHEET,report_tables,user_table_data):
     print(CYAN)
     print("Would you like to save the tables?")
-    print(" 1: Yes, save and continue creating the report.")
+    print(" 1: Yes, save and finish creating the report.")
     print(" 0: No, go back to MAIN MENU.")
     while True:
         try:
@@ -364,7 +364,7 @@ def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
     print(CYAN)
     rvp.helpers.question_to_save(
         'save provided information',
-        ' saving in FAVOURITES and go back HOME')
+        ' saving the report in FAVOURITES and go back HOME')
 
     while True:
         try:

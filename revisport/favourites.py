@@ -1,4 +1,5 @@
 
+import os
 import revisport as rvp
 
 from revisport.Reports import Reports
@@ -7,6 +8,8 @@ from revisport.colors import *
 
 from revisport.helpers import empty_directory
 from revisport.helpers import empty_report_sheet
+
+from revisport.reporting import reporting_menu
 
 def empty_favourite():
     empty_directory('./report/raw_tables')
@@ -25,46 +28,55 @@ def favourites_menu(SHEET,input_data):
     Raises:
         ValueError: Only numbers are allowed.
     """
+    os.system('clear')
     print(WHITE)
     print("----------") 
     print("FAVOURITES")
     print("----------") 
     print("All saved reports are saved here and you can maitain them.")
-    report_worksheet = Reports(SHEET)
-    n_saved_reports = report_worksheet.display_all()
-    if n_saved_reports:
-        
-        print(CYAN)
-        print("Please select an option from the menu below:")
-        print(" 1: View a report")
-        print(" 2: Delete a report")
-        print(" 0: Go back to HOME MENU")
+    while True:
+        report_worksheet = Reports(SHEET)
+        n_saved_reports = report_worksheet.display_all()
+        if n_saved_reports:
 
-        while True:
-            try:
-                print(PURPLE +"Enter your choice: " + WHITE, end='')
-                answer = int(input().strip())
-            except ValueError:
-                print(YELLOW + "You did not enter a number.\n")
-                continue
-            
-            if answer in [1,2]:
-                report_id = select_report_id(answer,n_saved_reports)
+            while True:
+                print(CYAN)
+                print("Please select an option from the menu below:")
+                print(" 1: View a report")
+                print(" 2: Delete a report")
+                print(" 3: Create a report")
+                print(" 0: Go back to HOME MENU")
 
-            if answer == 1:
-                print('View')
-                return
-            elif answer == 2:
-                print('Delete')
-                return
-            elif answer == 0:
-                rvp.home.main_menu(input_data)
-                return
-            else:
-                print(YELLOW + "Invalid choice, please enter a number from 0 to 2!\n")
-    else:
-        go_reporting_or_home(SHEET,input_data)
-        return
+                try:
+                    print(PURPLE +"Enter your choice: " + WHITE, end='')
+                    answer = int(input().strip())
+                except ValueError:
+                    print(YELLOW + "You did not enter a number.\n")
+                    continue
+                
+                if answer in [1,2]:
+                    report_id = select_report_id(answer,n_saved_reports)
+                if answer == 1:
+                    print('View')
+                    report_worksheet.display_one_report(report_id)
+                    input(CYAN + 'Press any key to continue ...')
+                    break
+                elif answer == 2:
+                    print('Delete')
+                    return
+                elif answer == 3:
+                    print('Create')
+                    reporting_menu(SHEET,input_data)
+                    return
+                elif answer == 0:
+                    rvp.home.main_menu(input_data)
+                    return
+                else:
+                    print(YELLOW + "Invalid choice, please enter a number from 0 to 2!\n")
+        else:
+            go_reporting_or_home(SHEET,input_data)
+            return
+
 
 def go_reporting_or_home(SHEET,input_data):
     """
@@ -119,7 +131,7 @@ def select_report_id(answer,n_saved_reports):
         except ValueError:
             print(YELLOW + "You did not enter a number.\n")
             continue
-        
+
         if report_id in list(range(0,n_saved_reports)):
             return report_id
         else:
