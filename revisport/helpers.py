@@ -45,7 +45,7 @@ def question_to_save(
     if txt_question is None:
         txt_question = 'save your choices'
     print(f'Would you like to {txt_question}?')
-    print(f" 1: Yes, continue{ ' ' + txt_1}.")
+    print(f" 1: Yes, continue{txt_1}.")
     print(f" 2: No, {txt_2}.")
     
 def update_worksheet(SHEET,sheetname,row_data):

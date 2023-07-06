@@ -43,7 +43,7 @@ class Reports():
         self.worksheet.append_row(row_data)
             
         print(GREEN)
-        print(f"{self.worksheet_name.capitalize()} saved successfully.\n")
+        print(f"{self.worksheet_name.capitalize()} saved in FAVOURITES successfully.\n")
 
     def display_all(self):
         df = pd.DataFrame(self.worksheet.get_all_records())

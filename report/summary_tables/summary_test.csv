@@ -1,3 +1,4 @@
-,iso_code,country,co2_including_luc,co2_including_luc,co2_including_luc,co2_including_luc
+,iso_code,country,population,population,population,population
 ,,,min,max,mean,median
-0,SWE,Sweden,54.158,58.984,56.40225,56.2335
+0,IRL,Ireland,3894256,4031961,3961641.0,3958706.0
+1,ROU,Romania,21289292,21653530,21474714.666666668,21481322.0

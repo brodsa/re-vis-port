@@ -22,7 +22,7 @@ def reporting_menu(SHEET,input_data):
         "make notes and generate report with all standard aspects.")
     print(CYAN)
     print("Are you ready?")
-    print(" 1: Yes, continue creating the report.")
+    print(" 1: Yes, continue creating a report.")
     print(" 0: No; go back to HOME MENU.")
     while True:
         try:
@@ -170,8 +170,8 @@ def select_time_period(years):
 def select_index(indices):
     print(CYAN)
     print("Please select an index from the list bellow:")
-    print(" 1: GDP")
-    print(" 2: Population")
+    print(" 1: Population")
+    print(" 2: GDP")
     print(" 3: CO2 emmission (million tonnes)")
     print(" 4: Methane emmission (million tonnes of carbon dioxide-equivalents)")
     print(" 5: Energy consumption (terawatt-hours per year)")
@@ -197,7 +197,11 @@ def save_table_answers(SHEET,user_table_data, input_data):
     print('---------------')
     print(yaml.dump(user_table_data, default_flow_style=False))
     print(CYAN)
-    rvp.helpers.question_to_save()
+    rvp.helpers.question_to_save(
+        'save your selection',
+        ' generation summary table',
+        'make new selection'
+    )
 
     while True:
         try:
@@ -290,7 +294,7 @@ def display_tables(raw_df, summary_df, index_name):
 def save_report_menu(SHEET,report_tables,user_table_data):
     print(CYAN)
     print("Would you like to save the tables?")
-    print(" 1: Yes, save and continue to create the report.")
+    print(" 1: Yes, save and continue creating the report.")
     print(" 0: No, go back to MAIN MENU.")
     while True:
         try:
@@ -324,7 +328,7 @@ def ask_report_questions(SHEET):
 
     saved_reports = rvp.helpers.get_data_from_worksheet(SHEET,'report')
     print(CYAN)
-    print("Please fill in following to save the report.")
+    print("Please fill in following to complete the report.")
     
     if not saved_reports.empty:
         used_titles = [title for title in saved_reports.title]
@@ -332,7 +336,7 @@ def ask_report_questions(SHEET):
         used_titles = [None]
         
     while True:
-        print(PURPLE + "Enter title*: " + WHITE, end='')
+        print(PURPLE + "Enter report title*: " + WHITE, end='')
         title = input()
         condition_empty = all([item == ' ' for item in title])
         if title in used_titles:
@@ -342,7 +346,7 @@ def ask_report_questions(SHEET):
         else:
             print(YELLOW + 'Title must be specified.\n')
 
-    print(PURPLE + "Enter author: " + WHITE, end='')
+    print(PURPLE + "Enter report author: " + WHITE, end='')
     author = input()
     print(PURPLE + "Enter findings or notes: " + WHITE, end='')
     notes = input()
@@ -360,7 +364,7 @@ def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
     print(CYAN)
     rvp.helpers.question_to_save(
         'save provided information',
-        'save and go back HOME')
+        'saving in FAVOURITES and go back HOME')
 
     while True:
         try:

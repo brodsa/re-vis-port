@@ -1,5 +1,7 @@
-,iso_code,country,year,co2_including_luc
-0,SWE,Sweden,2000,54.158
-1,SWE,Sweden,2001,55.602
-2,SWE,Sweden,2002,56.865
-3,SWE,Sweden,2003,58.984
+,iso_code,country,year,population
+0,IRL,Ireland,2002,3894256
+1,IRL,Ireland,2003,3958706
+2,IRL,Ireland,2004,4031961
+3,ROU,Romania,2002,21653530
+4,ROU,Romania,2003,21481322
+5,ROU,Romania,2004,21289292
