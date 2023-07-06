@@ -1,7 +1,5 @@
-,iso_code,country,year,population
-0,IRL,Ireland,2002,3894256
-1,IRL,Ireland,2003,3958706
-2,IRL,Ireland,2004,4031961
-3,ROU,Romania,2002,21653530
-4,ROU,Romania,2003,21481322
-5,ROU,Romania,2004,21289292
+,iso_code,country,year,gdp
+0,SWE,Sweden,2000,303455109120
+1,SWE,Sweden,2001,308399210496
+2,SWE,Sweden,2002,317464870912
+3,SWE,Sweden,2003,326406144000

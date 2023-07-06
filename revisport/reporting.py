@@ -364,7 +364,7 @@ def save_report_answers(SHEET,user_report_data,report_tables,user_table_data):
     print(CYAN)
     rvp.helpers.question_to_save(
         'save provided information',
-        'saving in FAVOURITES and go back HOME')
+        ' saving in FAVOURITES and go back HOME')
 
     while True:
         try:

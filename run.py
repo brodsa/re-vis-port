@@ -11,7 +11,7 @@ from revisport.favourites import empty_favourite
 
 def main():
     # empty saved reports
-    empty_favourite()
+    #empty_favourite()
 
     # display the introduction text only at the begining
     welcome_message()

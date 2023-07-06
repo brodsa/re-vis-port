@@ -50,14 +50,15 @@ class Reports():
         if df.empty:
             print(YELLOW)
             print('There are no saved reports.')
-            return False
+            return 0
         else:
             print(GREEN)
-            print(f'Loading {self.worksheet_name}s ...')
-            reports_df = df[['ID','title','author','country','period','index']]
+            print(f'Loading saved {self.worksheet_name}s ...')
+            reports_df = df[['title','author','country','period','index']]
             print(WHITE)
-            print(tabulate(reports_df, headers=reports_df.columns, tablefmt="outline"))
-            return True
+            table_headers = reports_df.columns.insert(0,'ID')
+            print(tabulate(reports_df, headers=table_headers, tablefmt="outline"))
+            return reports_df.shape[0]
 
     def display_one_report(self):
         print('\n Display a report')

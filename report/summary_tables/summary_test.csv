@@ -1,4 +1,3 @@
-,iso_code,country,population,population,population,population
+,iso_code,country,gdp,gdp,gdp,gdp
 ,,,min,max,mean,median
-0,IRL,Ireland,3894256,4031961,3961641.0,3958706.0
-1,ROU,Romania,21289292,21653530,21474714.666666668,21481322.0
+0,SWE,Sweden,303455109120,326406144000,313931333632.0,312932040704.0
