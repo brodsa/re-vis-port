@@ -71,17 +71,17 @@ class Reports():
         
         os.system('clear')
         print(WHITE)
-        print(f'Title: {self.report_df[["title"]].iloc[0][0]}')
-        print(f'\nAuthor: {self.report_df[["author"]].iloc[0][0]}')
+        print(f'Title: {self.report_df[["title"]].iloc[report_id][0]}')
+        print(f'\nAuthor: {self.report_df[["author"]].iloc[report_id][0]}')
         print('\nReport specifications')
-        print(f'  Country: {self.report_df[["country"]].iloc[0][0]}')
-        print(f'  Time period: {self.report_df[["period"]].iloc[0][0]}')
-        print(f'  Index: {self.report_df[["index"]].iloc[0][0]}')
-        print(f'\nFindings: {self.report_df[["notes"]].iloc[0][0]}')
+        print(f'  Country: {self.report_df[["country"]].iloc[report_id][0]}')
+        print(f'  Time period: {self.report_df[["period"]].iloc[report_id][0]}')
+        print(f'  Index: {self.report_df[["index"]].iloc[report_id][0]}')
+        print(f'\nFindings: {self.report_df[["notes"]].iloc[report_id][0]}')
 
         print(f'\nDescriptive data summary')
         summary_table = pd.read_csv(
-            self.report_df[['summary_table']].iloc[0][0],
+            self.report_df[['summary_table']].iloc[report_id][0],
             header = 1,
             index_col=0)
         summary_table_col = summary_table.columns[2:].insert(0,'iso_code')
@@ -93,17 +93,14 @@ class Reports():
 
         print(f'\nRaw data')
         raw_table = pd.read_csv(
-            self.report_df[['raw_table']].iloc[0][0],
+            self.report_df[['raw_table']].iloc[report_id][0],
             header = 0,
             index_col=0)
         print(tabulate(
             raw_table,
             headers = raw_table.columns,
             tablefmt="outline"))        
-        
-        
-    def modify_report_information(self):
-        print('Update report')
 
-    def delete_one_report(self):
+
+    def delete_one_report(self,report_id):
         print('Delete report')
