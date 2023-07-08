@@ -48,33 +48,62 @@ def question_to_save(
     print(f" 1: Yes, continue{txt_1}.")
     print(f" 2: No, {txt_2}.")
     
-def update_worksheet(SHEET,sheetname,row_data):
+def update_worksheet(SHEET, sheetname, row_data):
+
     worksheet_report = SHEET.worksheet('report')
     worksheet_report.append_row(row_data)
 
-def empty_directory(folder):
+def empty_directory(folder,filename=None):
     """
     Empties directory based on the directory path.
     Taken from https://stackoverflow.com/
     questions/185936/how-to-delete-the-contents
     -of-a-folder
+
+    Vars:
+        folder(str): Folder path of report tables.
+        filnames(str): List of file to be deleted
+    
     """
-    for filename in os.listdir(folder):
-        file_path = os.path.join(folder, filename)
+    # for entire folder
+    if filename is None:
+        filenames = os.listdir(folder)
+    else:
+        filenames = [filename]
+
+    for file_name in filenames:
+        file_path = os.path.join(folder, file_name)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
         except Exception as e:
-            print('Failed to delete %s. Reason: %s' % (file_path, e))
+            print(f'Failed to delete {file_path}. Reason: f{e}')
 
 
-def empty_report_sheet(SHEET,sheetname):
-    worksheet = SHEET.worksheet(sheetname)
-    row_n = worksheet.row_count
-    if row_n > 1:
-        worksheet.delete_rows(2,row_n)
+def delete_report_from_sheet(SHEET, report_id = None):
+    """
+    Deletes report information from the sheet.
+
+    Vars:
+        SHEET(obj): Google sheet object
+        report_id(int): Report ID, in case no
+        specification the entire sheet is cleared.
+    """
+    
+    worksheet = SHEET.worksheet('report')
+    if report_id is None:
+        row_n = worksheet.row_count
+        if row_n > 1:
+            i_start = 2
+            i_end = row_n
+    else:
+        i_start= report_id + 2
+        i_end = None
+
+    worksheet.delete_rows(i_start,i_end)
+
 
 
 

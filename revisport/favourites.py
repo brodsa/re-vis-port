@@ -7,14 +7,14 @@ from revisport import SHEET
 from revisport.colors import *
 
 from revisport.helpers import empty_directory
-from revisport.helpers import empty_report_sheet
+from revisport.helpers import delete_report_from_sheet
 
 from revisport.reporting import reporting_menu
 
 def empty_favourite():
     empty_directory('./report/raw_tables')
     empty_directory('./report/summary_tables')
-    empty_report_sheet(SHEET,sheetname='report')
+    delete_report_from_sheet(SHEET)
 
 
 def favourites_menu(SHEET,input_data):
@@ -56,6 +56,7 @@ def favourites_menu(SHEET,input_data):
                 
                 if answer in [1,2]:
                     report_id = select_report_id(answer,n_saved_reports)
+
                 if answer == 1:
                     print('View')
                     report_worksheet.display_one_report(report_id)
@@ -63,6 +64,7 @@ def favourites_menu(SHEET,input_data):
                     break
                 elif answer == 2:
                     print('Delete')
+                    report_worksheet.delete_report(report_id)
                     return
                 elif answer == 3:
                     print('Create')
@@ -126,7 +128,7 @@ def select_report_id(answer,n_saved_reports):
         print(
             PURPLE +
             f"Select ID of the report to {action}: " + WHITE, end='')
-        try:  
+        try:
             report_id = int(input().strip())
         except ValueError:
             print(YELLOW + "You did not enter a number.\n")
