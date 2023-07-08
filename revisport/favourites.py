@@ -58,16 +58,14 @@ def favourites_menu(SHEET,input_data):
                     report_id = select_report_id(answer,n_saved_reports)
 
                 if answer == 1:
-                    print('View')
                     report_worksheet.display_one_report(report_id)
                     input(CYAN + 'Press any key to continue ...')
                     break
                 elif answer == 2:
-                    print('Delete')
                     report_worksheet.delete_report(report_id)
+                    input(CYAN + 'Press any key to continue ...')
                     return
                 elif answer == 3:
-                    print('Create')
                     reporting_menu(SHEET,input_data)
                     return
                 elif answer == 0:
