@@ -2,8 +2,7 @@
 ReVisPort is a Python command line reporting tool which enable users to create simple reports. The reports provide the user with descriptive summary of climate data [climate data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv) of EU countries, presented by [Our World in Data](https://ourworldindata.org/co2-and-greenhouse-gas-emissions) . Besides that, ReVisPort offers the users to add the created reports to their personalized favourites list. Notes or findings can be added to simplify the task of finding interesting data insights. In addition, the user have a possibility to contact the developers of ReVisPort. 
 
  
-
-TODO: screenshot or record
+![Mockup](./docs/mockup.png)
 
 [View](https://re-vis-port-06a4efd9c1c6.herokuapp.com/) the app on-line.
 ---
