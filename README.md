@@ -46,10 +46,15 @@ Color text using ANSI Code was considered to make the command line application m
 ### Logical Flow
 
 - Home Menu ![Main Menu](./docs/ux/logical_flow_main_menu.png)
-- Reporting Menu ![Report Menu](./docs/ux/logical_flow_report_menu.png)
-    - Save Report Menu ![Save Report Menu](./docs/ux/save_report_menu.png)
+
+- Reporting Menu & Save Report Menu <p float="center">
+  <img src="./docs/ux/logical_flow_report_menu.png"  alt="Report Menu"/>
+  <img src="./docs/ux/save_report_menu.png"  alt="Save Report Menu" /> 
+</p>
+
 - Favourites Menu ![Favourite Menu](./docs/ux/logical_flow_favourite_menu.png)
-- ? Feedback Menu
+
+- Contact Menu ![Contact Menu](./docs/ux/save_report_menu.png)
 
 
 
@@ -110,24 +115,22 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 ### Tools
 - [Lucid](https://lucid.app/documents#/documents?folder_id=recent) to create a flow chart.
 - [Generator of Markdown Tables](https://www.tablesgenerator.com/markdown_tables)
+- [PEP Validators](https://pep8ci.herokuapp.com/#)
 
 
 ## Credits & Inspiration
 - Data Sources
     - [Our Word in Data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv)
     - [List of the EU countries](https://european-union.europa.eu/principles-countries-history/country-profiles_en)
-- Documentation of [gspred](https://docs.gspread.org/en/latest/user-guide.html)
+- Documentation of all listed python libraries, see (#languages)
 - [Empty directory](https://stackoverflow.com/questions/185936/how-to-delete-the-contents-of-a-folder)
 - [Color definition](https://www.geeksforgeeks.org/print-colors-python-terminal/)
-- [ANSI color coding][https://codehs.com/tutorial/andy/ansi-colors]
-- Python Package Documentation
-    - [gspread](https://docs.gspread.org/en/v5.1.0/index.html)
-    - [pandas](https://pandas.pydata.org/docs/)
+- [ANSI color coding](https://codehs.com/tutorial/andy/ansi-colors)
+- Background Image by [Matt Palmer](https://unsplash.com/@mattpalmer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/climate-change?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- [Repository Template from Code Institute](https://github.com/Code-Institute-Org/p3-template)
 
 
 
 ## Acknowledgements
-I would like to thank my mentors, [Gareth McGirr](https://github.com/Gareth-McGirr) and [TODO](todo), for their guidance through my project and their valuable inputs. And my special thanks go to my husband for being supportive during the development of the program.
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+I would like to thank my mentors, [Gareth McGirr](https://github.com/Gareth-McGirr) and [TODO](), for their guidance through my project and their valuable inputs. And my special thanks go to my husband for being supportive during the development of the program.
 
