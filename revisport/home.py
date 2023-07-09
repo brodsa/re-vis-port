@@ -1,3 +1,5 @@
+import art
+
 from revisport.helpers import prepare_data
 from revisport.reporting import reporting_menu
 from revisport.favourites import favourites_menu
@@ -10,8 +12,10 @@ def welcome_message():
     """
     Prints welcomming message when the programm starts.
     """
-
-    print("\nWelcome to ReVisPort!\n")
+    print(GREEN)
+    print(art.text2art('ReVisPort'))
+    print(WHITE)
+    print("Welcome to ReVisPort!\n")
     print("It has never been easy to create simple reports.")
     print(
         "ReVisPort navigates you step by step to explore climate",
@@ -36,9 +40,9 @@ def main_menu(input_data):
     Prints main/welcome menu, a user should select from.
     """
     print(WHITE)
-    print("---------") 
+    print("---------")
     print("HOME MENU")
-    print("---------") 
+    print("---------")
     print(CYAN)
     print("Please select an option from the menu below:")
     print(" 1: Reporting")
@@ -70,7 +74,7 @@ def main_menu(input_data):
             return True
         else:
             print(
-                YELLOW + 
+                YELLOW +
                 "Invalid choice, please enter a number from 1, 2, 3!\n"
                 )
 
