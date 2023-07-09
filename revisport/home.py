@@ -19,7 +19,7 @@ def welcome_message():
     print("It has never been easy to create simple reports.")
     print(
         "ReVisPort navigates you step by step to explore climate",
-        "data for EU-countries and more.")
+        "data for EU-countries.")
     print("You can save interesting data instights to come back to them later on.")
     print(GREEN)
     print("ReVisPort is getting ready ...")
@@ -31,7 +31,7 @@ def load_data():
 
 def goodbye_message():
     print('\nThank you for using ReVisPort.')
-    print('Hope we see you come back soon!')
+    print('Hope we see you come back soon!\n')
 
 
 def main_menu(input_data):
