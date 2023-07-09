@@ -1,10 +1,11 @@
 # ReVisPort
-ReVisPort is a Python command line reporting tool which enable users to create simple reports. The reports provide the user with descriptive summary of climate data [climate data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv) of EU countries, presented by [Our World in Data](https://ourworldindata.org/co2-and-greenhouse-gas-emissions) . Besides that, ReVisPort offers the users to add the created reports to their personalized favourites list. Notes or findings can be added to simplify the task of finding interesting data insights. In addition, the user have a possibility to contact the developers of ReVisPort. 
+ReVisPort is a Python command line reporting tool which enable users to create simple reports. The reports provide the user with descriptive summary of climate data [climate data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv) of EU countries, presented by [Our World in Data](https://ourworldindata.org/co2-and-greenhouse-gas-emissions) . Besides that, ReVisPort offers the users to add the created reports to their personalized favourites list. Notes or findings can be added to simplify the task of finding interesting data insights. In addition, the user have a possibility to contact the developers of ReVisPort. [View](https://re-vis-port-06a4efd9c1c6.herokuapp.com/) the app on-line.
 
  
 ![Mockup](./docs/mockup.png)
 
-[View](https://re-vis-port-06a4efd9c1c6.herokuapp.com/) the app on-line.
+
+
 ---
 
 ## Table of Contents
@@ -31,36 +32,56 @@ The goal of ReVisPort is to search for interesting insights of climate data. ReV
 - As a User, I would like to return to home menu without restarting the application.
 - As a User, I would like to write reference or contact the application developer.
 
+### Structure & Logical Flow
+- **App structure** was designed using flow chart created in [Lucid](https://lucid.app/documents#/documents?folder_id=recent). The app was desined using menus system. All flow charts are displayed bellow:
+    - Home Menu ![Main Menu](./docs/ux/logical_flow_main_menu.png)
+    - Reporting Menu ![Report Menu](./docs/ux/logical_flow_report_menu.png)
+    - Save Report Menu ![Save Report Menu](./docs/ux/save_report_menu.png)
+    - Favourites Menu ![Favourite Menu](./docs/ux/logical_flow_favourite_menu.png)
+    - Contact Menu ![Contact Menu](./docs/ux/save_report_menu.png)
+
+<br>
+
+- **Data Structure**
+    - The app data are in form of structed data, i.e. table with columns and rows.
+    - The data are stored in Google Sheet.
+
 ### Colors
-Color text using ANSI Code was considered to make the command line application more user-friendly. In total 5 colors were selected. Each color was used only for one purpose, see Table below.
+Colored text using ANSI code was considered to make the command line application more user-friendly. In total, five colors were selected. Each color was used only for one purpose, see Table below.
 
 | Color  | ANSI Code | Purpose                                         | Examples                                |
 |--------|-----------|-------------------------------------------------|-----------------------------------------|
-| White  | [95m      | displayed information, no question, user inputs |                                         |
-| Green  | [92m      | actions, successes or asking for user inputs    | Saving...; Enter your choice:           |
-| Purple | [95m      | generated tables and report                     |                                         |
+| White  | [95m      | displayed information or user inputs |                                         |
+| Green  | [92m      | actions, successes     | Saving report ...            |
+| Purple | [95m      | asking for user inputs                     |    Enter your choice: |
 | Yellow | [33m      | warnings                                        | Invalid data                            |
 | Cyan   | [96m      | questions or menus                              | Select a time period from 2000 and 2020 |
 
-### Logical Flow
-
-- Home Menu ![Main Menu](./docs/ux/logical_flow_main_menu.png)
-
-- Reporting Menu & Save Report Menu <p float="center">
-  <img src="./docs/ux/logical_flow_report_menu.png"  alt="Report Menu"/>
-  <img src="./docs/ux/save_report_menu.png"  alt="Save Report Menu" /> 
-</p>
-
-- Favourites Menu ![Favourite Menu](./docs/ux/logical_flow_favourite_menu.png)
-
-- Contact Menu ![Contact Menu](./docs/ux/save_report_menu.png)
-
-
+In the orginal CI template, the red color of button was selected. This was changed to the black color to better fit with the background image.
 
 ---
 ## Features
 
-### Differences to Design
+### Existing Features
+- **Starting App**
+    - After opening the app, the app title and short introductury text is displayed.
+    - User is also informed that the app is getting ready. This means that all data are loaded to reduced user waiting time later on.
+    - Implementation: ![welcome](./docs/features/welcome.png)
+
+<br>
+
+- **Home Menu**
+    - After loading the data, Home Menu is displayed, with the following options:
+        - 1. Reporting - User can create a report.
+        - 2. Favourite - User can view or delete a report.
+        - 3. Contact - User can contact developer to send, for example a feedback.
+        - 0. Quit - User can quit the app.
+    - User is asked to enter his choice, which is validated. Only numbers ranging between 0 and 3 are allowed. In case of a invalid input, user is informed ask to try it again.
+    - Implementation: ![home menu](./docs/features/home_menu.png)
+
+- **Reporting (Report Menu)**
+
+
 ### Future Enhancements
 
 ## Testing
