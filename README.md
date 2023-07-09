@@ -126,7 +126,7 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 - [Empty directory](https://stackoverflow.com/questions/185936/how-to-delete-the-contents-of-a-folder)
 - [Color definition](https://www.geeksforgeeks.org/print-colors-python-terminal/)
 - [ANSI color coding](https://codehs.com/tutorial/andy/ansi-colors)
-- Background Image by [Matt Palmer](https://unsplash.com/@mattpalmer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/climate-change?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- Background Image by [Mika Baumeister](https://unsplash.com/photos/Wpnoqo2plFA?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/photos/Wpnoqo2plFA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 - [Repository Template from Code Institute](https://github.com/Code-Institute-Org/p3-template)
 
 
