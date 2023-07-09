@@ -12,9 +12,7 @@ def welcome_message():
     """
     Prints welcomming message when the programm starts.
     """
-    print(GREEN)
     print(art.text2art('ReVisPort'))
-    print(WHITE)
     print("Welcome to ReVisPort!\n")
     print("It has never been easy to create simple reports.")
     print(
