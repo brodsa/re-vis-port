@@ -115,6 +115,9 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 - [Lucid](https://lucid.app/documents#/documents?folder_id=recent) to create a flow chart.
 - [Generator of Markdown Tables](https://www.tablesgenerator.com/markdown_tables)
 - [PEP Validators](https://pep8ci.herokuapp.com/#)
+- [Image Compressor](https://tinypng.com/) was used to compress the images.
+- [Image Converter](https://ezgif.com/) was used to convert all images in the webp format.
+- [Mockup Generator](https://techsini.com/multi-mockup/index.php)
 
 
 ## Credits & Inspiration
