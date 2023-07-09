@@ -1,5 +1,5 @@
 # ReVisPort
-ReVisPort is a Python command line reporting tool which enable users to create simple reports. The reports provide the user with descriptive summary of climate data [climate data](https://ourworldindata.org/co2-and-greenhouse-gas-emissions) of EU countries. Besides that, ReVisPort offers the users to add the created reports to their personalized favourites list. Notes or findings can be added to simplify the taks of finding interesting data insights. 
+ReVisPort is a Python command line reporting tool which enable users to create simple reports. The reports provide the user with descriptive summary of climate data [climate data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv) of EU countries, presented by [Our World in Data](https://ourworldindata.org/co2-and-greenhouse-gas-emissions) . Besides that, ReVisPort offers the users to add the created reports to their personalized favourites list. Notes or findings can be added to simplify the task of finding interesting data insights. In addition, the user have a possibility to contact the developers of ReVisPort. 
 
  
 
@@ -19,7 +19,7 @@ TODO: screenshot or record
 
 ---
 ## UX
-The goal of ReVisPort is to explore interesting insights of climate data. ReVisPort targets particully users interesting in climate data and data generally. Users does not have to any knowledge about statistic or reporting, ReVisPort navigates users step by step. 
+The goal of ReVisPort is to search for interesting insights of climate data. ReVisPort targets particully users interesting in climate data and data generally. Users do not have to any pre-knowledge about reporting, ReVisPort navigates users step by step. However, bacis knowledge about descriptive statistics are required in order to interprete results.
 
 ### User Stories
 - As a User, I would like create a report without any programming nor statistic knowledge.
@@ -30,8 +30,7 @@ The goal of ReVisPort is to explore interesting insights of climate data. ReVisP
 - As a User, I would like to see all my saved reports and come back to each of them.
 - As a User, I would like to delete a saved report, which I do not need anymore.
 - As a User, I would like to return to home menu without restarting the application.
-- ? As a User, I would like to modify some aspekt of a created report later on.
-- ? As a User, I would like to write reference or contact the application developer.
+- As a User, I would like to write reference or contact the application developer.
 
 ### Colors
 Color text using ANSI Code was considered to make the command line application more user-friendly. In total 5 colors were selected. Each color was used only for one purpose, see Table below.
@@ -44,7 +43,7 @@ Color text using ANSI Code was considered to make the command line application m
 | Yellow | [33m      | warnings                                        | Invalid data                            |
 | Cyan   | [96m      | questions or menus                              | Select a time period from 2000 and 2020 |
 
-## Logical Flow
+### Logical Flow
 
 - Home Menu ![Main Menu](./docs/ux/logical_flow_main_menu.png)
 - Reporting Menu ![Report Menu](./docs/ux/logical_flow_report_menu.png)
@@ -100,10 +99,17 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 ## Technologies
 ### Languages
 - Python
+    - [art](https://pypi.org/project/art/)
+    - [gspread](https://docs.gspread.org/en/v5.10.0/)
+    - [google_auth](https://google-auth.readthedocs.io/en/master/)
+    - [pandas](https://pandas.pydata.org/)
+    - [tabulate](https://pypi.org/project/tabulate/)
+    - [PyYAML](https://pypi.org/project/PyYAML/)
 - Markdown
 
-### Technologies & Tools
+### Tools
 - [Lucid](https://lucid.app/documents#/documents?folder_id=recent) to create a flow chart.
+- [Generator of Markdown Tables](https://www.tablesgenerator.com/markdown_tables)
 
 
 ## Credits & Inspiration
