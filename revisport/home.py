@@ -1,6 +1,7 @@
 from revisport.helpers import prepare_data
 from revisport.reporting import reporting_menu
 from revisport.favourites import favourites_menu
+from revisport.contact import contact_menu
 from revisport import SHEET
 from revisport.colors import *
 
@@ -42,7 +43,7 @@ def main_menu(input_data):
     print("Please select an option from the menu below:")
     print(" 1: Reporting")
     print(" 2: Favourites")
-    print(" 3: References & Feedback")
+    print(" 3: Contact")
     print(' 0: Quit')
 
     while True:
@@ -62,7 +63,7 @@ def main_menu(input_data):
             favourites_menu(SHEET,input_data) # Favourite Menu
             break
         elif answer == 3:
-            print('You select References & Feedback') # Quit
+            contact_menu(SHEET,input_data)
             break
         elif answer == 0:
             goodbye_message()
