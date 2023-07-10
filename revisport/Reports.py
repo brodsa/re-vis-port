@@ -61,11 +61,13 @@ class Reports():
         else:
             print(GREEN)
             print(f'Loading saved {self.worksheet_name}s ...')
-            reports_df = df[['title', 'author', 'country', 'period', 'index']]
+            reports_df = df[['title', 'author', 'notes']]
+            table_to_show = reports_df
+            table_to_show = table_to_show.applymap(lambda x: x[:20]+'..' if len(x)>20 else x)
             print(WHITE)
-            table_headers = reports_df.columns.insert(0, 'ID')
+            table_headers = table_to_show.columns.insert(0, 'ID')
             print(tabulate(
-                reports_df,
+                table_to_show,
                 headers=table_headers,
                 tablefmt="outline"))
             return reports_df.shape[0]
