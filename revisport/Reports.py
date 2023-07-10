@@ -63,7 +63,7 @@ class Reports():
             print(f'Loading saved {self.worksheet_name}s ...')
             reports_df = df[['title', 'author', 'notes']]
             table_to_show = reports_df
-            table_to_show = table_to_show.applymap(lambda x: x[:20]+'..' if len(x)>20 else x)
+            table_to_show = table_to_show.applymap(lambda x: x[:17]+'..' if len(x)>17 else x)
             print(WHITE)
             table_headers = table_to_show.columns.insert(0, 'ID')
             print(tabulate(
