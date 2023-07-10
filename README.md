@@ -76,10 +76,26 @@ In the orginal CI template, the red color of button was selected. This was chang
         - 2. Favourite - User can view or delete a report.
         - 3. Contact - User can contact developer to send, for example a feedback.
         - 0. Quit - User can quit the app.
-    - User is asked to enter his choice, which is validated. Only numbers ranging between 0 and 3 are allowed. In case of a invalid input, user is informed ask to try it again.
+    - A user is asked to enter his choice, which is validated. Only numbers ranging between 0 and 3 are allowed. In case of a invalid input, the user is informed ask to try it again.
     - Implementation: ![home menu](./docs/features/home_menu.png)
 
+<br>
+
 - **Reporting (Report Menu)**
+    - A user is informed about the contect and actions in REPORTING submenu. There is still a possibility to go back to HOME menu.
+    - The user input is validated. Only numbers 1 or 0 are allowed. In case of a invalid input, user is informed ask to try it again.
+    - Impementation: ![reporting](./docs/features/report_menu.png)
+
+
+
+    - **Report input paramters**
+        - In the following, user is ask to enter the inputs to generate first report table and then additional report aspects.
+        - In order to create the report table, a user has to make choices on.
+            1. EU countries in the form of ISO codes.
+            2. Time period.
+            3. Climate data index.
+        - The user inputs are validated. In case of incorrect inputs, user is informed about the invalide input and ask to try again.
+        - Impementation: ![Report table inputs](./docs/features/reporting_iso_period_index.png)
 
 
 ### Future Enhancements

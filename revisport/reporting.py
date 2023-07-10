@@ -19,7 +19,7 @@ def reporting_menu(SHEET,input_data):
     print('---------')
     print(
         "You are about to create summary of climate data,",
-        "make notes and generate report with all standard aspects.")
+        "make notes and generate a report with all standard aspects.")
     print(CYAN)
     print("Are you ready?")
     print(" 1: Yes, continue creating a report.")
@@ -123,7 +123,7 @@ def select_time_period(years):
             print(CYAN)
             print(
                 "Select a time period from ",
-                "years 2000 and 2020.")
+                "years between 2000 and 2020.")
             print(PURPLE + "Enter your choice (yyyy-yyyy): " + WHITE, end='')
             selected_year_txt = input()
             selected_year_ls = [
@@ -217,7 +217,7 @@ def save_table_answers(SHEET,user_table_data, input_data):
         elif answer == 2:
             return False
         else:
-            print(YELOOW + "Invalid choice, please enter 1 or 2!\n")
+            print(YELLOW + "Invalid choice, please enter 1 or 2!\n")
 
 
 def generate_tables(user_table_data, input_data):
