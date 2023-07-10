@@ -33,7 +33,7 @@ The goal of ReVisPort is to search for interesting insights of climate data. ReV
 - As a User, I would like to write reference or contact the application developer.
 
 ### Structure & Logical Flow
-- **App structure** was designed using flow chart created in [Lucid](https://lucid.app/documents#/documents?folder_id=recent). The app was desined using menus system. All flow charts are displayed bellow:
+- **App structure** was designed using flow chart created in [Lucid](https://lucid.app/documents#/documents?folder_id=recent). The app was desined using a menu-system. All flow charts are displayed bellow:
     - Home Menu ![Main Menu](./docs/ux/logical_flow_main_menu.png)
     - Reporting Menu ![Report Menu](./docs/ux/logical_flow_report_menu.png)
     - Save Report Menu ![Save Report Menu](./docs/ux/save_report_menu.png)
@@ -61,41 +61,76 @@ In the orginal CI template, the red color of button was selected. This was chang
 
 ---
 ## Features
+The app uses a menu-system to ask user for inputs data. The user choices are always validated for the correctness. In case of an incorrect input or input format, a warning message is displayed. The warning mostly tells user a reason for an invalid input and ask to try again.
 
 ### Existing Features
-- **Starting App**
+*Overview of existing features*
+
+- [Starting App](#starting-app)
+- [Home Menu](#home-menu)
+    - [Report Input Parameters](#report-input-parameters-to-generate-data-tables)
+    - [Saving Report](#saving-report)
+
+
+<br>
+<br>
+
+*Detailed description of existing features:*
+
+- #### Starting App
     - After opening the app, the app title and short introductury text is displayed.
     - User is also informed that the app is getting ready. This means that all data are loaded to reduced user waiting time later on.
     - Implementation: ![welcome](./docs/features/welcome.png)
 
 <br>
 
-- **Home Menu**
+- #### Home Menu
     - After loading the data, Home Menu is displayed, with the following options:
         - 1. Reporting - User can create a report.
         - 2. Favourite - User can view or delete a report.
         - 3. Contact - User can contact developer to send, for example a feedback.
         - 0. Quit - User can quit the app.
-    - A user is asked to enter his choice, which is validated. Only numbers ranging between 0 and 3 are allowed. In case of a invalid input, the user is informed ask to try it again.
     - Implementation: ![home menu](./docs/features/home_menu.png)
 
 <br>
 
-- **Reporting (Report Menu)**
+- #### Reporting (Report Menu)
     - A user is informed about the contect and actions in REPORTING submenu. There is still a possibility to go back to HOME menu.
-    - The user input is validated. Only numbers 1 or 0 are allowed. In case of a invalid input, user is informed ask to try it again.
-    - Impementation: ![reporting](./docs/features/report_menu.png)
+    - Implementation: ![reporting](./docs/features/report_menu.png)
 
 
 
-    - **Report input paramters**
-        - In the following, user is ask to enter the inputs to generate first report table and then additional report aspects.
-        - In order to create the report table, a user has to make choices on.
-            1. EU countries in the form of ISO codes.
-            2. Time period.
-            3. Climate data index.
-        - The user inputs are validated. In case of incorrect inputs, user is informed about the invalide input and ask to try again.
-        - Impementation: ![Report table inputs](./docs/features/reporting_iso_period_index.png)
+    - #### Report Input Parameters
+        - In the following, a user is ask to enter the inputs to generate first report table and then additional report aspects.
+        - **Report table inputs**
+            - In order to create the report table, a user has to make choices on.
+                1. EU countries in the form of ISO codes (more countries are allowed)
+                2. Time period (time range)
+                3. Climate data index (only one index is allowed)
+            - Implementation: ![Report table inputs](./docs/features/reporting_iso_period_index.png)
+        - **Report table inputs confirmation**
+            - A user is ask to confirm the choices in order to proceed further with table creation. There is a possibility to change the input selection.
+            - Implementation: ![Report table confirmation](./docs/features/reporting_confirmation_table.png)
+        - **Report tables**
+            - Two tables are displayed. First, the raw data are shown based. In case of missing data, a user is informed with a warning message. Second, a summary table containing basic descriptive statistics. 
+            - Finally, a user should decided if the tables should be saved.A user has also possibility to return to the HOME menu.
+            - Implementation: ![Report tables](./docs/features/reporting_tables.png)
+    - #### Saving Report
+        - Once the user confirm to finish the report, the tables are saved and the following information needs to be filled in:
+            - Report title (required and unique)
+            - Report author
+            - Report notes & findings
+        - Implementation: ![Report save title etc.](./docs/features/reporting_save_title_author_notes.png)
+        - The user is ask to confirm the given information and save the report into FAVOURITES.
+            - If the user deciced to agree, the report is saved and the user is informed about all actions. 
+            - Finally, the user is navigated to the HOME menu, where the user can view the saved report.
+            - Implementation: ![Report saved](./docs/features/reporting_report_saved.png)
+
+<br>
+
+- #### Favourites
+
+        
 
 
 ### Future Enhancements
