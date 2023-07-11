@@ -28,7 +28,6 @@ def favourites_menu(SHEET,input_data):
     Raises:
         ValueError: Only numbers are allowed.
     """
-    os.system('clear')
     print(WHITE)
     print("----------") 
     print("FAVOURITES")
@@ -68,6 +67,7 @@ def favourites_menu(SHEET,input_data):
                     reporting_menu(SHEET,input_data)
                     return
                 elif answer == 0:
+                    os.system('clear')
                     rvp.home.main_menu(input_data)
                     return
                 else:

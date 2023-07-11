@@ -1,3 +1,5 @@
+import os
+
 import art
 
 from revisport.helpers import prepare_data
@@ -58,13 +60,16 @@ def main_menu(input_data):
             continue
         
         if answer == 1:
+            os.system('clear')
             print(GREEN + 'Reporting selected.')
             reporting_menu(SHEET,input_data) # Reporting Menu
             break
         elif answer == 2:
+            os.system('clear')
             favourites_menu(SHEET,input_data) # Favourite Menu
             break
         elif answer == 3:
+            os.system('clear')
             contact_menu(SHEET,input_data)
             break
         elif answer == 0:
