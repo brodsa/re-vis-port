@@ -18,7 +18,8 @@ def contact_menu(SHEET,input_data):
     print('-------')
     print(
         "We are happy to hear from your.",
-        "We appritate any feedback or suggestions for enhancement on ReVisPort")
+        "We appritate any feedback or suggestions for",
+        "\nenhancement on ReVisPort")
     print(CYAN)
     print("Please select from the menu bellow?")
     print(" 1: Send a message.")
@@ -40,8 +41,9 @@ def contact_menu(SHEET,input_data):
                     input(CYAN + 'Press any key to continue to HOME MENU ...')
                     return
         elif answer == 0:
-           rvp.home.main_menu(input_data)
-           return
+            os.system('clear')
+            rvp.home.main_menu(input_data)
+            return
         else:
             print(YELLOW + "Invalid choice, please enter a number 0 or 1!\n")
     return
