@@ -185,6 +185,7 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
 ### Future Enhancements
 
 ## Testing
+The website was continuously tested after implementing a feature. The main part of testing includes manual testing as well as webpage validation using existing tools, see [the detailed testing report](./README_testing.md).
 
 ## Deployment
 
