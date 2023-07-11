@@ -6,12 +6,9 @@
 from revisport.home import welcome_message
 from revisport.home import load_data 
 from revisport.home import main_menu 
-from revisport.favourites import empty_favourite
 
 
 def main():
-    # empty saved reports
-    #empty_favourite()
 
     # display the introduction text only at the begining
     welcome_message()
@@ -23,8 +20,6 @@ def main():
     while True:
         if main_menu(input_data):
             break
-
- 
 
 
 main()

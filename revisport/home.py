@@ -6,6 +6,7 @@ from revisport.helpers import prepare_data
 from revisport.reporting import reporting_menu
 from revisport.favourites import favourites_menu
 from revisport.contact import contact_menu
+from revisport.quit import quit_menu
 from revisport import SHEET
 from revisport.colors import *
 
@@ -29,9 +30,7 @@ def welcome_message():
 def load_data():
     return prepare_data(SHEET,'owid-co2-data','filter')
 
-def goodbye_message():
-    print('\nThank you for using ReVisPort.')
-    print('Hope we see you come back soon!\n')
+
 
 
 def main_menu(input_data):
@@ -73,7 +72,7 @@ def main_menu(input_data):
             contact_menu(SHEET,input_data)
             break
         elif answer == 0:
-            goodbye_message()
+            quit_menu(SHEET)
             return True
         else:
             print(

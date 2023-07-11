@@ -11,7 +11,7 @@ from revisport.helpers import delete_report_from_sheet
 
 from revisport.reporting import reporting_menu
 
-def empty_favourite():
+def empty_favourite(SHEET):
     empty_directory('./report/raw_tables')
     empty_directory('./report/summary_tables')
     delete_report_from_sheet(SHEET)
