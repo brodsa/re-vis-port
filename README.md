@@ -68,14 +68,15 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
 
 - [Starting App](#starting-app)
 - [Home Menu](#home-menu)
+- [Reporting Menu](#reporting-report-menu)
     - [Report Input Parameters](#report-input-parameters-to-generate-data-tables)
     - [Saving Report](#saving-report)
--[Favourites Menu](#favourites-menu)
+- [Favourites Menu](#favourites-menu)
     - [View a report](#view-a-report)
-    - [Delete a report](#d)
+    - [Delete a report](#delete-a-report)
+- [Contact Menu](#contact-menu)
 
 
-<br>
 <br>
 
 *Detailed description of existing features:*
@@ -161,7 +162,7 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
 
 - #### Contact Menu
     - A user is infomred about the possible procedures in the CONTACT Menu. The user can either send a message or go back HOME.
-    - Implementation: ![Contact Menu](./docs/features/contact_menu)
+    - Implementation: ![Contact Menu](./docs/features/contact_menu.png)
 
     - #### Contact Form
         - Once the user agree with sending the message, a contact from must be filled in.
