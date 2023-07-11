@@ -77,8 +77,7 @@ class Reports():
 
         print(GREEN)
         print(f'Loading the report of ID={self.r_id} ...')
-
-        os.system('clear')
+        
         print(WHITE)
         print(f'Title: {self.report_df[["title"]].iloc[report_id][0]}')
         print(f'\nAuthor: {self.report_df[["author"]].iloc[report_id][0]}')
