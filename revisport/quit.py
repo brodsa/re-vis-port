@@ -49,7 +49,7 @@ def ask_delete_favourites():
     print(CYAN)
     question_to_save(
         'empty saved reports from FAVOURITES?'
-        ,' emptying all saved reports'
+        ,' discarding all saved reports'
         ,'quit ReVisPort'
     )
     while True:

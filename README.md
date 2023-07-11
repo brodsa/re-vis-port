@@ -175,7 +175,10 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
         - Implementation: ![Contact Form](./docs/features/concatc_form.png)
         - The user is informed about sending message and ask to press any key to return HOME, see [implementation](./docs/features/contact_sent.png)
 
-
+- #### Quit Menu
+    - A user can quit the entire app. Before that, the user is ask if the saved reports should be removed.
+    - In case of selecting the option of discarding the reports, user is informed about deleting process. The user is also informed, in case there are no saved reports.
+    - Implementation:![Quit Menu](./docs/features/quit_menu.png)
 
     
 
