@@ -129,6 +129,22 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
 <br>
 
 - #### Favourites
+    - The Favourites submenu displays first all saved report and then the actully menu is shown.
+    - The overview of the saved reports displays title, author and notes of the report. Only 17 characters of each are displayed.
+    - User can select from the following, including the option returning to the HOME menu.
+        - 1. View a report
+        - 2. Delete a report
+        - 3. Create a report - user is navigated to the REPORTING submenu
+        - 0. HOME menu
+    - Implementation: ![Favourites Menu](./docs/features/favourites_menu.png)
+
+
+    - #### View a report
+        - After selecting the option "View a report", the user is first ask select the report ID.
+        - Implementation: ![Select ID to view](./docs/features/view_report_select_id.png)
+
+
+    
 
         
 
