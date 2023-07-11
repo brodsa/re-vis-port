@@ -59,7 +59,7 @@ def favourites_menu(SHEET,input_data):
 
                 if answer == 1:
                     report_worksheet.display_one_report(report_id)
-                    input(CYAN + 'Press any key to continue ...')
+                    input(CYAN + 'Press any key to close report ...')
                     break
                 elif answer == 2:
                     report_worksheet.delete_report(report_id)
