@@ -13,8 +13,8 @@ def quit_menu(SHEET):
     print(WHITE)
     print(
         "You are about to quit ReVisPort!",
-        "But before that, one last question :).",
-        "All your saved reports are goiging to stay in FAVOURITES")
+        "But before that, one last question :).")
+    print("All your saved reports are goiging to stay in FAVOURITES")
 
     delete = ask_delete_favourites()
 
@@ -39,7 +39,7 @@ def goodbye_message():
     """
     print(WHITE)
     print('Thank you for using ReVisPort.')
-    print('Hope we see you come back soon!\n')
+    print('Hope you have fun and we see you come back soon!\n')
 
 def ask_delete_favourites():
     """
