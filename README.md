@@ -70,6 +70,9 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
 - [Home Menu](#home-menu)
     - [Report Input Parameters](#report-input-parameters-to-generate-data-tables)
     - [Saving Report](#saving-report)
+-[Favourites Menu](#favourites-menu)
+    - [View a report](#view-a-report)
+    - [Delete a report](#d)
 
 
 <br>
@@ -125,23 +128,52 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
             - If the user deciced to agree, the report is saved and the user is informed about all actions. 
             - Finally, the user is navigated to the HOME menu, where the user can view the saved report.
             - Implementation: ![Report saved](./docs/features/reporting_report_saved.png)
+        - Note: The report information is saved to Google sheet. The report tables are saved as CSV file in the report folder.
 
 <br>
 
-- #### Favourites
+- #### Favourites Menu
     - The Favourites submenu displays first all saved report and then the actully menu is shown.
     - The overview of the saved reports displays title, author and notes of the report. Only 17 characters of each are displayed.
     - User can select from the following, including the option returning to the HOME menu.
         - 1. View a report
         - 2. Delete a report
         - 3. Create a report - user is navigated to the REPORTING submenu
-        - 0. HOME menu
+        - 0. HOME menu - user is navigated back to HOME
     - Implementation: ![Favourites Menu](./docs/features/favourites_menu.png)
 
 
     - #### View a report
-        - After selecting the option "View a report", the user is first ask select the report ID.
+        - After selecting the option "View a report", the user is first ask to select the report ID.
         - Implementation: ![Select ID to view](./docs/features/view_report_select_id.png)
+
+        - **Displayed report**
+            - Onec the report ID is entered, the corresponding report is displayed.
+            - The report contains following aspects: title, author, notes, summary data table, and raw data table.
+            - Implementation: ![Displayed Report](./docs/features/view_report_display.png)
+            - Any key can be pressed to close report and come back to FAVOURITES, see [implementation](./docs/features/view_report_close_report.png)
+
+    - #### Delete a report
+        - After selecting the option "Delete a report", the user is ask to select the report ID.
+        - Implementation: ![Delete Report](./docs/features/delete_report.png)
+        - A user is informed about deleting the report and directed back to FAVOURITES with the list of available reports, see [implementation](./docs/features/delete_report_deleted.png)
+        - Note: Report is removed from Google Sheet. The report tables are removed from the report folder.
+
+- #### Contact Menu
+    - A user is infomred about the possible procedures in the CONTACT Menu. The user can either send a message or go back HOME.
+    - Implementation: ![Contact Menu](./docs/features/contact_menu)
+
+    - #### Contact Form
+        - Once the user agree with sending the message, a contact from must be filled in.
+        - The following information are ask to enter:
+            - First name
+            - Last name
+            - Email - a required input
+            - Message - a required input
+        - The user has the option to change the entered information. 
+        - Implementation: ![Contact Form](./docs/features/concatc_form.png)
+        - The user is informed about sending message and ask to press any key to return HOME, see [implementation](./docs/features/contact_sent.png)
+
 
 
     
