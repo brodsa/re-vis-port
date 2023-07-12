@@ -11,13 +11,13 @@ from revisport.colors import *
 
 class Contacts():
     """
-    Contacts is a object describing all messages and related information
+    Contacts is an object describing all messages and related information
     filled in contact form by user.
     """
     def __init__(self, SHEET):
         """
         To initialize the object the Google sheet object must be 
-        given as an input paramter 
+        given as an input parameter. 
         """
         self.SHEET = SHEET
         self.worksheet_name = 'contact'
@@ -41,3 +41,4 @@ class Contacts():
 
         print(GREEN)
         print("Message sent successfully.\n")
+        

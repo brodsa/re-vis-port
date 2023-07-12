@@ -22,16 +22,16 @@ def favourites_menu(SHEET,input_data):
     Prints favourites menu, a user should select from.
 
     Args:
-        SHEET: Object of a Google spredsheet where the favourites are saved.
-        input_data: Dataframe of climate data used to create a data summary,
+        SHEET (obj): Object of a Google spredsheet where the favourites are saved.
+        input_data (data frame): Dataframe of climate data used to create a data summary,
         in case no reports are saved.
     Raises:
         ValueError: Only numbers are allowed.
     """
     print(WHITE)
-    print("----------") 
+    print("----------")
     print("FAVOURITES")
-    print("----------") 
+    print("----------")
     print("All saved reports are saved here and you can maitain them.")
     while True:
         report_worksheet = Reports(SHEET)
@@ -52,7 +52,7 @@ def favourites_menu(SHEET,input_data):
                 except ValueError:
                     print(YELLOW + "You did not enter a number.\n")
                     continue
-                
+
                 if answer in [1,2]:
                     report_id = select_report_id(answer,n_saved_reports)
 
@@ -82,6 +82,13 @@ def go_reporting_or_home(SHEET,input_data):
     Displays menu with options to create a report
     or to go back home. The user input is validated 
     and an action is taken.
+
+    Args:
+        SHEET (obj): Object of a Google spredsheet where 
+        the favourites are saved.
+        input_data (data frame): Dataframe of climate data 
+        used to create a data summary,
+        in case no reports are saved.
     """
     print(CYAN)
     rvp.helpers.question_to_save(
@@ -106,7 +113,7 @@ def go_reporting_or_home(SHEET,input_data):
             rvp.home.main_menu(input_data)
             return
         else:
-            print(YELOW + "Invalid choice, please enter 1 or 2!\n")
+            print(YELLOW + "Invalid choice, please enter 1 or 2!\n")
 
 
 def select_report_id(answer,n_saved_reports):
@@ -114,6 +121,7 @@ def select_report_id(answer,n_saved_reports):
     Asks to select report ID and validates user inputs.
 
     Args:
+        answer(str): either view or delete.
         n_saved_reports: Number of saved reports in FAVOURITES
     Returns: 
         The selected report ID.
@@ -134,5 +142,5 @@ def select_report_id(answer,n_saved_reports):
         if report_id in list(range(0,n_saved_reports)):
             return report_id
         else:
-            print(YELLOW + 
-            f"Invalid choice, please enter a number smaller than {n_saved_reports}!\n")
+            print(YELLOW +
+            f"Invalid choice, please enter a number smaller than or equal to {n_saved_reports-1}!\n")
