@@ -6,5 +6,3 @@
 ## Manual testing
 
 
-
-## Erro Handling
