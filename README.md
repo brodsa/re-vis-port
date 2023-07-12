@@ -19,18 +19,18 @@ ReVisPort is a Python command line reporting tool which enable users to create s
 
 ---
 ## UX
-The goal of ReVisPort is to search for interesting insights of climate data. ReVisPort targets particully users interesting in climate data and data generally. Users do not have to any pre-knowledge about reporting, ReVisPort navigates users step by step. However, bacis knowledge about descriptive statistics are required in order to interprete results.
+The goal of ReVisPort is to search for interesting insights of climate data. ReVisPort targets particularly users interesting in climate data and data generally. Users do not have to any pre-knowledge about reporting, ReVisPort navigates users step by step. However, basic knowledge about descriptive statistics are required in order to interpret results.
 
 ### User Stories
-- As a User, I would like create a report without any programming nor statistic knowledge.
-- As a User, I would like to be able to change choices I made.
-- As a User, I would like to display a created report with all standard aspects.
-- As a User, I would like to make notes to about the data instights
-- As a User, I would like to have a possibility to save a report.
-- As a User, I would like to see all my saved reports and come back to each of them.
-- As a User, I would like to delete a saved report, which I do not need anymore.
-- As a User, I would like to return to home menu without restarting the application.
-- As a User, I would like to write reference or contact the application developer.
+- U1: As a User, I would like create a report without any programming knowledge.
+- U2: As a User, I would like to be able to change choices I made.
+- U3: As a User, I would like to display a created report with all standard aspects.
+- U4: As a User, I would like to make notes to about the data insights.
+- U5: As a User, I would like to have a possibility to save a report.
+- U6: As a User, I would like to see all my saved reports and come back to each of them.
+- U7: As a User, I would like to delete a saved report, which I do not need anymore.
+- U8: As a User, I would like to return to home menu without restarting the application.
+- U9: As a User, I would like to write reference or contact the application developer.
 
 ### Structure & Logical Flow
 - **App structure** was designed using flow chart created in [Lucid](https://lucid.app/documents#/documents?folder_id=recent). The app was desined using a menu-system. All flow charts are displayed bellow:
@@ -43,8 +43,13 @@ The goal of ReVisPort is to search for interesting insights of climate data. ReV
 <br>
 
 - **Data Structure**
-    - The app data are in form of structed data, i.e. table with columns and rows.
+    - The app data are in form of structured data, i.e. table with columns and rows.
     - The data are stored in Google Sheet.
+
+<br>
+
+- **Code Structure**
+    TODO
 
 ### Colors
 Colored text using ANSI code was considered to make the command line application more user-friendly. In total, five colors were selected. Each color was used only for one purpose, see Table below.
@@ -57,7 +62,7 @@ Colored text using ANSI code was considered to make the command line application
 | Yellow | [33m      | warnings                                        | Invalid data                            |
 | Cyan   | [96m      | questions or menus                              | Select a time period from 2000 and 2020 |
 
-In the orginal CI template, the red color of button was selected. This was changed to the black color to better fit with the background image.
+In the original CI template, the red color of button was selected. This was changed to the black color to better fit with the background image.
 
 ---
 ## Features
@@ -82,25 +87,28 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
 *Detailed description of existing features:*
 
 - #### Starting App
-    - After opening the app, the app title and short introductury text is displayed.
+    - After opening the app, the app title and short introductory text is displayed.
     - User is also informed that the app is getting ready. This means that all data are loaded to reduced user waiting time later on.
-    - Implementation: ![welcome](./docs/features/welcome.png)
+    - Implementation:   
+    ![welcome](./docs/features/welcome.png)
 
 <br>
 
 - #### Home Menu
     - After loading the data, Home Menu is displayed, with the following options:
         - 1. Reporting - User can create a report.
-        - 2. Favourite - User can view or delete a report.
+        - 2. Favourites - User can view or delete a report.
         - 3. Contact - User can contact developer to send, for example a feedback.
         - 0. Quit - User can quit the app.
-    - Implementation: ![home menu](./docs/features/home_menu.png)
+    - Implementation:       
+    ![home menu](./docs/features/home_menu.png)
 
 <br>
 
 - #### Reporting (Report Menu)
-    - A user is informed about the contect and actions in REPORTING submenu. There is still a possibility to go back to HOME menu.
-    - Implementation: ![reporting](./docs/features/report_menu.png)
+    - A user is informed about the content and actions in REPORTING submenu. There is still a possibility to go back to HOME menu.
+    - Implementation:      
+    ![reporting](./docs/features/report_menu.png)
 
 
 
@@ -111,58 +119,68 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
                 1. EU countries in the form of ISO codes (more countries are allowed)
                 2. Time period (time range)
                 3. Climate data index (only one index is allowed)
-            - Implementation: ![Report table inputs](./docs/features/reporting_iso_period_index.png)
+            - Implementation:     
+            ![Report table inputs](./docs/features/reporting_iso_period_index.png)
         - **Report table inputs confirmation**
             - A user is ask to confirm the choices in order to proceed further with table creation. There is a possibility to change the input selection.
-            - Implementation: ![Report table confirmation](./docs/features/reporting_confirmation_table.png)
+            - Implementation:    
+            ![Report table confirmation](./docs/features/reporting_confirmation_table.png)
         - **Report tables**
             - Two tables are displayed. First, the raw data are shown based. In case of missing data, a user is informed with a warning message. Second, a summary table containing basic descriptive statistics. 
             - Finally, a user should decided if the tables should be saved.A user has also possibility to return to the HOME menu.
-            - Implementation: ![Report tables](./docs/features/reporting_tables.png)
+            - Implementation:     
+            ![Report tables](./docs/features/reporting_tables.png)
     - #### Saving Report
         - Once the user confirm to finish the report, the tables are saved and the following information needs to be filled in:
             - Report title (required and unique)
             - Report author
             - Report notes & findings
-        - Implementation: ![Report save title etc.](./docs/features/reporting_save_title_author_notes.png)
+        - Implementation:         
+        ![Report save title etc.](./docs/features/reporting_save_title_author_notes.png)
         - The user is ask to confirm the given information and save the report into FAVOURITES.
-            - If the user deciced to agree, the report is saved and the user is informed about all actions. 
+            - If the user decided to agree, the report is saved and the user is informed about all actions. 
             - Finally, the user is navigated to the HOME menu, where the user can view the saved report.
-            - Implementation: ![Report saved](./docs/features/reporting_report_saved.png)
+            - Implementation:      
+            ![Report saved](./docs/features/reporting_report_saved.png)
         - Note: The report information is saved to Google sheet. The report tables are saved as CSV file in the report folder.
 
 <br>
 
 - #### Favourites Menu
-    - The Favourites submenu displays first all saved report and then the actully menu is shown.
+    - The Favourites submenu displays first all saved report and then the menu is shown.
     - The overview of the saved reports displays title, author and notes of the report. Only 17 characters of each are displayed.
     - User can select from the following, including the option returning to the HOME menu.
         - 1. View a report
         - 2. Delete a report
         - 3. Create a report - user is navigated to the REPORTING submenu
         - 0. HOME menu - user is navigated back to HOME
-    - Implementation: ![Favourites Menu](./docs/features/favourites_menu.png)
+    - Implementation:           
+    ![Favourites Menu](./docs/features/favourites_menu.png)
 
 
     - #### View a report
         - After selecting the option "View a report", the user is first ask to select the report ID.
-        - Implementation: ![Select ID to view](./docs/features/view_report_select_id.png)
+        - Implementation:             
+        ![Select ID to view](./docs/features/view_report_select_id.png)
 
         - **Displayed report**
             - Onec the report ID is entered, the corresponding report is displayed.
             - The report contains following aspects: title, author, notes, summary data table, and raw data table.
-            - Implementation: ![Displayed Report](./docs/features/view_report_display.png)
+            - Implementation:     
+             ![Displayed Report](./docs/features/view_report_display.png)
             - Any key can be pressed to close report and come back to FAVOURITES, see [implementation](./docs/features/view_report_close_report.png)
 
     - #### Delete a report
         - After selecting the option "Delete a report", the user is ask to select the report ID.
-        - Implementation: ![Delete Report](./docs/features/delete_report.png)
+        - Implementation:        
+        ![Delete Report](./docs/features/delete_report.png)
         - A user is informed about deleting the report and directed back to FAVOURITES with the list of available reports, see [implementation](./docs/features/delete_report_deleted.png)
         - Note: Report is removed from Google Sheet. The report tables are removed from the report folder.
 
 - #### Contact Menu
-    - A user is infomred about the possible procedures in the CONTACT Menu. The user can either send a message or go back HOME.
-    - Implementation: ![Contact Menu](./docs/features/contact_menu.png)
+    - A user is informed about the possible procedures in the CONTACT Menu. The user can either send a message or go back HOME.
+    - Implementation:     
+     ![Contact Menu](./docs/features/contact_menu.png)
 
     - #### Contact Form
         - Once the user agree with sending the message, a contact from must be filled in.
@@ -172,16 +190,21 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
             - Email - a required input
             - Message - a required input
         - The user has the option to change the entered information. 
-        - Implementation: ![Contact Form](./docs/features/concatc_form.png)
+        - Implementation:      
+          ![Contact Form](./docs/features/concatc_form.png)
         - The user is informed about sending message and ask to press any key to return HOME, see [implementation](./docs/features/contact_sent.png)
 
 - #### Quit Menu
     - A user can quit the entire app. Before that, the user is ask if the saved reports should be removed.
     - In case of selecting the option of discarding the reports, user is informed about deleting process. The user is also informed, in case there are no saved reports.
-    - Implementation:![Quit Menu](./docs/features/quit_menu.png)
+    - Implementation:     
+    ![Quit Menu](./docs/features/quit_menu.png)
 
 
 ### Future Enhancements
+- Add additional indices and there explanations.
+- Download the report as PDF using fpdf library (see [more](https://towardsdatascience.com/how-to-create-a-pdf-report-for-your-data-analysis-in-python-2bea81133b)). Add a button and javascript event to enable downloading the report.
+- Add a line plot to visualize the data trends (using pandas or seaborn libraries).
 
 ## Testing
 The website was continuously tested after implementing a feature. The main part of testing includes manual, functional testing as well as webpage validation using existing tools, see [the detailed testing report](./README_testing.md).
@@ -193,11 +216,12 @@ Following issues where detected during the manual testing.
 | T06 | Invalid input for Home Menu                            | Aborts when pressing enter.                          | An IndexValue added in handling   the exception.                    |
 | T18 | Confirmation with a valid input   to generate summary table | Error when missing data                              | Exclude missing data and add a   warning message about missing data |
 | T25 | Report title with an invalid   input                        | Incorrect validation for a title   with blank spaces | Modify the condition from   unequal all to not equal all.           |
-| T38 | Select ID with invalid data                                 | Warning message displayes   incorrect available ID's | Adjust the displayed IDs which   are available.                     | 
+| T38 | Select ID with invalid data                                 | Warning message displays   incorrect available ID's | Adjust the displayed IDs which   are available.                     | 
 
 ## Deployment
+The app was developed using GitPod and pushed to a GitHub repository. The development was continuously documented through commit messages containing the type of commit, see [more](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/). The app was deployed on Heroku.
 
-### To Fork
+### To Fork Repository
 TODO
 
 ### To Clone Repository
@@ -233,21 +257,20 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 ## Technologies
 ### Languages
 - Python
-    - [art](https://pypi.org/project/art/)
-    - [gspread](https://docs.gspread.org/en/v5.10.0/)
-    - [google_auth](https://google-auth.readthedocs.io/en/master/)
-    - [pandas](https://pandas.pydata.org/)
-    - [tabulate](https://pypi.org/project/tabulate/)
-    - [PyYAML](https://pypi.org/project/PyYAML/)
+    - [art](https://pypi.org/project/art/) to display a nice title of ReVisPort.
+    - [gspread](https://docs.gspread.org/en/v5.10.0/) to store the data in Google sheet.
+    - [google_auth](https://google-auth.readthedocs.io/en/master/) to work with Google sheet.
+    - [pandas](https://pandas.pydata.org/) to manipulate and analyse data stored in a data frame.
+    - [tabulate](https://pypi.org/project/tabulate/) to nicely print data stored as a data frame.
+    - [PyYAML](https://pypi.org/project/PyYAML/) to nicely print data stored as a dictionary.
 - Markdown
 
 ### Tools
 - [Lucid](https://lucid.app/documents#/documents?folder_id=recent) to create a flow chart.
-- [Generator of Markdown Tables](https://www.tablesgenerator.com/markdown_tables)
-- [PEP Validators](https://pep8ci.herokuapp.com/#)
+- [Generator of Markdown Tables](https://www.tablesgenerator.com/markdown_tables) to generate markdown tables.
+- [PEP Validators](https://pep8ci.herokuapp.com/#) to validate Python code.
 - [Image Compressor](https://tinypng.com/) was used to compress the images.
 - [Image Converter](https://ezgif.com/) was used to convert all images in the webp format.
-- [Mockup Generator](https://techsini.com/multi-mockup/index.php)
 
 
 ## Credits & Inspiration
