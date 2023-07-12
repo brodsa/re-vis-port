@@ -19,7 +19,7 @@ def reporting_menu(SHEET,input_data):
     print('---------')
     print(
         "You are about to create summary of climate data,",
-        "make notes and generate a report with all standard aspects.")
+        "make notes and generate \na report with all standard aspects.")
     print(CYAN)
     print("Are you ready?")
     print(" 1: Yes, continue creating a report.")

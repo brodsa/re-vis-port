@@ -1,15 +1,15 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
-
 from revisport.home import welcome_message
-from revisport.home import load_data 
-from revisport.home import main_menu 
-
+from revisport.home import load_data
+from revisport.home import main_menu
 
 def main():
-
+    """ 
+    Wraps all functions to start the app.
+    First the title and welcome message - welcome_message(),
+    than loding data - loading_data(),
+    finally starting the actuall program
+    with the main menu - main_menu().
+    """
     # display the introduction text only at the begining
     welcome_message()
 
@@ -20,6 +20,5 @@ def main():
     while True:
         if main_menu(input_data):
             break
-
 
 main()

@@ -10,6 +10,12 @@ from revisport.Contacts import Contacts
 def contact_menu(SHEET,input_data):
     """
     Wraps all functions within the contact menu.
+    
+    Vars:
+        SHEET(obj): Google sheet object
+        input_data(dataframe): A dataframe with climate input data
+        as a input parameter for main_menu()
+
     """
     os.system('clear')
     print(WHITE)
@@ -100,6 +106,11 @@ def send_user_contact(SHEET, contact_data):
     """
     Asks user if the message should be save or if the information
     should be discarded.
+
+    Vars:
+        SHEET(obj): Google sheet object.
+        contact_data(dataframe): DataFrame with all contact form data,
+        filled by a user.
     """
     print(CYAN)
     question_to_save(

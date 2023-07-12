@@ -10,20 +10,30 @@ from revisport.colors import *
 
 
 class Contacts():
+    """
+    Contacts is a object describing all messages and related information
+    filled in contact form by user.
+    """
     def __init__(self, SHEET):
+        """
+        To initialize the object the Google sheet object must be 
+        given as an input paramter 
+        """
         self.SHEET = SHEET
         self.worksheet_name = 'contact'
         self.worksheet = SHEET.worksheet('contact')
 
-    def send_message(
-        self, first_name, last_name, email,	message):
-
+    def send_message(self, f_name, l_name, email,message):
+        """
+        Method to send the contact message. 
+        The information are saved into Google Sheet
+        """
         print(GREEN)
         print(f'Sending your message ...')
 
         contact_data = [
-            first_name,
-            last_name,
+            f_name,
+            l_name,
             email,
             message
         ]
