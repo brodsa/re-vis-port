@@ -180,15 +180,20 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
     - In case of selecting the option of discarding the reports, user is informed about deleting process. The user is also informed, in case there are no saved reports.
     - Implementation:![Quit Menu](./docs/features/quit_menu.png)
 
-    
-
-        
-
 
 ### Future Enhancements
 
 ## Testing
-The website was continuously tested after implementing a feature. The main part of testing includes manual testing as well as webpage validation using existing tools, see [the detailed testing report](./README_testing.md).
+The website was continuously tested after implementing a feature. The main part of testing includes manual, functional testing as well as webpage validation using existing tools, see [the detailed testing report](./README_testing.md).
+
+### Bugs & Issue
+Following issues where detected during the manual testing.
+| ID  | Description                                                 | BUG/ISSUE                                            | FIX                                                                 |
+|-----|-------------------------------------------------------------|------------------------------------------------------|---------------------------------------------------------------------|
+| T06 | Invalid input for Home Menu                            | Aborts when pressing enter.                          | An IndexValue added in handling   the exception.                    |
+| T18 | Confirmation with a valid input   to generate summary table | Error when missing data                              | Exclude missing data and add a   warning message about missing data |
+| T25 | Report title with an invalid   input                        | Incorrect validation for a title   with blank spaces | Modify the condition from   unequal all to not equal all.           |
+| T38 | Select ID with invalid data                                 | Warning message displayes   incorrect available ID's | Adjust the displayed IDs which   are available.                     | 
 
 ## Deployment
 
