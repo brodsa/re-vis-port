@@ -49,7 +49,15 @@ The goal of ReVisPort is to search for interesting insights of climate data. ReV
 <br>
 
 - **Code Structure**
-    TODO
+    - Python code is structured into modules, which are organized in revisport package.
+    - Following modules were created:
+        - `colors.py` - Contains constants of ANSI color definitions.
+        - `contact.py` - Contains functions and a class definition related to the CONTACT submenu.
+        - `favourites.py`- Contains functions related to FAVOURITES submenu.
+        - `helpers.py` - Contains supportive functions.
+        - `home.py` - Contains functions related to HOME menu.
+        - `quit.py` - Contains functions related to QUIT submenu.
+        - `reporting.py` - Contains functions and a class definition related to REPORTING submenu.
 
 ### Colors
 Colored text using ANSI code was considered to make the command line application more user-friendly. In total, five colors were selected. Each color was used only for one purpose, see Table below.
@@ -202,7 +210,7 @@ The app uses a menu-system to ask user for inputs data. The user choices are alw
 
 
 ### Future Enhancements
-- Add additional indices and there explanations.
+- Implements Login Menu with the guest and registered users rights. Guests are all users which do not have login information. Guests would have limited rights, like not saving or deleting a report. There would be only one registered login user, e.g. an expert, available only for limited number of users. The expert would have all rights.
 - Download the report as PDF using fpdf library (see [more](https://towardsdatascience.com/how-to-create-a-pdf-report-for-your-data-analysis-in-python-2bea81133b)). Add a button and javascript event to enable downloading the report.
 - Add a line plot to visualize the data trends (using pandas or seaborn libraries).
 
