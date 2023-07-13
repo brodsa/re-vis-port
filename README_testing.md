@@ -1,6 +1,18 @@
 # Testing report
 
 ## Validation
+To validate the python code, [CI Python Linter](https://pep8ci.herokuapp.com/#) was used. The validation did not revealed any errors.
+| Python file               | Report | Results   |
+|---------------------------|--------|-----------|
+| `run.py`                  | <img src="./docs/testing/pylint_run.png" alt="run" width="200"/> | no errors |
+| `revisport/__init__.py`   |        | no errors |
+| `revisport/colors.py`     |        | no errors |
+| `revisport/contact.py`    |        | no errors |
+| `revisport/favourites.py` |        | no errors |
+| `revisport/helpers.py`    |        | no errors |
+| `revisport/home.py`       |        | no errors |
+| `revisport/quit.py`       |        | no errors |
+| `revisport/reporting.py`  |        | no errors |
 
 
 ## Functional Testing
