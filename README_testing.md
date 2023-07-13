@@ -16,7 +16,7 @@ To validate the python code, [CI Python Linter](https://pep8ci.herokuapp.com/#) 
 
 
 ## Functional Testing
-Below detailed test of functional testing, which was conducted manually.
+Below results of functional testing, which was conducted manually.
 - [Home Menu](#home-menu)
 - [Reporting Menu](#reporting-menu)
 - [Saving Report Menu](#saving-report-menu)
@@ -33,6 +33,9 @@ Below detailed test of functional testing, which was conducted manually.
 | T05 | Option 0 Quit                            | Enter 0                                                                                                                                        | Quit menu is displayed:   Information about quitting the app and question to remove saved reports. | Quit menu is displayed.       | PASS   |
 | T06 | Invalid input                            | Enter string; number other than   0-3; blank spaces or press enter                                                                             | Warning message is displayed.                                                                      | Aborts when pressing enter.   | BUG    |
 
+[Back to the overview](#functional-testing)
+
+<br>
 
 ### Reporting Menu
 | ID  | Description                              | Steps                                                                                                                                          | Expected                                                                                           | Actual                        | Result |
@@ -55,6 +58,9 @@ Below detailed test of functional testing, which was conducted manually.
 | T22 | Ask to save summary table with a   valid choice to return HOME       | Enter 0                                                                                                                         | Return HOME                                                                                                                                                                                         | Return HOME                                                                                                 | PASS |
 | T23 | Ask to save summary table with   an invalid input                    | Enter following:      - numbers other than 0-1      - string      - blank space or press enter                                  | Warning message is   displayed:      - only numbers 0-1 are allowed      - not a number      - not a number                                                                                         | Warning message is displayed                                                                                | PASS |
 
+[Back to the overview](#functional-testing)
+
+<br>
 
 ### Saving Report Menu
 | ID  | Description                              | Steps                                                                                                                                          | Expected                                                                                           | Actual                        | Result |
@@ -77,6 +83,9 @@ Below detailed test of functional testing, which was conducted manually.
 | T22 | Ask to save summary table with a   valid choice to return HOME       | Enter 0                                                                                                                         | Return HOME                                                                                                                                                                                         | Return HOME                                                                                                 | PASS |
 | T23 | Ask to save summary table with   an invalid input                    | Enter following:      - numbers other than 0-1      - string      - blank space or press enter                                  | Warning message is   displayed:      - only numbers 0-1 are allowed      - not a number      - not a number                                                                                         | Warning message is displayed                                                                                | PASS |
 
+[Back to the overview](#functional-testing)
+
+<br>
 
 ### Favourites Menu
 | ID  | Description                              | Steps                                                                                                                                          | Expected                                                                                           | Actual                        | Result |
@@ -90,6 +99,9 @@ Below detailed test of functional testing, which was conducted manually.
 | T37 | Select ID and delete report             | Enter a valid ID from the table.                                                                | Message about removing the   report is displayed and updated overview of saved reports is displayed.        | Message about removing the   report is displayed and updated overview of saved reports is displayed. | PASS  |
 | T38 | Select ID with invalid data             | Enter following:      - not displayed ID number      - string      - blank space or press Enter | Warning message:      - invalid choice of ID      - not a number      - not a number                        | A bit confusing displayed   message                                                                  | ISSUE |
 
+[Back to the overview](#functional-testing)
+
+<br>
 
 ### Contact Menu
 | ID  | Description                              | Steps                                                                                                                                          | Expected                                                                                           | Actual                        | Result |
@@ -107,6 +119,9 @@ Below detailed test of functional testing, which was conducted manually.
 | T49 | Ask to send the contact message   with a valid input of making changes      | Enter 2                                                                                        | Question to enter the first name   is displayed.                                                            | Question to enter the first name   is displayed.                                                | PASS |
 | T50 | Ask to send the contact message   with an invalid input                     | Enter following:      - numbers other than 1-2      - string      - blank space or press enter | Warning message is   displayed:      - only numbers 1-2 are allowed      - not a number      - not a number | Warning message is displayed                                                                    | PASS |
 
+[Back to the overview](#functional-testing)
+
+<br>
 
 ### Quit Menu
 | ID  | Description                              | Steps                                                                                                                                          | Expected                                                                                           | Actual                        | Result |
@@ -123,3 +138,7 @@ Below detailed test of functional testing, which was conducted manually.
 | T48 | Ask to send the contact message   with a valid input of sending the message | Enter 1                                                                                        | Information about sending is   displayed. Message to press any key to return HOME is displayed.             | Information about sending is   displayed. Message to press any key to return HOME is displayed. | PASS |
 | T49 | Ask to send the contact message   with a valid input of making changes      | Enter 2                                                                                        | Question to enter the first name   is displayed.                                                            | Question to enter the first name   is displayed.                                                | PASS |
 | T50 | Ask to send the contact message   with an invalid input                     | Enter following:      - numbers other than 1-2      - string      - blank space or press enter | Warning message is   displayed:      - only numbers 1-2 are allowed      - not a number      - not a number | Warning message is displayed                                                                    | PASS |
+
+[Back to the overview](#functional-testing)
+
+<br>
