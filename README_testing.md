@@ -5,23 +5,27 @@ To validate the python code, [CI Python Linter](https://pep8ci.herokuapp.com/#) 
 | Python file               | Report | Results   |
 |---------------------------|--------|-----------|
 | `run.py`                  | <img src="./docs/testing/pylint_run.png" alt="run" width="200"/> | no errors |
-| `revisport/__init__.py`   |        | no errors |
-| `revisport/colors.py`     |        | no errors |
-| `revisport/contact.py`    |        | no errors |
-| `revisport/favourites.py` |        | no errors |
-| `revisport/helpers.py`    |        | no errors |
-| `revisport/home.py`       |        | no errors |
-| `revisport/quit.py`       |        | no errors |
-| `revisport/reporting.py`  |        | no errors |
+| `revisport/__init__.py`   | <img src="./docs/testing/pylint_init.png" alt="run" width="200"/> | no errors |
+| `revisport/colors.py`     | <img src="./docs/testing/pylint_colors.png" alt="run" width="200"/> | no errors |
+| `revisport/contact.py`    | <img src="./docs/testing/pylint_contact.png" alt="run" width="200"/> | no errors |
+| `revisport/favourites.py` | <img src="./docs/testing/pylint_favourites.png" alt="run" width="200"/> | no errors |
+| `revisport/helpers.py`    | <img src="./docs/testing/pylint_helpers.png" alt="run" width="200"/> | no errors |
+| `revisport/home.py`       | <img src="./docs/testing/pylint_home.png" alt="run" width="200"/> | no errors |
+| `revisport/quit.py`       | <img src="./docs/testing/pylint_quit.png" alt="run" width="200"/> | no errors |
+| `revisport/reporting.py`  | <img src="./docs/testing/pylint_reporting.png" alt="run" width="200"/> | no errors |
 
 
 ## Functional Testing
 Below results of functional testing, which was conducted manually.
+
+*Overview*
 - [Home Menu](#home-menu)
 - [Reporting Menu](#reporting-menu)
 - [Saving Report Menu](#saving-report-menu)
 - [Favourites Menu](#favourites-menu)
 - [Contact Menu](#contact-menu)
+
+
 
 ### Home Menu
 | ID  | Description                              | Steps                                                                                                                                          | Expected                                                                                           | Actual                        | Result |
