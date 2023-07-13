@@ -4,7 +4,7 @@
 ECS = "\033"
 
 # errors
-RED =  ECS + '[91m'
+RED = ECS + '[91m'
 
 # successes or action
 GREEN = ECS + '[92m'
@@ -17,7 +17,7 @@ WHITE = ECS + '[00m'
 
 # tables and report information
 PURPLE = ECS + '[95m'
-LIGHT_PURPLE = ECS +  '[94m'
+LIGHT_PURPLE = ECS + '[94m'
 
 # questions
 CYAN = ECS + '[96m'

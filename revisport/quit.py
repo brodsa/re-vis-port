@@ -7,14 +7,16 @@ from revisport.colors import CYAN, WHITE, YELLOW, PURPLE, GREEN
 
 def quit_menu(SHEET):
     """
-    Wraps all function for quiting the app
-    """
+    Wraps all functions for quitting the app.
 
+    Args:
+         SHEET(obj): Google sheet object.
+    """
     print(WHITE)
     print(
         "You are about to quit ReVisPort!",
         "But before that, one last question :).")
-    print("All your saved reports are goiging to stay in FAVOURITES")
+    print("All your saved reports are going to stay in FAVOURITES")
 
     delete = ask_delete_favourites()
 
@@ -33,34 +35,37 @@ def quit_menu(SHEET):
 
     goodbye_message()
 
+
 def goodbye_message():
     """
-    Prints goodbye messages.
+    Prints goodbye message.
     """
     print(WHITE)
     print('Thank you for using ReVisPort.')
     print('Hope you have fun and we see you come back soon!\n')
 
+
 def ask_delete_favourites():
     """
-    Asks to delete all saved reports and 
+    Asks to delete all saved reports and
     if so, deletes them.
     """
     print(CYAN)
     question_to_save(
-        'empty saved reports from FAVOURITES?'
-        ,' discarding all saved reports'
-        ,'quit ReVisPort'
+        'empty saved reports from FAVOURITES?',
+        ' discarding all saved reports',
+        'quit ReVisPort'
     )
+
     while True:
         try:
-            print(PURPLE +"Enter your choice: " + WHITE, end='')
+            print(PURPLE + "Enter your choice: " + WHITE, end='')
             answer = int(input().strip())
         except ValueError:
             print(YELLOW + "You did not enter a number.\n")
             continue
 
-        if answer==1:
+        if answer == 1:
             return True
         elif answer == 2:
             return False
