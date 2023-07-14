@@ -413,7 +413,7 @@ def save_report_menu(SHEET, report_tables, user_table_data):
     print(CYAN)
     print("Would you like to save the tables?")
     print(" 1: Yes, save and finish creating the report.")
-    print(" 0: No, go back to MAIN MENU.")
+    print(" 0: No, go back to HOME MENU.")
     while True:
 
         try:
@@ -614,12 +614,14 @@ class Reports():
         else:
             print(GREEN)
             print(f'Loading saved {self.worksheet_name}s ...')
+
             reports_df = df[['title', 'author', 'notes']]
             table_to_show = reports_df
             table_to_show = table_to_show.applymap(
                 lambda x: x[:17]+'..' if len(x) > 17 else x)
-            print(WHITE)
             table_headers = table_to_show.columns.insert(0, 'ID')
+
+            print(WHITE)
             print(tabulate(
                 table_to_show,
                 headers=table_headers,
