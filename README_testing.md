@@ -1,7 +1,7 @@
 # Testing report
 
 ## Validation
-To validate the python code, [CI Python Linter](https://pep8ci.herokuapp.com/#) was used. The validation did not revealed any errors.
+To validate the Python code, the [CI Python Linter](https://pep8ci.herokuapp.com/#) was used. The validation did not reveal any errors.
 | Python file               | Report | Results   |
 |---------------------------|--------|-----------|
 | `run.py`                  | <img src="./docs/testing/pylint_run.png" alt="run" width="200"/> | no errors |
@@ -16,7 +16,7 @@ To validate the python code, [CI Python Linter](https://pep8ci.herokuapp.com/#) 
 
 
 ## Functional Testing
-Below results of functional testing, which was conducted manually.
+Below are the results of functional testing, which was conducted manually.
 
 *Overview*
 - [Home Menu](#home-menu)
@@ -30,7 +30,7 @@ Below results of functional testing, which was conducted manually.
 ### Home Menu
 | ID  | Description                              | Steps                                                                                                                                          | Expected                                                                                           | Actual                        | Result |
 |-----|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|-------------------------------|--------|
-| T01 | Title, welcome message, and HOME  menu. | Run program and make sure that   ReVisPort, welcome message and the home menu (1: Reporting, 2 Favourites, 3   Contact, 0 Quit) are displayed. | Everything displayed properly                                                                      | Everything displayed properly | PASS   |
+| T01 | Title, welcome message, and HOME  menu. | Run program and make sure that   ReVisPort, welcome message, and the home menu (1: Reporting, 2 Favourites, 3   Contact, 0 Quit) are displayed. | Everything displayed properly                                                                      | Everything displayed properly | PASS   |
 | T02 | Option 1 Reporting                       | Enter 1                                                                                                                                        | Reporting menu is displayed.                                                                       | Reporting menu is displayed.  | PASS   |
 | T03 | Option 2 Favourites                      | Enter 2                                                                                                                                        | Favourites menu is displayed   with a table of saved reports.                                      | Favourites menu is displayed. | PASS   |
 | T04 | Option 3 Contact                         | Enter 3                                                                                                                                        | Contact menu is displayed.                                                                         | Contact menu is displayed.    | PASS   |

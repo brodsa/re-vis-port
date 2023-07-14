@@ -236,7 +236,7 @@ The app was developed using GitPod and pushed to a GitHub repository. The develo
 In order to clone the repository locally, follow the steps:
 
 1. On Git
-    - Go to the repository, i.e. https://github.com/brodsa/re-vis-port
+    - Go to the repository, i.e. https://github.com/brodsa/re-vis-port.
     - You see the content of the repository, i.e. all the files are listed. On the right side at the top of the list, find the Code drop down button and click on it.
     - Copy the repository HTTPS link to the clipboard.
 2. In the terminal (Note: git must be preinstalled) 
@@ -252,7 +252,7 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 2. Insert an app name and select a region. Click "Create App"; see [screenshot](./docs/deployment/02_create_app.png).
 3. Select the "GitHub" deployment method; see [screenshot](./docs/deployment/03_deployment_method.png)
 4. Search for a repository to connect and a branch to deploy; see [screenshot](./docs/deployment/04_select_repository_branch.png)
-5. In the "Setting" tab, go to the section "Buildpacks" and add two buildpacks in the following order (see [here](./docs/deployment/06_buildpacks.png)): 
+5. In the "Setting" tab, go to the section "Buildpacks" and add two buildpacks in the following order (see [screenshot](./docs/deployment/06_buildpacks.png)): 
     - `heroku/python`
     - `heroku/nodejs`
 6. In the "Config Var" section, add two variables (see [screenshot](./docs/deployment/07_config_vars.png)):
@@ -265,36 +265,37 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 ## Technologies
 ### Languages
 - Python
-    - [art](https://pypi.org/project/art/) to display a nice title of ReVisPort.
-    - [gspread](https://docs.gspread.org/en/v5.10.0/) to store the data in Google sheet.
-    - [google_auth](https://google-auth.readthedocs.io/en/master/) to work with Google sheet.
+    - [art](https://pypi.org/project/art/) to display a nice title for ReVisPort.
+    - [gspread](https://docs.gspread.org/en/v5.10.0/) to store the data in a Google Sheet.
+    - [google_auth](https://google-auth.readthedocs.io/en/master/) to work with Google Sheet.
     - [pandas](https://pandas.pydata.org/) to manipulate and analyse data stored in a data frame.
     - [tabulate](https://pypi.org/project/tabulate/) to nicely print data stored as a data frame.
     - [PyYAML](https://pypi.org/project/PyYAML/) to nicely print data stored as a dictionary.
 - Markdown
+- CSS & HTML
 
 ### Tools
 - [Lucid](https://lucid.app/documents#/documents?folder_id=recent) to create a flow chart.
-- [Generator of Markdown Tables](https://www.tablesgenerator.com/markdown_tables) to generate markdown tables.
-- [PEP Validators](https://pep8ci.herokuapp.com/#) to validate Python code.
-- [Image Compressor](https://tinypng.com/) was used to compress the images.
-- [Image Converter](https://ezgif.com/) was used to convert all images in the webp format.
-- [Spell Checker](https://quillbot.com/spell-checker) to correct typos.
+- [Generator of Markdown tables](https://www.tablesgenerator.com/markdown_tables) to generate markdown tables.
+- [PEP validator](https://pep8ci.herokuapp.com/#) to validate Python code.
+- [Image compressor](https://tinypng.com/) was used to compress the images.
+- [Image converter](https://ezgif.com/) was used to convert all images to the webp format.
+- [Spell checker](https://quillbot.com/spell-checker) to correct typos.
 
 
 ## Credits & Inspiration
 - Data Sources
     - [Our Word in Data](https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv)
     - [List of the EU countries](https://european-union.europa.eu/principles-countries-history/country-profiles_en)
-- Documentation of all listed python libraries, see (#languages)
+- Documentation of all listed python libraries; see  [Section Languages](#languages)
 - [Empty directory](https://stackoverflow.com/questions/185936/how-to-delete-the-contents-of-a-folder)
 - [Color definition](https://www.geeksforgeeks.org/print-colors-python-terminal/)
 - [ANSI color coding](https://codehs.com/tutorial/andy/ansi-colors)
-- Background Image by [Mika Baumeister](https://unsplash.com/photos/Wpnoqo2plFA?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/photos/Wpnoqo2plFA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- Background image by [Mika Baumeister](https://unsplash.com/photos/Wpnoqo2plFA?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/photos/Wpnoqo2plFA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 - [Repository Template from Code Institute](https://github.com/Code-Institute-Org/p3-template)
 
 
 
 ## Acknowledgements
-I would like to thank my mentors, [Gareth McGirr](https://github.com/Gareth-McGirr) and [TODO](), for their guidance through my project and their valuable inputs. And my special thanks go to my husband for being supportive during the development of the program.
+I would like to thank my mentors, [Gareth McGirr](https://github.com/Gareth-McGirr) and Darío Carrasquel, for their guidance through my project and their valuable input. And my special thanks go to my husband for being supportive during the development of the app.
 
