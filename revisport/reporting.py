@@ -230,8 +230,8 @@ def select_index(indices):
     """
     print(CYAN)
     print("Please select an index from the list bellow:")
-    print(" 1: Population")
-    print(" 2: GDP")
+    print(" 1: Population (million)")
+    print(" 2: GDP (billion US Dollars)")
     print(" 3: CO2 emission (million tonnes)")
     print(
         " 4: Methane emission",

@@ -43,7 +43,7 @@ def prepare_data(SHEET, *sheetnames):
     filter_country = owid_df.country.isin(filter_df.country)
     filter_year = owid_df.year.between(filter_df.year[0], filter_df.year[1])
     data_tmp = owid_df[filter_country & filter_year]
-    # get rid off o missing valaus, represented as empty string
+    # get rid off o missing values, represented as empty string
     filter_columns = [ind for ind in filter_df.ind if ind != '']
 
     # prepare output data
