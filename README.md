@@ -228,6 +228,9 @@ The following issues were detected during the manual testing.
 | T36 | Select ID and view report       | A report with all sections is displayed. A message to press any key to continue is displayed. In the case of too long findings, a text is not broken appropriately.        | Unfixed, it will be fixed in next iterations.  |
 | T38 | Select ID with invalid data                                 | Warning message displays   incorrect available ID's | Adjust the displayed IDs which   are available.                     |
 
+
+The app was testing by a mentor. The mentor tested the logic flow of the app. The app aborted when trying to view several reports with FileNotFoundError. To fix this, try-except block was added in the code. The directory where the reports are saved was cleaned up and the corresponding worksheet as well. After that, it was not possible to reconstruct the same error again. The assumption is that during debugging of deleting or creating a report, the logic flow was not completed till the end.  
+
 ## Deployment
 The app was developed using GitPod and pushed to a GitHub repository. The development was continuously documented through commit messages containing the type of commit; see [more](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/). The app was deployed on Heroku.
 
