@@ -91,7 +91,7 @@ def main_menu(SHEET, input_data):
         else:
             print(
                 YELLOW +
-                "Invalid choice, please enter a number from 1, 2, 3!\n"
+                "Invalid choice, please enter a number between 0 and 3!\n"
                 )
 
         return False

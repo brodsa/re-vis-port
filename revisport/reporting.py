@@ -61,7 +61,7 @@ def reporting_menu(SHEET, input_data):
             break
 
         else:
-            print(YELLOW + "Invalid choice, please enter a number 1 or 2!")
+            print(YELLOW + "Invalid choice, please enter a number 0 or 1!")
 
 
 def ask_table_questions(input_data):

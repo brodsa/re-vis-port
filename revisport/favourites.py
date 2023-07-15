@@ -98,7 +98,6 @@ def go_reporting_or_home(SHEET, input_data):
             'go back to HOME menu')
     while True:
         try:
-            print('go_reporting_or_home')
             print(PURPLE + "Enter your choice: " + WHITE, end='')
             answer = int(input().strip())
         except ValueError:
