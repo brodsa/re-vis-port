@@ -7,7 +7,7 @@ from tabulate import tabulate
 import revisport as rvp
 from revisport.helpers import empty_directory
 from revisport.helpers import delete_report_from_sheet
-from revisport.colors import WHITE, GREEN, PURPLE, CYAN, YELLOW
+from revisport.colors import WHITE, GREEN, PURPLE, CYAN, YELLOW, RED
 
 
 def reporting_menu(SHEET, input_data):
@@ -683,13 +683,13 @@ def display_report_information(report_df, report_id):
         report_id(int): Report ID to be displayed.
     """
     print(WHITE)
-    print(f'Title: {report_df[["title"]].iloc[report_id][0]}')
-    print(f'\nAuthor: {report_df[["author"]].iloc[report_id][0]}')
-    print('\nReport specifications')
+    print(f'TITLE: {report_df[["title"]].iloc[report_id][0]}')
+    print(f'\nAUTHOR: {report_df[["author"]].iloc[report_id][0]}')
+    print('\nREPORT SPECIFICATION')
     print(f'  Country: {report_df[["country"]].iloc[report_id][0]}')
     print(f'  Time period: {report_df[["period"]].iloc[report_id][0]}')
     print(f'  Index: {report_df[["index"]].iloc[report_id][0]}')
-    print(f'\nFindings: {report_df[["notes"]].iloc[report_id][0]}')
+    print(f'\nFINDINGS: {report_df[["notes"]].iloc[report_id][0]}')
 
 
 def display_summary_table(report_df, report_id):
@@ -701,20 +701,25 @@ def display_summary_table(report_df, report_id):
             and related information.
         report_id(int): Report ID to be displayed.
     """
-    print(f'\nDescriptive data summary')
+    print(WHITE)
+    print('DESCRIPTIVE DATA SUMMARY')
+    try:
+        summary_table = pd.read_csv(
+            report_df[['summary_table']].iloc[report_id][0],
+            header=1,
+            index_col=0)
 
-    summary_table = pd.read_csv(
-        report_df[['summary_table']].iloc[report_id][0],
-        header=1,
-        index_col=0)
+        summary_table_col = summary_table.columns[2:].insert(0, 'iso_code')
+        summary_table_col = summary_table_col.insert(1, 'country')
 
-    summary_table_col = summary_table.columns[2:].insert(0, 'iso_code')
-    summary_table_col = summary_table_col.insert(1, 'country')
-
-    print(tabulate(
-        summary_table,
-        headers=summary_table_col,
-        tablefmt="outline"))
+        print(tabulate(
+            summary_table,
+            headers=summary_table_col,
+            tablefmt="outline"))
+    except FileNotFoundError:
+        print(RED)
+        print('Something went wrong, there is no summary saved.')
+        print(YELLOW + 'Please, select another report.')
 
 
 def display_raw_table(report_df, report_id):
@@ -726,14 +731,20 @@ def display_raw_table(report_df, report_id):
             and related information.
         report_id(int): Report ID to be displayed.
     """
-    print(f'\nRaw data')
+    print(WHITE)
+    print('RAW DATA:')
 
-    raw_table = pd.read_csv(
-        report_df[['raw_table']].iloc[report_id][0],
-        header=0,
-        index_col=0)
+    try:
+        raw_table = pd.read_csv(
+            report_df[['raw_table']].iloc[report_id][0],
+            header=0,
+            index_col=0)
 
-    print(tabulate(
-        raw_table,
-        headers=raw_table.columns,
-        tablefmt="outline"))
+        print(tabulate(
+            raw_table,
+            headers=raw_table.columns,
+            tablefmt="outline"))
+    except FileNotFoundError:
+        print(RED)
+        print('Something went wrong, there is no data saved.')
+        print(YELLOW + 'Please select another report to view.\n')
