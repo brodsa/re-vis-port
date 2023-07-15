@@ -1,7 +1,7 @@
-# Testing report
+# Testing & Validation Report
 
-## Validation
-To validate the Python code, the [CI Python Linter](https://pep8ci.herokuapp.com/#) was used. The validation did not reveal any errors.
+## PEP8 Validation
+To validate the Python code in terms of PEP8, the [CI Python Linter](https://pep8ci.herokuapp.com/#) was used. The validation did not reveal any errors.
 | Python file               | Report | Results   |
 |---------------------------|--------|-----------|
 | `run.py`                  | <img src="./docs/testing/pylint_run.png" alt="run" width="200"/> | no errors |

@@ -10,7 +10,7 @@ ReVisPort is a Python command line reporting tool that enables users to create s
 ## Table of Contents
 - [UX](#ux)
 - [Features](#features)
-- [Testing](#testing)
+- [Testing & Validation](#testing--validation)
 - [Deployment](#deployment)
 - [Technologies](#technologies)
 - [Credits & Inspirations](#credits&inspirations)
@@ -73,7 +73,7 @@ In the original CI template, the red colour of the button was selected. This was
 
 ---
 ## Features
-The app uses a menu system to ask the user for input data. The user's choices are always validated for correctness. In the case of incorrect input or input format, a warning message is displayed. The warning mostly tells the user the reason for an invalid input and asks them to try again.
+The app uses a menu system to ask the user for input data in order to create a report. The user's choices are always validated for correctness. In the case of incorrect input or input format, a warning message is displayed. The warning mostly tells the user the reason for an invalid input and asks them to try again.
 
 ### Existing Features
 *Overview of existing features*
@@ -215,7 +215,7 @@ The app uses a menu system to ask the user for input data. The user's choices ar
 - Download the report as PDF using the fpdf library (see [more](https://towardsdatascience.com/how-to-create-a-pdf-report-for-your-data-analysis-in-python-2bea81133b)). Add a button and javascript event to enable downloading the report.
 - A line plot to visualise the data trends (using pandas or seaborn libraries).
 
-## Testing
+## Testing & Validation
 The website was continuously tested after implementing a feature. The main part of testing includes manual, functional testing as well as webpage validation using existing tools; see [the detailed testing report](./README_testing.md).
 
 ### Bugs & Issue
