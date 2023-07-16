@@ -216,7 +216,7 @@ The app uses a menu system to ask the user for input data in order to create a r
 - A line plot to visualise the data trends (using pandas or seaborn libraries).
 
 ## Testing & Validation
-The website was continuously tested after implementing a feature. The main part of testing includes manual, functional testing as well as webpage validation using existing tools; see [the detailed testing report](./README_testing.md).
+The website was continuously tested after implementing a feature. The main part of testing includes manual, functional testing as well as webpage validation using existing tools (e.g. PEP8); see [the detailed testing report](./README_testing.md).
 
 ### Bugs & Issue
 The following issues were detected during the manual testing.
@@ -280,7 +280,7 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 ### Tools
 - [Lucid](https://lucid.app/documents#/documents?folder_id=recent) to create a flow chart.
 - [Generator of Markdown tables](https://www.tablesgenerator.com/markdown_tables) to generate markdown tables.
-- [PEP validator](https://pep8ci.herokuapp.com/#) to validate Python code.
+- [PEP8 validator](https://pep8ci.herokuapp.com/#) to validate Python code.
 - [Image compressor](https://tinypng.com/) was used to compress the images.
 - [Image converter](https://ezgif.com/) was used to convert all images to the webp format.
 - [Spell checker](https://quillbot.com/spell-checker) to correct typos.
@@ -296,6 +296,7 @@ In order to deploy the app on Heroku, an account is required. The steps for the 
 - [ANSI color coding](https://codehs.com/tutorial/andy/ansi-colors)
 - Background image by [Mika Baumeister](https://unsplash.com/photos/Wpnoqo2plFA?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink) on [Unsplash](https://unsplash.com/photos/Wpnoqo2plFA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 - [Repository Template from Code Institute](https://github.com/Code-Institute-Org/p3-template)
+- [Stack Overflow](https://stackoverflow.com/)
 
 
 
